@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.5.19-MariaDB-1:10.5.19+maria~ubu2004 dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.5.20-MariaDB-1:10.5.20+maria~ubu2004 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -40,9 +40,19 @@ DROP TABLE IF EXISTS `tb_moeda`;
 CREATE TABLE `tb_moeda` (
   `id_moeda` int(11) NOT NULL AUTO_INCREMENT,
   `nome_moeda` varchar(100) NOT NULL,
-  `valor_moeda` varchar(100) NOT NULL,
+  `sigla_moeda` varchar(100) NOT NULL,
+  `valor_moeda` float NOT NULL,
   PRIMARY KEY (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda`) VALUES
+(1,	'Bitcoin',	'BTC',	140000),
+(2,	'SetinhaCoin',	'STC',	100),
+(3,	'MonaCoin',	'MNC',	130),
+(4,	'Ethereum',	'ETH',	8400),
+(5,	'Ripple',	'XRP',	2.6),
+(6,	'PobreCoin',	'PBC',	0),
+(7,	'LiteCoin',	'LTC',	336.37),
+(8,	'Santos FC Fan Token',	'SANTOS',	15);
 
--- 2023-10-02 18:16:34
+-- 2023-10-03 16:18:59

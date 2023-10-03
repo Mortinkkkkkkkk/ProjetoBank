@@ -17,7 +17,6 @@
             while ($row = mysqli_fetch_assoc($resultado)){
                 $valor = $row['valor_moeda'];
                 $sigla = $row['sigla_moeda'];
-                #$multiplicador = rand(-100 , ) / 100;
                 $selecionador_multiplicador_teste = $teste[rand(0,9)];
                 $maismenos = rand(-1,1);
                 if ($maismenos == 0) {
