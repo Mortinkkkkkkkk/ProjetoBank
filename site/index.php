@@ -8,30 +8,35 @@
 <body>
     <?php
         $conexao = mysqli_connect("db","root","123","bd_bank");
-        $sql = "SELECT * FROM tb_carteira";
-        
+        $sql = "SELECT * FROM tb_moeda";
+
         $resultado = mysqli_query($conexao,$sql);
+
+        $teste = [0.01, 0.001, 0.002 , 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009];
         if (mysqli_num_rows($resultado) > 0) {
             while ($row = mysqli_fetch_assoc($resultado)){
-                $idcli = $row['tb_cliente_id_cliente'];
-                $idmoeda = $row['tb_moeda_id_moeda'];
-                $quantidade = $row['quantidade'];
-                $selectcli = "SELECT nome_cliente FROM tb_cliente WHERE id_cliente = $idcli";
-                $selectmoeda = "SELECT * FROM tb_moeda WHERE id_moeda = $idmoeda";
-                $cliente = mysqli_query($conexao,$selectcli);
-                $moeda = mysqli_query($conexao,$selectmoeda);
-                $linhacli = mysqli_fetch_assoc($cliente);
-                $nomecli = $linhacli['nome_cliente'];
-                $linhamoeda = mysqli_fetch_assoc($moeda);
-                $nomemoeda = $linhamoeda['nome_moeda'];
-                $valormoeda = $linhamoeda['valor_moeda'];
-                echo "Nome: $nomecli <br>";
-                echo "Moeda: $nomemoeda <br>";
-                echo "Valor total:" . $quantidade * $valormoeda . "<br>";
+                $valor = $row['valor_moeda'];
+                $sigla = $row['sigla_moeda'];
+                #$multiplicador = rand(-100 , ) / 100;
+                $selecionador_multiplicador_teste = $teste[rand(0,9)];
+                $maismenos = rand(-1,1);
+                if ($maismenos == 0) {
+                    $maismenos = 1;
+                }
+                $op1 = $continha_teste = $valor + $maismenos * ($valor * $selecionador_multiplicador_teste) ;
+                #$op2 = $continha_teste = $valor - ($valor * $selecionador_multiplicador_teste) ;
 
+                #$resultado2 = "op" . rand(1,2); 
+                
+
+                    
+                $nome = $row['nome_moeda'];
+                echo $nome . "<br>";
+                echo $sigla . "<br>";
+                echo $op1 . "<br>";
+                #echo $valor + 1 * $multiplicador . "<br>";
             }
         }
-    
     ?>
 </body>
 </html>
