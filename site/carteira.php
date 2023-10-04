@@ -9,7 +9,6 @@
     <?php
         $conexao = mysqli_connect("db","root","123","bd_bank");
         $sql = "SELECT * FROM tb_carteira";
-        
         $resultado = mysqli_query($conexao,$sql);
         if (mysqli_num_rows($resultado) > 0) {
             while ($row = mysqli_fetch_assoc($resultado)){
@@ -25,10 +24,9 @@
                 $linhamoeda = mysqli_fetch_assoc($moeda);
                 $nomemoeda = $linhamoeda['nome_moeda'];
                 $valormoeda = $linhamoeda['valor_moeda'];
-                echo "Nome: $nomecli <br>";
-                echo "Moeda: $nomemoeda <br>";
-                echo "Valor total:" . $quantidade * $valormoeda . "<br>";
-
+                echo $nomecli . "<br>";
+                echo $nomemoeda . "<br>";
+                echo $valormoeda * $quantidade . "<br>";
             }
         }
     
