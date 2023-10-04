@@ -1,6 +1,6 @@
 <?php
-        require_once 'conexao.php';
-        require_once 'porcentagem_aleatoria.php';
+    require_once 'conexao.php';
+    require_once 'porcentagem_aleatoria.php';
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,16 +13,32 @@
 
 </head>
 <body>
-    <nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand">Sla</a>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i>Pesquisar</button>  
-            
-        </form>
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <div class="dropdown-center" >
+          <form action="pesquisa_por_moedas.php">
+            <input name="nome_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
+            <button class="btn btn-outline-success" type="submit">  
+            <i class="bi bi-search"></i>Pesquisar
+            </button>
+      </form>
+      
     </div>
-    </nav>
+  </div>
+</nav>
 
         
  
@@ -49,7 +65,7 @@
                 $nome_moeda = $row['nome_moeda'];
                 
                 echo $nome_moeda . "<br>";
-                echo $calculo_valor_atual_moeda . "<br> ";
+                echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
                 echo $sigla . "<br><br>";
                 
                 
