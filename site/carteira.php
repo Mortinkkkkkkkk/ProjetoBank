@@ -1,3 +1,7 @@
+<?php
+    require "ta_logado.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
