@@ -50,24 +50,35 @@
 
 <div>
 <?php
+        $mais_menos = 0;
         $sql = "SELECT * FROM tb_moeda";
         $resultado = mysqli_query($conexao,$sql);
         if (mysqli_num_rows($resultado) > 0) {
             while ($row = mysqli_fetch_assoc($resultado)){
                 $valor_moeda = $row['valor_moeda'];
                 $sigla = $row['sigla_moeda'];
-                $porcentagem_aleatoria = $vetor_de_porcentagens[rand(0,82)];
-                $mais_menos = rand(-1,1);
-                if ($mais_menos == 0) {
-                    $mais_menos = 1;
+                if (rand(0,100) == 100) {
+                  $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
+
+                }else {
+                  $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
                 }
+                while ($mais_menos == 0) {
+                  $mais_menos = rand(-1,1);
+                }
+                
                 $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;
                 $nome_moeda = $row['nome_moeda'];
                 
                 echo $nome_moeda . "<br>";
                 echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
                 echo $sigla . "<br><br>";
-                
+                ?>
+                    <form action="inspecionar_moeda.php">
+                        <button class="btn btn-outline-success">verificar</button>
+                    </form>
+                    <br><br>
+                  <?php
                 
             }
         }

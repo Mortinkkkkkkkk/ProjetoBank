@@ -43,6 +43,7 @@
         
  
         <?php
+            $mais_menos = 0;
             $nome_moeda_pesquisada = $_GET['nome_moeda_pesquisada'];
             $sql_pesquisa_por_moeda = "SELECT * FROM tb_moeda WHERE nome_moeda like '%$nome_moeda_pesquisada%'";
             $ativacao_pesquisa = mysqli_query($conexao, $sql_pesquisa_por_moeda);
@@ -51,23 +52,35 @@
                     $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                     $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
                     $valor_moeda = $linha_tabela_moeda['valor_moeda'];
-                    $porcentagem_aleatoria = $vetor_de_porcentagens[rand(0,82)];
-                    $mais_menos = rand(-1,1);
-                    if ($mais_menos == 0) {
-                        $mais_menos = 1;
+                    if (rand(0,100) == 100) {
+                        $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
+      
+                      }else {
+                        $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
+                      }
+                    while ($mais_menos == 0) {
+                        $mais_menos = rand(-1,1);
                     }
                     $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;    
                     echo $nome_moeda . "<br>";
                     echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
-                    echo $sigla_moeda . "<br><br>";
+                    echo $sigla_moeda . "";
+                    ?>
+                    <form action="">
+                        <button class="btn btn-outline-success">verificar</button>
+                    </form>
+                    <br><br>
+                    <?php
+
+                    
                             
                 
             }
         }
                     
-            
+?>            
         
-        ?>
+        
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
