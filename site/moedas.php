@@ -56,7 +56,12 @@
             while ($row = mysqli_fetch_assoc($resultado)){
                 $valor_moeda = $row['valor_moeda'];
                 $sigla = $row['sigla_moeda'];
-                $porcentagem_aleatoria = $vetor_de_porcentagens[rand(0,82)];
+                if (rand(0,100) == 100) {
+                  $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
+
+                }else {
+                  $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
+                } 
                 $mais_menos = rand(-1,1);
                 if ($mais_menos == 0) {
                     $mais_menos = 1;

@@ -51,7 +51,12 @@
                     $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                     $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
                     $valor_moeda = $linha_tabela_moeda['valor_moeda'];
-                    $porcentagem_aleatoria = $vetor_de_porcentagens[rand(0,82)];
+                    if (rand(0,100) == 100) {
+                        $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
+      
+                      }else {
+                        $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
+                      }
                     $mais_menos = rand(-1,1);
                     if ($mais_menos == 0) {
                         $mais_menos = 1;
