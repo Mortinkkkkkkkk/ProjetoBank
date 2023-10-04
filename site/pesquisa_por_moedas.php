@@ -54,6 +54,7 @@
                 $ativacao_pesquisa = mysqli_query($conexao, $sql_pesquisa_por_moeda);
                 if (mysqli_num_rows($ativacao_pesquisa) > 0 ){
                     while ($linha_tabela_moeda = mysqli_fetch_array($ativacao_pesquisa)) {
+                        $id_moeda = $linha_tabela_moeda['id_moeda'];
                         $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                         $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
                         $valor_moeda = $linha_tabela_moeda['valor_moeda'];
@@ -70,10 +71,14 @@
                         echo $nome_moeda . "<br>";
                         echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
                         echo $sigla_moeda . "";
+                        echo "<form action='inspecionar_moeda.php'>
+                                <input type='hidden' name='id_moeda' value='$id_moeda'>
+                                <button class='btn btn-outline-success'>inspecionar</button>
+                            </form>
+                            <br><br>
+                        "
                         ?>
-                        <form action="inspecionar_moeda.php">
-                            <button class="btn btn-outline-success">verificar</button>
-                        </form>
+                        
                         <br><br>
                         <?php          
                     
@@ -85,6 +90,7 @@
                 $ativacao_pesquisa = mysqli_query($conexao, $sql_pesquisa_por_moeda);
                 if (mysqli_num_rows($ativacao_pesquisa) > 0 ){
                     while ($linha_tabela_moeda = mysqli_fetch_array($ativacao_pesquisa)) {
+                        $id_moeda = $linha_tabela_moeda['id_moeda'];
                         $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                         $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
                         $valor_moeda = $linha_tabela_moeda['valor_moeda'];
@@ -101,11 +107,15 @@
                         echo $nome_moeda . "<br>";
                         echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
                         echo $sigla_moeda . "";
+                        echo "<form action='inspecionar_moeda.php'>
+                                <input type='hidden' name='id_moeda' value='$id_moeda'>
+                                <button class='btn btn-outline-success'>inspecionar</button>
+                            </form>
+                            <br><br>
+                        "
                         ?>
-                        <form action="inspecionar_moeda.php">
-                            <button class="btn btn-outline-success">verificar</button>
-                        </form>
-                        <br><br>
+                        
+                        
                         <?php          
                     
                 }
