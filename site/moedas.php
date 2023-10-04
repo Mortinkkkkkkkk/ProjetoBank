@@ -74,7 +74,7 @@
                 echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
                 echo $sigla . "<br><br>";
                 ?>
-                    <form action="inspionar_moeda.php">
+                    <form action="inspecionar_moeda.php">
                         <button class="btn btn-outline-success">verificar</button>
                     </form>
                     <br><br>
