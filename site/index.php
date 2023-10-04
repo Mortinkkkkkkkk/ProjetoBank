@@ -10,8 +10,8 @@
     <form action="moedas.php" >
         Clique   <button type="submit" >aqui</button>
         para ver as moedas        
-    </form>
-    
+    </form><br><br>
+        clique <a href="selectesquisito.php">aqui</a> para acessar a carteira
     
 </body>
 </html>
