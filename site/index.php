@@ -11,7 +11,7 @@
         Clique   <button type="submit" >aqui</button>
         para ver as moedas        
     </form><br><br>
-        clique <a href="selectesquisito.php">aqui</a> para acessar a carteira
+        clique <a href="carteira.php">aqui</a> para acessar a carteira
     
 </body>
 </html>
