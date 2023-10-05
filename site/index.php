@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (isset($_SESSION['logado'])) {
+        $conta = "";
+    }else{
+        $conta = "hidden";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +15,9 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form action="conta.php">
+        <div <?php echo $conta; ?>>Clique <button type="submit">aqui</button></div>
+    </form><br><br>
     <form action="moedas.php" >
         Clique   <button type="submit" >aqui</button>
         para ver as moedas        

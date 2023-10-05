@@ -60,6 +60,7 @@
         $resultado = mysqli_query($conexao,$sql);
         if (mysqli_num_rows($resultado) > 0) {
             while ($row = mysqli_fetch_assoc($resultado)){
+                $id_moeda = $row['id_moeda'];
                 $valor_moeda = $row['valor_moeda'];
                 $sigla = $row['sigla_moeda'];
                 if (rand(0,100) == 100) {
@@ -78,10 +79,17 @@
                 echo $nome_moeda . "<br>";
                 echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
                 echo $sigla . "<br><br>";
+                echo"<form action='inspecionar_moeda.php'>
+                    
+                    <input type='hidden' name='id_moeda' value='$id_moeda'>
+                    <input type='hidden' name='ispc_local' value='moedas'>
+                    <button class='btn btn-outline-success'>inspecionar</button>
+                  </form>
+                  
+                  "
                 ?>
-                    <form action="inspecionar_moeda.php">
-                        <button class="btn btn-outline-success">verificar</button>
-                    </form>
+                    
+
                     <br><br>
                   <?php
                 
