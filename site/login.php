@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<?php
+    $email_login = $_GET['email_login'];
+    $senha_login = $_GET['senha_login'];
+
+    require_once "conexao.php";
+    $sql = "SELECT * FROM tb_cliente WHERE email_cliente = '$email_login' AND senha_cliente = '$senha_login'";
+
+    $resultado = mysqli_query($conexao,$sql);
+    if ($resultado) {
+        session_start();
+        $_SESSION["logado"] = true;
+        header('location: index.php');
+        exit();
+    }
+    else {
+        header('location: login.html');
+        exit();
+    }
+?>
