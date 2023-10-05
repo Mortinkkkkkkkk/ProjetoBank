@@ -64,7 +64,7 @@
         if (mysqli_num_rows($resultado) > 0) {
             while ($row = mysqli_fetch_assoc($resultado)){
                 $id_moeda = $row['id_moeda'];
-                $valor_moeda = $row['valor_moeda'];
+                $valor_moeda_fixo = $row['valor_moeda_fixo'];
                 $sigla = $row['sigla_moeda'];
                 if (rand(0,100) == 100) {
                   $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
@@ -76,7 +76,7 @@
                   $mais_menos = rand(-1,1);
                 }
                 
-                $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;
+                $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
                 $nome_moeda = $row['nome_moeda'];
                 
                 echo $nome_moeda . "<br>";

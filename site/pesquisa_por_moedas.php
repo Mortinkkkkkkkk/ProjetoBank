@@ -60,7 +60,7 @@
                         $id_moeda = $linha_tabela_moeda['id_moeda'];
                         $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                         $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
-                        $valor_moeda = $linha_tabela_moeda['valor_moeda'];
+                        $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
                         if (rand(0,100) == 100) {
                             $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
         
@@ -70,7 +70,7 @@
                         while ($mais_menos == 0) {
                             $mais_menos = rand(-1,1);
                         }
-                        $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;    
+                        $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;    
                         echo $nome_moeda . "<br>";
                         echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
                         echo $sigla_moeda . "";
@@ -99,7 +99,7 @@
                         $id_moeda = $linha_tabela_moeda['id_moeda'];
                         $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                         $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
-                        $valor_moeda = $linha_tabela_moeda['valor_moeda'];
+                        $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
                         if (rand(0,100) == 100) {
                             $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
         
@@ -109,7 +109,7 @@
                         while ($mais_menos == 0) {
                             $mais_menos = rand(-1,1);
                         }
-                        $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;    
+                        $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;    
                         echo $nome_moeda . "<br>";
                         echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
                         echo $sigla_moeda . "";
