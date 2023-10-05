@@ -1,11 +1,11 @@
 <?php
    require_once "conexao.php";
    
-   $nome_cliente = $_GET['nome_cliente'];
-   $email_cliente = $_GET['email_cliente'];
-   $cpf_cliente = $_GET['cpf_cliente'];
-   $senha_cliente = $_GET['senha_cliente'];
-   $sql = "INSERT INTO `tb_cliente` (`nome_cliente`, `senha_cliente`, `cpf_cliente`, `email_cliente`) VALUES ('$nome_cliente', '$senha_cliente', '$cpf_cliente', '$email_cliente')";
+   $nome_usuario = $_GET['nome_usuario'];
+   $email_usuario = $_GET['email_usuario'];
+   $cpf_usuario = $_GET['cpf_usuario'];
+   $senha_usuario = $_GET['senha_usuario'];
+   $sql = "INSERT INTO `tb_usuario` (`nome_usuario`, `senha_usuario`, `cpf_usuario`, `email_usuario`) VALUES ('$nome_usuario', '$senha_usuario', '$cpf_usuario', '$email_usuario')";
 
     mysqli_query($conexao,$sql);
 

@@ -30,15 +30,15 @@
           $resultado = mysqli_query($conexao,$sql);
           if (mysqli_num_rows($resultado) > 0) {
               while ($row = mysqli_fetch_assoc($resultado)){
-                  $idcli = $row['tb_cliente_id_cliente'];
+                  $idcli = $row['tb_usuario_id_usuario'];
                   $idmoeda = $row['tb_moeda_id_moeda'];
                   $quantidade = $row['quantidade'];
-                  $selectcli = "SELECT nome_cliente FROM tb_cliente WHERE id_cliente = $idcli";
+                  $selectcli = "SELECT nome_usuario FROM tb_usuario WHERE id_usuario = $idcli";
                   $selectmoeda = "SELECT * FROM tb_moeda WHERE id_moeda = $idmoeda";
-                  $cliente = mysqli_query($conexao,$selectcli);
+                  $usuario = mysqli_query($conexao,$selectcli);
                   $moeda = mysqli_query($conexao,$selectmoeda);
-                  $linhacli = mysqli_fetch_assoc($cliente);
-                  $nomecli = $linhacli['nome_cliente'];
+                  $linhacli = mysqli_fetch_assoc($usuario);
+                  $nomecli = $linhacli['nome_usuario'];
                   $linhamoeda = mysqli_fetch_assoc($moeda);
                   $nome_moeda = $linhamoeda['nome_moeda'];
                   $valor_moeda = $linhamoeda['valor_moeda'];
