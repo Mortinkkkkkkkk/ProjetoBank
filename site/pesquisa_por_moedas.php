@@ -74,7 +74,7 @@
                         echo "<form action='inspecionar_moeda.php'>
                                 <input type='hidden' name='moeda_pesquisada' value='$nome_sigla_moeda_pesquisada'>
                                 <input type='hidden' name='id_moeda' value='$id_moeda'>
-                                <input type='hidden' name='opcao_pesquisada' value='$opcao_de_pesquisa'>
+                                <input type='hidden' name='opcoes_de_pesquisa' value='$opcao_de_pesquisa'>
                                 <input type='hidden' name='ispc_local' value='pesquisa'>
                                 <button class='btn btn-outline-success'>inspecionar</button>
                             </form>
@@ -113,7 +113,7 @@
                         echo "<form action='inspecionar_moeda.php'>
                                 <input type='hidden' name='moeda_pesquisada' value='$nome_sigla_moeda_pesquisada'>
                                 <input type='hidden' name='id_moeda' value='$id_moeda'>
-                                <input type='hidden' name='opcao_pesquisada' value='$opcao_de_pesquisa'>
+                                <input type='hidden' name='opcoes_de_pesquisa' value='$opcao_de_pesquisa'>
                                 <input type='hidden' name='ispc_local' value='pesquisa'>
                                 <button class='btn btn-outline-success'>inspecionar</button>
                             </form>

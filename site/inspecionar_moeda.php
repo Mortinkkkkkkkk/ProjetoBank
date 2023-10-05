@@ -34,27 +34,19 @@
                     if ($local == 'pesquisa') {
                         $id_moeda = $_GET['id_moeda'];
                         $nome_sigla_moeda_pesquisada = $_GET['moeda_pesquisada'];
-                        $opcao_pesquisada = $_GET['opcao_pesquisada'];
+                        $opcoes_de_pesquisa = $_GET['opcoes_de_pesquisa'];
                        echo"<form action='pesquisa_por_moedas.php'>
-                            <select name='opcoes_de_pesquisa' id='' class='btn btn-outline-primary'>
-                                <option value='nome'>Nome</option>
-                                <option value='sigla'>Sigla</option>
-                                
-                            </select>
+                            <input name='opcoes_de_pesquisa' type='hidden' 
+                            value='$opcoes_de_pesquisa'>
                             <input name='nome_sigla_moeda_pesquisada' type='hidden' 
-                            class='btn  m-2' 
-                            style=background-color: #2bcc48 value='$nome_sigla_moeda_pesquisada'>
+                            value='$nome_sigla_moeda_pesquisada'>
                             <button class='btn btn-outline-success' type='submit'>  
                                 Voltar
                             </button>";
                     }
                     elseif ($local == 'moedas') {
                         echo"<form action='moedas.php'>
-                            <select name='opcoes_de_pesquisa' id='' class='btn btn-outline-primary'>
-                                <option value='nome'>Nome</option>
-                                <option value='sigla'>Sigla</option>
-                                
-                            </select>
+                            
                             <button class='btn btn-outline-success' type='submit'>  
                                 Voltar
                             </button>";
