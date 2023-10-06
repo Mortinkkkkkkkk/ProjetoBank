@@ -43,7 +43,12 @@
             </div>
         </nav>
 
-        
+        <div class="row bg-success p-2 bg-opacity-25 border-success-subtle">
+            <div class="row bg-success p-2 bg-opacity-25 border-success-subtle" style="margin-left: 0px;">
+
+
+        <div class='mt-5 container'>
+      <div class='row'>
  
         <?php
             $mais_menos = 0;
@@ -68,15 +73,28 @@
                             $mais_menos = rand(-1,1);
                         }
                         $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;    
-                        echo $nome_moeda . "<br>";
-                        echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
-                        echo $sigla_moeda . "";
-                        echo "<form action='inspecionar_moeda.php'>
+                        
+                      
+                      
+                      echo "<div class='col-sm'>";
+                      echo "<div class='card mb-3' style='width: 13rem;'>";
+                      echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
+                      echo           " <div class='card-body'>";
+                      echo               "<h5 class='card-title'> $nome_moeda</h5>";
+                      echo               "<p class='card-text'>$calculo_valor_atual_moeda.</p>" ;
+                      echo                   "<p class='card-text'>$$sigla_moeda.</p>" ;       
+                      echo "<form action='inspecionar_moeda.php'>
                                 <input type='hidden' name='id_moeda' value='$id_moeda'>
                                 <button class='btn btn-outline-success'>inspecionar</button>
                             </form>
                             <br><br>
-                        "
+                                    ";
+                  
+                      echo           "</div>" ;
+                      echo           "</div>";
+                      echo           "</div>";
+                     
+                    
                         ?>
                         
                         <br><br>
@@ -104,29 +122,37 @@
                             $mais_menos = rand(-1,1);
                         }
                         $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;    
-                        echo $nome_moeda . "<br>";
-                        echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
-                        echo $sigla_moeda . "";
-                        echo "<form action='inspecionar_moeda.php'>
-                                <input type='hidden' name='id_moeda' value='$id_moeda'>
-                                <button class='btn btn-outline-success'>inspecionar</button>
-                            </form>
-                            <br><br>
-                        "
+                    
+                        echo "<div class='col-sm'>";
+                        echo "<div class='card mb-3' style='width: 18rem;'";
+                        echo            " <img src='' class='card-img-top' ";
+                        echo           " <div class='card-body'>";
+                        echo               "<h5 class='card-title'>$nome_moeda</h5>";
+                        echo               "<p class='card-text'>$calculo_valor_atual_moeda.</p>" ;
+                        echo                   "<p class='card-text'>$$sigla_moeda.</p>" ;    
+                        echo    "<form action='inspecionar_moeda.php'>
+                                  <input type='hidden' name='id_moeda' value='$id_moeda'>
+                                  <button class='btn btn-outline-success'>inspecionar</button>
+                              </form>
+                                      ";
+                        echo              "</div>" ;
+                        echo              "</div>";
                         ?>
-                        
+                       
                         
                         <?php          
-                    
+                   
                 }
             }
         }
                 
 ?>                   
-           
-      
+            </div>
+            </div>
+            </div>
+            </div>
         
-
+'
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
 </html>
