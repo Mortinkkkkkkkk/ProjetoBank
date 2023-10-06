@@ -65,6 +65,57 @@
       </div>
     </div>
   </nav>
+ 
+  <?php
+  //conexao com o banco
+  require_once "conexao.php";
+  $id_moeda = $_GET['id_moeda'];
+  $sql = "SELECT * FROM `tb_historico_v_moeda` WHERE `id_moeda` = '$id_moeda' ORDER BY `id_moeda`, `id_valor` DESC LIMIT 15";
+  $sqlmoeda = "SELECT * FROM tb_moeda WHERE id_moeda = '$id_moeda'";
+  $horagrafico = [];
+  $valorgrafico = [];
+
+  $resultado = mysqli_query($conexao,$sql);
+  if (mysqli_num_rows($resultado) > 0) {
+    while ($linha = mysqli_fetch_array($resultado)){
+      global $datagrafico, $valorgrafico;
+      $valor = $linha['valor_moeda'];
+      $hora = $linha['hora_atual'];
+      array_push($valorgrafico, $valor);
+      array_push($horagrafico, $hora);
+    }
+  }
+  $resultmoeda = mysqli_query($conexao,$sqlmoeda);
+  $linhamoeda = mysqli_fetch_array($resultmoeda);
+  $nome_moeda_grafico = $linhamoeda['nome_moeda'];
+?>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      <?php
+        echo  "function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+                ['Data', '$nome_moeda_grafico'],";
+        for ($x = 0; $x < count($horagrafico);$x++){
+          echo "['$horagrafico[$x]',".$valorgrafico[$x]."],";
+        }
+      echo "]);";
+        
+      ?>
+        var options = {
+          title: 'Grafico atual Da moeda',
+          hAxis: {title: 'Data',  titleTextStyle: {color: '#333'},format: 'percent'},
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      <?php echo"}";?>
+    </script>
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
+  </body>
+</html>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
