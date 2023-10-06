@@ -7,6 +7,10 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
+DROP DATABASE IF EXISTS `bd_bank`;
+CREATE DATABASE `bd_bank` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `bd_bank`;
+
 DROP TABLE IF EXISTS `tb_carteira`;
 CREATE TABLE `tb_carteira` (
   `id_carteira` int(11) NOT NULL,
@@ -25,14 +29,16 @@ INSERT INTO `tb_carteira` (`id_carteira`, `tb_usuario_id_usuario`, `tb_moeda_id_
 (3,	1,	3,	10),
 (4,	2,	3,	4);
 
-DROP TABLE IF EXISTS `tb_historico_v_moedas`;
-CREATE TABLE `tb_historico_v_moedas` (
+DROP TABLE IF EXISTS `tb_historico_v_moeda`;
+CREATE TABLE `tb_historico_v_moeda` (
   `id_valor` int(11) NOT NULL AUTO_INCREMENT,
   `id_moeda` int(11) NOT NULL,
   `valor_moeda` float NOT NULL,
+  `hora_atual` time NOT NULL,
+  `data_atual` date NOT NULL,
   PRIMARY KEY (`id_valor`),
   KEY `id_moeda` (`id_moeda`),
-  CONSTRAINT `tb_historico_v_moedas_ibfk_1` FOREIGN KEY (`id_moeda`) REFERENCES `tb_moeda` (`id_moeda`)
+  CONSTRAINT `tb_historico_v_moeda_ibfk_1` FOREIGN KEY (`id_moeda`) REFERENCES `tb_moeda` (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -42,18 +48,19 @@ CREATE TABLE `tb_moeda` (
   `nome_moeda` varchar(100) NOT NULL,
   `sigla_moeda` varchar(100) NOT NULL,
   `valor_moeda_fixo` float NOT NULL,
+  `moeda_em_destaque` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`) VALUES
-(1,	'Bitcoin',	'BTC',	140000),
-(2,	'SetinhaCoin',	'STC',	100),
-(3,	'MonaCoin',	'MNC',	130),
-(4,	'Ethereum',	'ETH',	8400),
-(5,	'Ripple',	'XRP',	2.6),
-(6,	'PobreCoin',	'PBC',	0),
-(7,	'LiteCoin',	'LTC',	336.37),
-(8,	'Santos FC Fan Token',	'SANTOS',	15);
+INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`, `moeda_em_destaque`) VALUES
+(1,	'Bitcoin',	'BTC',	140000,	1),
+(2,	'SetinhaCoin',	'STC',	100,	1),
+(3,	'MonaCoin',	'MNC',	130,	0),
+(4,	'Ethereum',	'ETH',	8400,	1),
+(5,	'Ripple',	'XRP',	2.6,	0),
+(6,	'PobreCoin',	'PBC',	0,	0),
+(7,	'LiteCoin',	'LTC',	336.37,	0),
+(8,	'Santos FC Fan Token',	'SANTOS',	15,	0);
 
 DROP TABLE IF EXISTS `tb_usuario`;
 CREATE TABLE `tb_usuario` (
@@ -72,4 +79,4 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_us
 (3,	'gugu',	'789',	'64656454658',	'gugu@gugu.com',	''),
 (4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'');
 
--- 2023-10-06 00:15:25
+-- 2023-10-06 10:55:54
