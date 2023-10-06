@@ -58,10 +58,13 @@
 
 <div>
 <?php   
-        
+# Parte responsável por mostrar apenas moedas em destaque na página moedas{
         $mais_menos = 0;
+# Select que mostra apenas as moedas que estão em destaque {
         $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = '1'";
         $resultado = mysqli_query($conexao,$sql);
+#}
+#Coloca os dados das moedas em destaque dentro de um vetor{
         if (mysqli_num_rows($resultado) > 0) {
             while ($linha_tabela_moeda = mysqli_fetch_assoc($resultado)){
                 $id_moeda = $linha_tabela_moeda['id_moeda'];
@@ -69,23 +72,25 @@
                 $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                 $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
                 $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
-                
+#}
+# Calculo do valor da moeda de acordo com a porcentagem que foi definida aleatoriamente entre um valor de um vetor{       
                 $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
-                
                 while ($mais_menos == 0) {
                   $mais_menos = rand(-1,1);
                 }
-                
                 $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
-                $nome_moeda = $linha_tabela_moeda['nome_moeda'];
+#}
+# Update Valor "Fixo" da moeda e Insert do historico {
                 $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda" ;
-                
-                echo $nome_moeda . "<br>";
-                echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
                 $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
                 mysqli_query($conexao,$insert_valor_da_moeda_no_historico,);
                 mysqli_query($conexao,$update_valor_moeda);
-                
+#}
+# Echo de carrosel {
+                echo $nome_moeda . "<br>";
+                echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
+
+
                 echo $sigla_moeda . "<br><br>";
                 echo"<form action='inspecionar_moeda.php'>
                     
@@ -93,8 +98,9 @@
                     <input type='hidden' name='ispc_local' value='moedas'>
                     <button class='btn btn-outline-success'>inspecionar</button>
                   </form>
-                  
-                  "
+                "
+    #}
+  #}
                 ?>
                     
 
