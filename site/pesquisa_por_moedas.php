@@ -124,7 +124,7 @@
                         $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;    
                     
                         echo "<div class='col-sm'>";
-                        echo "<div class='card mb-3' style='width: 18rem;'";
+                        echo "<div class='card mb-3' style='width: 13rem;'";
                         echo            " <img src='' class='card-img-top' ";
                         echo           " <div class='card-body'>";
                         echo               "<h5 class='card-title'>$nome_moeda</h5>";
