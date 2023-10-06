@@ -1,6 +1,6 @@
 <?php
   require_once "conexao.php";
-  $sql = "SELECT valor_moeda FROM tb_historico_v_moedas WHERE id_moeda = '1' ORDER BY id_moeda";
+  $sql = "SELECT * FROM `tb_historico_v_moedas` WHERE `id_moeda` = '1' ORDER BY `id_moeda`, `id_valor` DESC LIMIT 15";
 
   $data = [];
 
@@ -23,7 +23,7 @@
       <?php
         echo  "function drawChart() {
           var data = google.visualization.arrayToDataTable([
-                ['Year', 'Sales'],";
+                ['Data', 'moeda'],";
         for ($x = 0; $x < count($data);$x++){
          echo "['2013', ".$data[$x]."],";
         }
@@ -31,8 +31,8 @@
         
       ?>
         var options = {
-          title: 'Company Performance',
-          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          title: 'Grafico atual Da moeda',
+          hAxis: {title: 'Data',  titleTextStyle: {color: '#333'},format: 'percent'},
           vAxis: {minValue: 135000}
         };
 
