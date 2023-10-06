@@ -81,6 +81,8 @@
                 
                 echo $nome_moeda . "<br>";
                 echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
+                $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moedas (id_moeda, valor_moeda) VALUES ('$id_moeda','$calculo_valor_atual_moeda')";
+                mysqli_query($conexao,$insert_valor_da_moeda_no_historico);
                 echo $sigla . "<br><br>";
                 echo"<form action='inspecionar_moeda.php'>
                     
