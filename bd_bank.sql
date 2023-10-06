@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.5.21-MariaDB-1:10.5.21+maria~ubu2004 dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.5.20-MariaDB-1:10.5.20+maria~ubu2004 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -6,10 +6,6 @@ SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
-
-DROP DATABASE IF EXISTS `bd_bank`;
-CREATE DATABASE `bd_bank` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
-USE `bd_bank`;
 
 DROP TABLE IF EXISTS `tb_carteira`;
 CREATE TABLE `tb_carteira` (
@@ -29,16 +25,27 @@ INSERT INTO `tb_carteira` (`id_carteira`, `tb_usuario_id_usuario`, `tb_moeda_id_
 (3,	1,	3,	10),
 (4,	2,	3,	4);
 
+DROP TABLE IF EXISTS `tb_historico_v_moedas`;
+CREATE TABLE `tb_historico_v_moedas` (
+  `id_valor` int(11) NOT NULL AUTO_INCREMENT,
+  `id_moeda` int(11) NOT NULL,
+  `valor_moeda` float NOT NULL,
+  PRIMARY KEY (`id_valor`),
+  KEY `id_moeda` (`id_moeda`),
+  CONSTRAINT `tb_historico_v_moedas_ibfk_1` FOREIGN KEY (`id_moeda`) REFERENCES `tb_moeda` (`id_moeda`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 DROP TABLE IF EXISTS `tb_moeda`;
 CREATE TABLE `tb_moeda` (
   `id_moeda` int(11) NOT NULL AUTO_INCREMENT,
   `nome_moeda` varchar(100) NOT NULL,
   `sigla_moeda` varchar(100) NOT NULL,
-  `valor_moeda` float NOT NULL,
+  `valor_moeda_fixo` float NOT NULL,
   PRIMARY KEY (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda`) VALUES
+INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`) VALUES
 (1,	'Bitcoin',	'BTC',	140000),
 (2,	'SetinhaCoin',	'STC',	100),
 (3,	'MonaCoin',	'MNC',	130),
@@ -65,4 +72,4 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_us
 (3,	'gugu',	'789',	'64656454658',	'gugu@gugu.com',	''),
 (4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'');
 
--- 2023-10-05 17:58:52
+-- 2023-10-06 00:15:25
