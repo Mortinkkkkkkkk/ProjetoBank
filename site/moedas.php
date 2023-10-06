@@ -59,13 +59,15 @@
 <div>
 <?php
         $mais_menos = 0;
-        $sql = "SELECT * FROM tb_moeda";
+        $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = '1'";
         $resultado = mysqli_query($conexao,$sql);
         if (mysqli_num_rows($resultado) > 0) {
-            while ($row = mysqli_fetch_assoc($resultado)){
-                $id_moeda = $row['id_moeda'];
-                $valor_moeda_fixo = $row['valor_moeda_fixo'];
-                $sigla = $row['sigla_moeda'];
+            while ($linha_tabela_moeda = mysqli_fetch_assoc($resultado)){
+                $id_moeda = $linha_tabela_moeda['id_moeda'];
+                $id_moeda = $linha_tabela_moeda['id_moeda'];
+                $nome_moeda = $linha_tabela_moeda['nome_moeda'];
+                $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
+                $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
                 if (rand(0,100) == 100) {
                   $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
 
@@ -77,13 +79,14 @@
                 }
                 
                 $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
-                $nome_moeda = $row['nome_moeda'];
+                $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                 
                 echo $nome_moeda . "<br>";
                 echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
-                $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moedas (id_moeda, valor_moeda) VALUES ('$id_moeda','$calculo_valor_atual_moeda')";
+                $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
                 mysqli_query($conexao,$insert_valor_da_moeda_no_historico);
-                echo $sigla . "<br><br>";
+                
+                echo $sigla_moeda . "<br><br>";
                 echo"<form action='inspecionar_moeda.php'>
                     
                     <input type='hidden' name='id_moeda' value='$id_moeda'>
@@ -100,6 +103,9 @@
                 
             }
         }
+
+        
+        
     ?>
     </div>
 
