@@ -94,10 +94,12 @@
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       <?php
+        $horagrafico = array_reverse($horagrafico);
+        $valorgrafico = array_reverse($valorgrafico);
         echo  "function drawChart() {
           var data = google.visualization.arrayToDataTable([
                 ['Data', '$nome_moeda_grafico'],";
-        for ($x = 0; $x < count($horagrafico);$x++){
+        for ($x = 0 ; $x < count($horagrafico);$x++){
           echo "['$horagrafico[$x]',".$valorgrafico[$x]."],";
         }
       echo "]);";
