@@ -41,7 +41,7 @@
                   $nomecli = $linhacli['nome_usuario'];
                   $linhamoeda = mysqli_fetch_assoc($moeda);
                   $nome_moeda = $linhamoeda['nome_moeda'];
-                  $valor_moeda = $linhamoeda['valor_moeda'];
+                  $valor_moeda = $linhamoeda['valor_moeda_fixo'];
                   $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;
                   echo $nomecli . "<br>";
                   echo $nome_moeda . "<br>";
