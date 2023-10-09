@@ -94,6 +94,7 @@
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       <?php
+      // array_reverse = inverte a array :O
         $horagrafico = array_reverse($horagrafico);
         $valorgrafico = array_reverse($valorgrafico);
         echo  "function drawChart() {
