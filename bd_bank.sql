@@ -69,7 +69,7 @@ CREATE TABLE `tb_usuario` (
   `senha_usuario` varchar(100) NOT NULL,
   `cpf_usuario` varchar(50) NOT NULL,
   `email_usuario` varchar(200) NOT NULL,
-  `tipo_usuario` varchar(200) NOT NULL,
+  `tipo_usuario` varchar(200) NOT NULL DEFAULT 'cliente',
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -79,4 +79,4 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_us
 (3,	'gugu',	'789',	'64656454658',	'gugu@gugu.com',	''),
 (4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'');
 
--- 2023-10-06 10:55:54
+-- 2023-10-16 16:27:44
