@@ -112,6 +112,11 @@
           series: {
             0: { color: '#2d912f'}
           },
+          animation: {
+            duration: 500,
+            easing: 'out',
+            startup: true
+          },
           hAxis: {title: 'Data',  titleTextStyle: {color: '#333'},format: 'percent'},
         };
 
