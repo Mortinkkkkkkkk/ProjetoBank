@@ -53,10 +53,10 @@ CREATE TABLE `tb_moeda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`, `moeda_em_destaque`) VALUES
-(1,	'Bitcoin',	'BTC',	140000,	1),
-(2,	'SetinhaCoin',	'STC',	100,	1),
+(1,	'Bitcoin',	'BTC',	144965,	1),
+(2,	'SetinhaCoin',	'STC',	99.0291,	1),
 (3,	'MonaCoin',	'MNC',	130,	0),
-(4,	'Ethereum',	'ETH',	8400,	1),
+(4,	'Ethereum',	'ETH',	8393.99,	1),
 (5,	'Ripple',	'XRP',	2.6,	0),
 (6,	'PobreCoin',	'PBC',	0,	0),
 (7,	'LiteCoin',	'LTC',	336.37,	0),
@@ -79,4 +79,4 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_us
 (3,	'gugu',	'789',	'64656454658',	'gugu@gugu.com',	''),
 (4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'');
 
--- 2023-10-16 16:27:44
+-- 2023-10-16 18:34:13
