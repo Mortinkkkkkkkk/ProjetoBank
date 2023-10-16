@@ -1,5 +1,6 @@
 <?php
-    require "ta_logado.php"
+    require "ta_logado.php";
+    $id_usuario = $_SESSION['id_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -13,39 +14,23 @@
 <body>
     <?php
         require_once "conexao.php";
-        require_once "porcentagem_aleatoria.php";
-
-        $mais_menos = 0;
-        if (rand(0,100) == 100) {
-            $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
-
-          }else {
-            $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
-          }
-          while ($mais_menos == 0) {
-            $mais_menos = rand(-1,1);
-          }
-
-          $sql = "SELECT * FROM tb_carteira";
+          $sql = "SELECT tb_moeda_id_moeda, quantidade FROM tb_carteira WHERE tb_usuario_id_usuario = $id_usuario";
           $resultado = mysqli_query($conexao,$sql);
           if (mysqli_num_rows($resultado) > 0) {
-              while ($row = mysqli_fetch_assoc($resultado)){
-                  $idcli = $row['tb_usuario_id_usuario'];
-                  $idmoeda = $row['tb_moeda_id_moeda'];
-                  $quantidade = $row['quantidade'];
-                  $selectcli = "SELECT nome_usuario FROM tb_usuario WHERE id_usuario = $idcli";
-                  $selectmoeda = "SELECT * FROM tb_moeda WHERE id_moeda = $idmoeda";
-                  $usuario = mysqli_query($conexao,$selectcli);
-                  $moeda = mysqli_query($conexao,$selectmoeda);
-                  $linhacli = mysqli_fetch_assoc($usuario);
-                  $nomecli = $linhacli['nome_usuario'];
-                  $linhamoeda = mysqli_fetch_assoc($moeda);
-                  $nome_moeda = $linhamoeda['nome_moeda'];
-                  $valor_moeda = $linhamoeda['valor_moeda_fixo'];
-                  $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;
-                  echo $nomecli . "<br>";
-                  echo $nome_moeda . "<br>";
-                  echo $calculo_valor_atual_moeda * $quantidade . "<br>";
+              $selectnome = "SELECT nome_usuario FROM tb_usuario WHERE id_usuario = $id_usuario";
+              $resultnome = mysqli_query($conexao,$selectnome);
+              $nome = mysqli_fetch_array($resultnome);
+              echo $nome["nome_usuario"] . "<br>";
+              while ($row = mysqli_fetch_assoc($resultado)) {
+                  $id_moeda = $row["tb_moeda_id_moeda"];
+                  $selectmoeda = "SELECT nome_moeda, valor_moeda_fixo FROM tb_moeda WHERE id_moeda = $id_moeda";
+                  $resultmoeda = mysqli_query($conexao,$selectmoeda);
+                  $arraymoeda = mysqli_fetch_array($resultmoeda);
+                  $moeda = $arraymoeda["nome_moeda"];
+                  $valor = $arraymoeda["valor_moeda_fixo"];
+                  echo $moeda . "<br>";
+                  echo $valor . "<br>";
+                  echo $row["quantidade"] . "<br>";
             }
         }
     
