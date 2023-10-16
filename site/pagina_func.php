@@ -1,19 +1,7 @@
 <?php
-    session_start();
+    require_once "func_ta_logado.php";
     require_once 'conexao.php';
     require_once 'porcentagem_aleatoria.php';
-    $botao_de_editar = "<input type='hidden'>";
-    
-    if (isset($_SESSION["tipo_usuario"])) {
-      if ($_SESSION["tipo_usuario"] == 'funcionario') {
-        $botao_de_editar ="
-        <form action='cle'>
-        <button type='submit'>adicionar moeda em destaque</button>
-        </form>
-        ";
-      }
-    }
-    
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,16 +52,13 @@
         
  
     <div>
-        Moedas em Destasque 
+        Moedas em Destasque - essa é uma mensagem apenas para funcionarios
     </div>
     <br> <br> 
     
 
 <div>
-<?php
-      
-    echo "$botao_de_editar";
-  
+<?php   
 # Parte responsável por mostrar apenas moedas em destaque na página moedas{
         $mais_menos = 0;
 # Select que mostra apenas as moedas que estão em destaque {
@@ -109,15 +94,12 @@
 
                 echo $sigla_moeda . "<br><br>";
                 echo"<form action='inspecionar_moeda.php'>
+                    
                     <input type='hidden' name='id_moeda' value='$id_moeda'>
                     <input type='hidden' name='ispc_local' value='moedas'>
                     <button class='btn btn-outline-success'>inspecionar</button>
                   </form>
-                ";
-                
-                  
-                    
-              
+                "
     #}
   #}
                 ?>
@@ -138,3 +120,4 @@
 
 </body>
 </html>
+
