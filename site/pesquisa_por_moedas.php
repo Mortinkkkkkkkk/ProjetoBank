@@ -16,6 +16,9 @@
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -70,17 +73,19 @@
                         $id_moeda = $linha_tabela_moeda['id_moeda'];
                         $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                         $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
-                        $valor_moeda = $linha_tabela_moeda['valor_moeda'];
-                        if (rand(0,100) == 100) {
-                            $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
-        
-                        }else {
-                            $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
-                        }
+                        $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
+                        
+                        $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
+                        
                         while ($mais_menos == 0) {
                             $mais_menos = rand(-1,1);
                         }
-                        $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;    
+                        $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;
+                        $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda" ;
+                        $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
+                        mysqli_query($conexao,$insert_valor_da_moeda_no_historico,);
+                        mysqli_query($conexao,$update_valor_moeda);
+                            
                         echo "<div class='col-sm'>";
                         echo "<div class='card mb-3' style='width: 13rem;'>";
                         echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
@@ -99,10 +104,7 @@
                         echo           "</div>" ;
                         echo           "</div>";
                         echo           "</div>";
-                        ?>
-                        
-                        
-                        <?php          
+                   <?php          
                     
                 }
             }
@@ -115,13 +117,10 @@
                         $id_moeda = $linha_tabela_moeda['id_moeda'];
                         $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                         $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
-                        $valor_moeda = $linha_tabela_moeda['valor_moeda'];
-                        if (rand(0,100) == 100) {
-                            $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
-        
-                        }else {
-                            $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
-                        }
+                        $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
+                        
+                        $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
+                        
                         while ($mais_menos == 0) {
                             $mais_menos = rand(-1,1);
                         }

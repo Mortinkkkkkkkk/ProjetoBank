@@ -1,6 +1,19 @@
 <?php
+    session_start();
     require_once 'conexao.php';
     require_once 'porcentagem_aleatoria.php';
+    $botao_de_editar = "<input type='hidden'>";
+    
+    if (isset($_SESSION["tipo_usuario"])) {
+      if ($_SESSION["tipo_usuario"] == 'funcionario') {
+        $botao_de_editar ="
+        <form action='cle'>
+        <button type='submit'>adicionar moeda em destaque</button>
+        </form>
+        ";
+      }
+    }
+    
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +67,6 @@
             </div>
         </nav>
 
-
 <div class='mt-5 container'>
  <div class="row">
     <div class="col-sm">
@@ -71,23 +83,30 @@
 <div class='mt-5 container'>
       <div class='row'>
 <?php
+      
+    echo "$botao_de_editar";
+  
+# Parte responsável por mostrar apenas moedas em destaque na página moedas{
         $mais_menos = 0;
-        $sql = "SELECT * FROM tb_moeda";
+# Select que mostra apenas as moedas que estão em destaque {
+        $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = '1'";
         $resultado = mysqli_query($conexao,$sql);
+#}
+#Coloca os dados das moedas em destaque dentro de um vetor{
         if (mysqli_num_rows($resultado) > 0) {
-            while ($row = mysqli_fetch_assoc($resultado)){
-                $valor_moeda = $row['valor_moeda'];
-                $sigla = $row['sigla_moeda'];
-                if (rand(0,100) == 100) {
-                  $porcentagem_aleatoria = $vetor_de_porcentagens_maior_que_dois_porcento[rand(0,24)];
-
-                }else {
-                  $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
-                }
+            while ($linha_tabela_moeda = mysqli_fetch_assoc($resultado)){
+                $id_moeda = $linha_tabela_moeda['id_moeda'];
+                $id_moeda = $linha_tabela_moeda['id_moeda'];
+                $nome_moeda = $linha_tabela_moeda['nome_moeda'];
+                $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
+                $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
+#}
+# Calculo do valor da moeda de acordo com a porcentagem que foi definida aleatoriamente entre um valor de um vetor{       
+                $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
                 while ($mais_menos == 0) {
                   $mais_menos = rand(-1,1);
                 }
-                
+  
                 $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;
                 $nome_moeda = $row['nome_moeda'];
                 
@@ -102,6 +121,8 @@
                 echo                   "<p class='card-text'>$$sigla.</p>" ;       
                 echo "<form action='inspecionar_moeda.php'>
                           <button class='btn btn-outline-success'>Verificar</button>
+                          <input type='hidden' name='id_moeda' value='$id_moeda'>
+                          <input type='hidden' name='ispc_local' value='moedas'>
                       </form>
                       <br><br>
                               ";
@@ -111,10 +132,14 @@
                
                 ?>
                
+
                   <?php
                 
             }
         }
+
+        
+        
     ?>
           </div>
             </div>
