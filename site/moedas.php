@@ -1,18 +1,20 @@
 <?php
-    session_start();
-    require_once 'conexao.php';
-    require_once 'porcentagem_aleatoria.php';
-    $botao_de_editar = "<input type='hidden'>";
-    
-    if (isset($_SESSION["tipo_usuario"])) {
-      if ($_SESSION["tipo_usuario"] == 'funcionario') {
-        $botao_de_editar ="
-        <form action='cle'>
-        <button type='submit'>adicionar moeda em destaque</button>
-        </form>
-        ";
-      }
+  session_start();
+  require_once 'conexao.php';
+  require_once 'porcentagem_aleatoria.php';
+  $botao_de_editar = "<input type='hidden'>";
+  $botao_de_remocao = "<input type='hidden'>";
+  
+  if (isset($_SESSION["tipo_usuario"])) {
+    if ($_SESSION["tipo_usuario"] == 'funcionario') {
+      $botao_de_editar ="
+      <form action='alterar_moedas_destaque.php'>
+      <button type='submit'>alterar</button>
+      </form>
+      ";
+
     }
+  }
     
     ?>
 <!DOCTYPE html>
