@@ -14,40 +14,46 @@
 
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg ">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <div class="dropdown-center" >
-            <form action="pesquisa_por_moedas.php">
-              <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
-                <option value="nome">Nome</option>
-                <option value="sigla">Sigla</option>
-                
-              </select>
-              <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
-              <button class="btn btn-outline-success" type="submit">  
-              <i class="bi bi-search"></i>Pesquisar
-              </button>
-        </form>
-        
-      </div>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link">
+                    <form action="carteira.php">
+                    <button class="btn" type="submit">Carteira</button>
+
+                        </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"> <form action="logout.php">
+         <button type="submit"class="btn">Log-out</button>
+    </form></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current ="page">
+    <form action="moedas.php" >
+          <button type="submit" class="btn">Moedas</button>
+              
+    </form></a>
+                    </li>
+                </ul>
+                <div class="dropdown-center" >
+                    <form action="pesquisa_por_moedas.php">
+                        <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
+                            <option value="nome">Nome</option>
+                            <option value="sigla">Sigla</option>
+                        </select>
+                        <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
+                        <button class="btn btn-outline-success" type="submit">  
+                        <i class="bi bi-search"></i>Pesquisar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
 
         
  
