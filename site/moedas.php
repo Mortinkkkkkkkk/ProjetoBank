@@ -26,50 +26,62 @@
 
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg ">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <div class="dropdown-center" >
-            <form action="pesquisa_por_moedas.php">
-              <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
-                <option value="nome">Nome</option>
-                <option value="sigla">Sigla</option>
-                
-              </select>
-              <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
-              <button class="btn btn-outline-success" type="submit">  
-              <i class="bi bi-search"></i>Pesquisar
-              </button>
-        </form>
-        
-      </div>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link">
+                    <form action="carteira.php">
+                    <button class="btn" type="submit">Carteira</button>
 
-        
- 
-    <div>
-        Moedas em Destasque 
+                        </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"> <form action="logout.php">
+         <button type="submit"class="btn">Log-out</button>
+    </form></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current ="page">
+    <form action="moedas.php" >
+          <button type="submit" class="btn">Moedas</button>
+              
+    </form></a>
+                    </li>
+                </ul>
+                <div class="dropdown-center" >
+                    <form action="pesquisa_por_moedas.php">
+                        <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
+                            <option value="nome">Nome</option>
+                            <option value="sigla">Sigla</option>
+                        </select>
+                        <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
+                        <button class="btn btn-outline-success" type="submit">  
+                        <i class="bi bi-search"></i>Pesquisar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+<div class='mt-5 container'>
+ <div class="row">
+    <div class="col-sm">
+       <h1> Moedas em Destasque </h1>
+    </div>
+    </div>
     </div>
     <br> <br> 
     
 
 <div>
+
+
+<div class='mt-5 container'>
+      <div class='row'>
 <?php
       
     echo "$botao_de_editar";
@@ -94,36 +106,33 @@
                 while ($mais_menos == 0) {
                   $mais_menos = rand(-1,1);
                 }
-                $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
-#}
-# Update Valor "Fixo" da moeda e Insert do historico {
-                $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda" ;
-                $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
-                mysqli_query($conexao,$insert_valor_da_moeda_no_historico,);
-                mysqli_query($conexao,$update_valor_moeda);
-#}
-# Echo de carrosel {
-                echo $nome_moeda . "<br>";
-                echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
-
-
-                echo $sigla_moeda . "<br><br>";
-                echo"<form action='inspecionar_moeda.php'>
-                    <input type='hidden' name='id_moeda' value='$id_moeda'>
-                    <input type='hidden' name='ispc_local' value='moedas'>
-                    <button class='btn btn-outline-success'>inspecionar</button>
-                  </form>
-                ";
+  
+                $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;
+                $nome_moeda = $row['nome_moeda'];
                 
-                  
-                    
               
-    #}
-  #}
-                ?>
-                    
 
-                    <br><br>
+                echo "<div class='col-sm'>";
+                echo "<div class='card mb-3' style='width: 13rem;'>";
+                echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
+                echo           " <div class='card-body'>";
+                echo               "<h5 class='card-title'> $nome_moeda</h5>";
+                echo               "<p class='card-text'>$calculo_valor_atual_moeda.</p>" ;
+                echo                   "<p class='card-text'>$$sigla.</p>" ;       
+                echo "<form action='inspecionar_moeda.php'>
+                          <button class='btn btn-outline-success'>Verificar</button>
+                          <input type='hidden' name='id_moeda' value='$id_moeda'>
+                          <input type='hidden' name='ispc_local' value='moedas'>
+                      </form>
+                      <br><br>
+                              ";
+                echo           "</div>" ;
+                echo           "</div>";
+                echo           "</div>";
+               
+                ?>
+               
+
                   <?php
                 
             }
@@ -132,6 +141,8 @@
         
         
     ?>
+          </div>
+            </div>
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
