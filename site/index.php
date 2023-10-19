@@ -2,9 +2,15 @@
     session_start();
     if (isset($_SESSION['logado'])) {
         $conta = "";
+        if ($_SESSION["tipo_usuario"] == "funcionario"){
+            $criarmoeda = "<form action='criar_moeda.php'>
+                Clique <button type='submit'>aqui</button> pra criar moeda
+            </form>";
+        }
     }else{
         $conta = "hidden";
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +31,7 @@
         clique <a href="carteira.php">aqui</a> para acessar a carteira
     <form action="logout.php"><br><br>
         clique <button type="submit">Aqui</button> para deslogar
-    </form>
+    </form><br><br>
+    <?php if (isset($criarmoeda)) { echo $criarmoeda;} ?>
 </body>
 </html>
