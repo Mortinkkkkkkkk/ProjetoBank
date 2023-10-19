@@ -107,10 +107,16 @@
                   $mais_menos = rand(-1,1);
                 }
   
-                $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;
-                $nome_moeda = $row['nome_moeda'];
+                $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
+                $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                 
-              
+                #}
+# Update Valor "Fixo" da moeda e Insert do historico {
+                $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda" ;
+                $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
+                mysqli_query($conexao,$insert_valor_da_moeda_no_historico,);
+                mysqli_query($conexao,$update_valor_moeda);
+#}
 
                 echo "<div class='col-sm'>";
                 echo "<div class='card mb-3' style='width: 13rem;'>";
@@ -118,7 +124,7 @@
                 echo           " <div class='card-body'>";
                 echo               "<h5 class='card-title'> $nome_moeda</h5>";
                 echo               "<p class='card-text'>$calculo_valor_atual_moeda.</p>" ;
-                echo                   "<p class='card-text'>$$sigla.</p>" ;       
+                echo                   "<p class='card-text'>$$sigla_moeda.</p>" ;       
                 echo "<form action='inspecionar_moeda.php'>
                           <button class='btn btn-outline-success'>Verificar</button>
                           <input type='hidden' name='id_moeda' value='$id_moeda'>

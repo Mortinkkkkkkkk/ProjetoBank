@@ -80,7 +80,7 @@
                         while ($mais_menos == 0) {
                             $mais_menos = rand(-1,1);
                         }
-                        $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;
+                        $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
                         $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda" ;
                         $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
                         mysqli_query($conexao,$insert_valor_da_moeda_no_historico,);
@@ -103,8 +103,7 @@
                                 <br><br>";
                         echo           "</div>" ;
                         echo           "</div>";
-                        echo           "</div>";
-                   <?php          
+                        echo           "</div>";        
                     
                 }
             }
@@ -124,7 +123,7 @@
                         while ($mais_menos == 0) {
                             $mais_menos = rand(-1,1);
                         }
-                        $calculo_valor_atual_moeda = $valor_moeda + $mais_menos * ($valor_moeda * $porcentagem_aleatoria) ;    
+                        $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;    
                         echo "<div class='col-sm'>";
                         echo "<div class='card mb-3' style='width: 13rem;'>";
                         echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
