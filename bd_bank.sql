@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.5.20-MariaDB-1:10.5.20+maria~ubu2004 dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.5.21-MariaDB-1:10.5.21+maria~ubu2004 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -13,10 +13,11 @@ USE `bd_bank`;
 
 DROP TABLE IF EXISTS `tb_carteira`;
 CREATE TABLE `tb_carteira` (
-  `id_carteira` int(11) NOT NULL,
+  `id_carteira` int(11) NOT NULL AUTO_INCREMENT,
   `tb_usuario_id_usuario` int(11) NOT NULL,
   `tb_moeda_id_moeda` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
+  PRIMARY KEY (`id_carteira`),
   KEY `tb_moeda_id_moeda` (`tb_moeda_id_moeda`),
   KEY `tb_usuario_id_usuario` (`tb_usuario_id_usuario`),
   CONSTRAINT `tb_carteira_ibfk_2` FOREIGN KEY (`tb_moeda_id_moeda`) REFERENCES `tb_moeda` (`id_moeda`),
@@ -25,9 +26,11 @@ CREATE TABLE `tb_carteira` (
 
 INSERT INTO `tb_carteira` (`id_carteira`, `tb_usuario_id_usuario`, `tb_moeda_id_moeda`, `quantidade`) VALUES
 (1,	1,	1,	10),
-(2,	1,	2,	50),
-(3,	1,	3,	10),
-(4,	2,	3,	4);
+(2,	1,	2,	47),
+(3,	1,	3,	9),
+(4,	2,	3,	4),
+(5,	1,	6,	0),
+(6,	1,	8,	3);
 
 DROP TABLE IF EXISTS `tb_historico_v_moeda`;
 CREATE TABLE `tb_historico_v_moeda` (
@@ -53,14 +56,14 @@ CREATE TABLE `tb_moeda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`, `moeda_em_destaque`) VALUES
-(1,	'Bitcoin',	'BTC',	144965,	1),
-(2,	'SetinhaCoin',	'STC',	99.0291,	1),
-(3,	'MonaCoin',	'MNC',	130,	0),
-(4,	'Ethereum',	'ETH',	8393.99,	1),
+(1,	'Bitcoin',	'BTC',	146745,	1),
+(2,	'SetinhaCoin',	'STC',	101.009,	1),
+(3,	'MonaCoin',	'MNC',	128.649,	0),
+(4,	'Ethereum',	'ETH',	8712.87,	1),
 (5,	'Ripple',	'XRP',	2.6,	0),
 (6,	'PobreCoin',	'PBC',	0,	0),
-(7,	'LiteCoin',	'LTC',	336.37,	0),
-(8,	'Santos FC Fan Token',	'SANTOS',	15,	0);
+(7,	'LiteCoin',	'LTC',	331.639,	0),
+(8,	'Santos FC Fan Token',	'SANTOS',	15.3083,	0);
 
 DROP TABLE IF EXISTS `tb_usuario`;
 CREATE TABLE `tb_usuario` (
@@ -79,4 +82,4 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_us
 (3,	'gugu',	'789',	'64656454658',	'gugu@gugu.com',	''),
 (4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'');
 
--- 2023-10-16 18:34:13
+-- 2023-10-20 17:34:50
