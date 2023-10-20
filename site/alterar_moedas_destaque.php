@@ -14,10 +14,20 @@
         $moedas_em_destaque = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = 1";
         $moedas_fora_de_destaque = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = 0";
         
-        $conexao1 = mysqli_query($conexao,$moedas_em_destaque) ;
-        $conexao2 = mysqli_query($conexao,$moedas_fora_de_destaque) ;
-        
-        
+        $conexao_moedas_destaque = mysqli_query($conexao,$moedas_em_destaque) ;
+        $conexao_moedas_fora_destaque = mysqli_query($conexao,$moedas_fora_de_destaque) ;
+        if (mysqli_num_rows($conexao_moedas_destaque) > 0) {
+            while ($linha_destaque = mysqli_fetch_array($conexao_moedas_destaque)) {
+                $id_moeda = $linha_destaque['id_moeda'];
+                $nome_moeda = $linha_destaque['nome_moeda'];
+                $sigla_moeda = $linha_destaque['sigla_moeda'];
+                $valor_moeda_fixo = $linha_destaque['valor_moeda_fixo'];
+
+                
+            }
+            
+        }
+
     ?>
 </body>
 </html>
