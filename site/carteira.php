@@ -14,7 +14,7 @@
 <body>
     <?php
         require_once "conexao.php";
-          $sql = "SELECT tb_moeda_id_moeda, quantidade FROM tb_carteira WHERE tb_usuario_id_usuario = $id_usuario";
+          $sql = "SELECT tb_moeda_id_moeda, quantidade FROM tb_carteira WHERE tb_usuario_id_usuario = $id_usuario AND quantidade > 0";
           $resultado = mysqli_query($conexao,$sql);
           if (mysqli_num_rows($resultado) > 0) {
               $selectnome = "SELECT nome_usuario FROM tb_usuario WHERE id_usuario = $id_usuario";
