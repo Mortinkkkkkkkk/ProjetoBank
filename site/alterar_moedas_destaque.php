@@ -22,12 +22,54 @@
                 $nome_moeda = $linha_destaque['nome_moeda'];
                 $sigla_moeda = $linha_destaque['sigla_moeda'];
                 $valor_moeda_fixo = $linha_destaque['valor_moeda_fixo'];
-
+                ?>
                 
+                <form action='altera_moeda_destaque.php?' method='post'>
+                    <input type='hidden' name='id_moeda' value='<?php echo $id_moeda; ?>'>
+                    <input type='hidden' name='alteracao' value='dell'>
+                    <tr>
+                        <td>
+                            <button type='submit'>-</button>
+                        </td>
+                        <td>
+                            <?php echo $nome_moeda; ?>
+                        </td>
+                        
+                    </tr>
+                    
+                </form>
+                <?php
             }
             
         }
+echo"<br> <br>";
+        if (mysqli_num_rows($conexao_moedas_fora_destaque) > 0) {
+            while ($linha_destaque = mysqli_fetch_array($conexao_moedas_fora_destaque)) {
+                $id_moeda = $linha_destaque['id_moeda'];
+                $nome_moeda = $linha_destaque['nome_moeda'];
+                $sigla_moeda = $linha_destaque['sigla_moeda'];
+                $valor_moeda_fixo = $linha_destaque['valor_moeda_fixo'];
+                ?>
+                
+                <form action='altera_moeda_destaque.php?' method='post'>
+                    <input type='hidden' name='id_moeda' value='<?php echo $id_moeda; ?>'>
+                    <input type='hidden' name='alteracao' value='add'>
+                    <tr>
+                        <td>
+                            <button type='submit'>+</button>
+                        </td>
+                        <td>
+                            <?php echo $nome_moeda; ?>
+                        </td>
+                        
+                    </tr>
+                    
+                </form>
+        <?php
+                    }
+                }        
+        ?>
 
-    ?>
+        
 </body>
 </html>
