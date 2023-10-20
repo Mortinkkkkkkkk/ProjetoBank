@@ -121,6 +121,12 @@
       <?php echo"}";?>
     </script>
     <div id="chart_div" style="width: 100%; height: 500px;"></div>
+    
+    <form action="compra_de_moeda.php" method="post">
+      <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
+      <button type="submit">Comprar</button><br><br>
+    </form>
+    
   </body>
 </html>
 

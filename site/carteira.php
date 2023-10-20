@@ -31,6 +31,10 @@
                   echo $moeda . "<br>";
                   echo $valor . "<br>";
                   echo $row["quantidade"] . "<br>";
+                  echo "<form action='venda.php' method='post'>
+                            <input type='hidden' name='id_moeda' value='$id_moeda'>
+                            <button type='submit'>Vender</button>
+                        </form>";
             }
         }
     
