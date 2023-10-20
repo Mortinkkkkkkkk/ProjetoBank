@@ -16,7 +16,7 @@
         
         $conexao1 = mysqli_query($conexao,$moedas_em_destaque) ;
         $conexao2 = mysqli_query($conexao,$moedas_fora_de_destaque) ;
-
+        
         
     ?>
 </body>
