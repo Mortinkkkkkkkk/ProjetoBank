@@ -8,9 +8,10 @@
   if (isset($_SESSION["tipo_usuario"])) {
     if ($_SESSION["tipo_usuario"] == 'funcionario') {
       $botao_de_editar ="
-      <form action='alterar_moedas_destaque.php'>
-      <button type='submit'>alterar</button>
-      </form>
+        <form action='alterar_moedas_destaque.php'>
+            <button type='submit' class='btn btn-outline-success'>alterar</button>
+            <br><br>
+        </form>
       ";
 
     }
