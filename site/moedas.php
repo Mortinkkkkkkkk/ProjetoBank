@@ -101,15 +101,33 @@
                 $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                 $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
                 $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
-#}
 
+                $sql_compara = "SELECT valor_moeda FROM `tb_historico_v_moeda` WHERE `id_moeda` = '$id_moeda' ORDER BY `hora_atual` DESC LIMIT 2";
+
+                $resultado_compara = mysqli_query($conexao,$sql_compara);
+                $valor1 = mysqli_fetch_array($resultado_compara);
+                $valor2 = mysqli_fetch_array($resultado_compara);
+                if ($valor1 > $valor2) {
+                    $cor = "green";
+                    $sinal = "↑";
+                } 
+                elseif ($valor1 < $valor2) {
+                    $cor = "red";
+                    $sinal = "↓";
+                }
+                else{
+                    $cor = "black";
+                    $sinal = "-";
+                }
+
+                
 
                 echo "<div class='col-sm'>";
                 echo "<div class='card mb-3' style='width: 13rem;'>";
                 echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
                 echo           " <div class='card-body'>";
                 echo               "<h5 class='card-title'> $nome_moeda</h5>";
-                echo               "<p class='card-text'>$valor_moeda_fixo</p>" ;
+                echo               "<p class='card-text' style = 'color : $cor'>$valor_moeda_fixo $sinal </p>" ;
                 echo                   "<p class='card-text'>$sigla_moeda</p>" ;       
                 echo "<form action='inspecionar_moeda.php'>
                           <button class='btn btn-outline-success'>Verificar</button>
@@ -122,6 +140,7 @@
                 echo           "</div>";
                 echo           "</div>";
                
+
                 ?>
                
 

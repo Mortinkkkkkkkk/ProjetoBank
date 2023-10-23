@@ -12,7 +12,7 @@
                                                       0.019, 0.0019, 0.0029 , 0.0039, 0.0049, 0.0069, 0.0069, 0.0079, 0.0089, 0.0099,
                                                       0.02];
 
-    $mais_menos = 0;
+    
 
     session_start(); 
     
@@ -23,28 +23,26 @@
         
         if ($_SESSION['contador'] == 10) {
             $_SESSION['contador'] = 0;
-            $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
-            while ($mais_menos == 0) {
-                $mais_menos = rand(-1,1);
-            }
             $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = '1'";
             $resultado = mysqli_query($conexao,$sql);
-
-        if (mysqli_num_rows($resultado) > 0) {
-            while ($linha_tabela_moeda = mysqli_fetch_array($resultado)){
-                $id_moeda = $linha_tabela_moeda['id_moeda'];
-                $nome_moeda = $linha_tabela_moeda['nome_moeda'];
-                $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
-                $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
-
-                
-                
-                $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
-                $nome_moeda = $linha_tabela_moeda['nome_moeda'];
-                $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda" ;
-                $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
-                mysqli_query($conexao,$insert_valor_da_moeda_no_historico,);
-                mysqli_query($conexao,$update_valor_moeda);
+            
+            if (mysqli_num_rows($resultado) > 0) {
+                while ($linha_tabela_moeda = mysqli_fetch_array($resultado)){
+                    $id_moeda = $linha_tabela_moeda['id_moeda'];
+                    $nome_moeda = $linha_tabela_moeda['nome_moeda'];
+                    $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
+                    $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
+                    
+                    
+                    $mais_menos = rand(-1,1);
+                    
+                    $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
+                    $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
+                    $nome_moeda = $linha_tabela_moeda['nome_moeda'];
+                    $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda" ;
+                    $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
+                    mysqli_query($conexao,$insert_valor_da_moeda_no_historico,);
+                    mysqli_query($conexao,$update_valor_moeda);
                 
             }
         }
