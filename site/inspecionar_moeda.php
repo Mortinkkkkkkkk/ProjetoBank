@@ -1,3 +1,6 @@
+<?php
+require_once 'altera_valor_moeda.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,8 +66,10 @@
   </nav>
  
   <?php
+  
+  
   //conexao com o banco
-  require_once "conexao.php";
+
   $id_moeda = $_GET['id_moeda'];
   $sql = "SELECT * FROM `tb_historico_v_moeda` WHERE `id_moeda` = '$id_moeda' ORDER BY `id_moeda`, `id_valor` DESC LIMIT 15";
   $sqlmoeda = "SELECT * FROM tb_moeda WHERE id_moeda = '$id_moeda'";

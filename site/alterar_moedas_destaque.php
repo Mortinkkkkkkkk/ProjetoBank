@@ -1,6 +1,6 @@
 <?php
     require_once 'func_ta_logado.php';
-    require_once 'conexao.php';
+    require_once 'altera_valor_moeda.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

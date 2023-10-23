@@ -14,11 +14,8 @@
 
     $mais_menos = 0;
 
-    $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = '1'";
-    $resultado = mysqli_query($conexao,$sql);
-
-    session_start();
-
+    session_start(); 
+    
         if (!isset($_SESSION['contador'])) {
             $_SESSION['contador'] = 0;
         }
@@ -30,6 +27,8 @@
             while ($mais_menos == 0) {
                 $mais_menos = rand(-1,1);
             }
+            $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = '1'";
+            $resultado = mysqli_query($conexao,$sql);
 
         if (mysqli_num_rows($resultado) > 0) {
             while ($linha_tabela_moeda = mysqli_fetch_array($resultado)){
