@@ -1,7 +1,6 @@
 <?php
-  session_start();
   require_once 'conexao.php';
-  require_once 'porcentagem_aleatoria.php';
+  require_once 'altera_valor_moeda.php';
   $botao_de_editar = "<input type='hidden'>";
   $botao_de_remocao = "<input type='hidden'>";
   
@@ -81,7 +80,7 @@
     
 
 <div>
-
+<?php $_SESSION['contador'] ?>
 
 <div class='mt-5 container'>
       <div class='row'>
@@ -97,37 +96,21 @@
 #}
 #Coloca os dados das moedas em destaque dentro de um vetor{
         if (mysqli_num_rows($resultado) > 0) {
-            while ($linha_tabela_moeda = mysqli_fetch_assoc($resultado)){
-                $id_moeda = $linha_tabela_moeda['id_moeda'];
+            while ($linha_tabela_moeda = mysqli_fetch_array($resultado)){
                 $id_moeda = $linha_tabela_moeda['id_moeda'];
                 $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                 $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
                 $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
 #}
-# Calculo do valor da moeda de acordo com a porcentagem que foi definida aleatoriamente entre um valor de um vetor{       
-                $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
-                while ($mais_menos == 0) {
-                  $mais_menos = rand(-1,1);
-                }
-  
-                $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
-                $nome_moeda = $linha_tabela_moeda['nome_moeda'];
-                
-                #}
-# Update Valor "Fixo" da moeda e Insert do historico {
-                $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda" ;
-                $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
-                mysqli_query($conexao,$insert_valor_da_moeda_no_historico,);
-                mysqli_query($conexao,$update_valor_moeda);
-#}
+
 
                 echo "<div class='col-sm'>";
                 echo "<div class='card mb-3' style='width: 13rem;'>";
                 echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
                 echo           " <div class='card-body'>";
                 echo               "<h5 class='card-title'> $nome_moeda</h5>";
-                echo               "<p class='card-text'>$calculo_valor_atual_moeda.</p>" ;
-                echo                   "<p class='card-text'>$$sigla_moeda.</p>" ;       
+                echo               "<p class='card-text'>$valor_moeda_fixo</p>" ;
+                echo                   "<p class='card-text'>$sigla_moeda</p>" ;       
                 echo "<form action='inspecionar_moeda.php'>
                           <button class='btn btn-outline-success'>Verificar</button>
                           <input type='hidden' name='id_moeda' value='$id_moeda'>

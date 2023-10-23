@@ -3,6 +3,7 @@
 
     $id_moeda = $_POST['id_moeda'];
     $alteracao = $_POST['alteracao'];
+    
 
     if ($alteracao == 'add') {
         $novo_destaque = "UPDATE tb_moeda SET moeda_em_destaque = 1 WHERE id_moeda = $id_moeda";
