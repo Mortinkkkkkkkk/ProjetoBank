@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'altera_valor_moeda.php';
 ?>
 <!DOCTYPE html>
