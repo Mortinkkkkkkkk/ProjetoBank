@@ -1,20 +1,28 @@
 <?php
-  require_once 'conexao.php';
-  require_once 'altera_valor_moeda.php';
-  $botao_de_editar = "<input type='hidden'>";
-  $botao_de_remocao = "<input type='hidden'>";
-  
-  if (isset($_SESSION["tipo_usuario"])) {
+    session_start();
+    require_once 'conexao.php';
+    require_once 'altera_valor_moeda.php';
+    $botao_de_editar = "<input type='hidden'>";
+    $botao_de_remocao = "<input type='hidden'>";
+    $botao_de_cadastrar = "<input type='hidden'>";
+
+    if (isset($_SESSION["tipo_usuario"])) {
     if ($_SESSION["tipo_usuario"] == 'funcionario') {
-      $botao_de_editar ="
+        $botao_de_editar ="
         <form action='alterar_moedas_destaque.php'>
             <button type='submit' class='btn btn-outline-success'>alterar</button>
             <br><br>
         </form>
-      ";
+        ";
+        $botao_de_cadastrar ="
+        <form action='cadastro_moedas_form.php'>
+            <button type='submit' class='btn btn-outline-success'>Cadastrar</button>
+            <br><br>
+        </form>
+        ";
 
     }
-  }
+    }
     
     ?>
 <!DOCTYPE html>
@@ -86,7 +94,7 @@
       <div class='row'>
 <?php
       
-    echo "$botao_de_editar";
+    echo "$botao_de_editar $botao_de_cadastrar";
   
 # Parte responsável por mostrar apenas moedas em destaque na página moedas{
         $mais_menos = 0;
