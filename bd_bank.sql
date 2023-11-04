@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.5.21-MariaDB-1:10.5.21+maria~ubu2004 dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.5.20-MariaDB-1:10.5.20+maria~ubu2004 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -30,7 +30,8 @@ INSERT INTO `tb_carteira` (`id_carteira`, `tb_usuario_id_usuario`, `tb_moeda_id_
 (3,	1,	3,	9),
 (4,	2,	3,	4),
 (5,	1,	6,	0),
-(6,	1,	8,	3);
+(6,	1,	8,	3)
+ON DUPLICATE KEY UPDATE `id_carteira` = VALUES(`id_carteira`), `tb_usuario_id_usuario` = VALUES(`tb_usuario_id_usuario`), `tb_moeda_id_moeda` = VALUES(`tb_moeda_id_moeda`), `quantidade` = VALUES(`quantidade`);
 
 DROP TABLE IF EXISTS `tb_historico_v_moeda`;
 CREATE TABLE `tb_historico_v_moeda` (
@@ -51,19 +52,22 @@ CREATE TABLE `tb_moeda` (
   `nome_moeda` varchar(100) NOT NULL,
   `sigla_moeda` varchar(100) NOT NULL,
   `valor_moeda_fixo` float NOT NULL,
+  `imagem_moeda` varchar(200) NOT NULL,
+  `imagem_moeda_fundo` varchar(200) NOT NULL,
   `moeda_em_destaque` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`, `moeda_em_destaque`) VALUES
-(1,	'Bitcoin',	'BTC',	146745,	1),
-(2,	'SetinhaCoin',	'STC',	101.009,	1),
-(3,	'MonaCoin',	'MNC',	128.649,	0),
-(4,	'Ethereum',	'ETH',	8712.87,	1),
-(5,	'Ripple',	'XRP',	2.6,	0),
-(6,	'PobreCoin',	'PBC',	0,	0),
-(7,	'LiteCoin',	'LTC',	331.639,	0),
-(8,	'Santos FC Fan Token',	'SANTOS',	15.3083,	0);
+INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`, `imagem_moeda`, `imagem_moeda_fundo`, `moeda_em_destaque`) VALUES
+(1,	'Bitcoin',	'BTC',	174856,	'',	'',	1),
+(2,	'SetinhaCoin',	'STC',	116.216,	'',	'',	0),
+(3,	'MonaCoin',	'MNC',	123.731,	'',	'',	1),
+(4,	'Ethereum',	'ETH',	8449.71,	'',	'',	1),
+(5,	'Ripple',	'XRP',	2.48387,	'',	'',	1),
+(6,	'PobreCoin',	'PBC',	0,	'',	'',	0),
+(7,	'LiteCoin',	'LTC',	326.615,	'',	'',	0),
+(8,	'Santos FC Fan Token',	'SANTOS',	16.7593,	'',	'',	0)
+ON DUPLICATE KEY UPDATE `id_moeda` = VALUES(`id_moeda`), `nome_moeda` = VALUES(`nome_moeda`), `sigla_moeda` = VALUES(`sigla_moeda`), `valor_moeda_fixo` = VALUES(`valor_moeda_fixo`), `imagem_moeda` = VALUES(`imagem_moeda`), `imagem_moeda_fundo` = VALUES(`imagem_moeda_fundo`), `moeda_em_destaque` = VALUES(`moeda_em_destaque`);
 
 DROP TABLE IF EXISTS `tb_usuario`;
 CREATE TABLE `tb_usuario` (
@@ -77,9 +81,10 @@ CREATE TABLE `tb_usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_usuario`, `email_usuario`, `tipo_usuario`) VALUES
-(1,	'fulano',	'123',	'789456325656',	'fulano@gmail.com',	''),
+(1,	'fulano',	'123',	'789456325656',	'fulano@gmail.com',	'funcionario'),
 (2,	'teste',	'456',	'123456789',	'teste@gmail.com',	''),
 (3,	'gugu',	'789',	'64656454658',	'gugu@gugu.com',	''),
-(4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'');
+(4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'')
+ON DUPLICATE KEY UPDATE `id_usuario` = VALUES(`id_usuario`), `nome_usuario` = VALUES(`nome_usuario`), `senha_usuario` = VALUES(`senha_usuario`), `cpf_usuario` = VALUES(`cpf_usuario`), `email_usuario` = VALUES(`email_usuario`), `tipo_usuario` = VALUES(`tipo_usuario`);
 
--- 2023-10-20 17:34:50
+-- 2023-11-04 16:07:16
