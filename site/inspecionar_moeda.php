@@ -33,6 +33,7 @@ require_once 'altera_valor_moeda.php';
         <div class="dropdown-center" >
             
                     <?php
+                    $local = $_GET['ispc_local'];
                     if ($local == 'pesquisa') {
                         $id_moeda = $_GET['id_moeda'];
                         $nome_sigla_moeda_pesquisada = $_GET['moeda_pesquisada'];
