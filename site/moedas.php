@@ -26,56 +26,63 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg ">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php"><img
+                    src="../img/Firefly logo minimalista para um banco digital de criptomoedas com o tema verde 62636.jpg"
+                    alt="imagem" height="50px" width="50px" style="border-radius: 40px"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link">
-                    <form action="carteira.php">
-                    <button class="btn" type="submit">Carteira</button>
+                        <a class="nav-link">
+                            <form action="carteira.php">
+                                <button class="btn" type="submit">Carteira</button>
 
-                        </form>
+                            </form>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"> <form action="logout.php">
-         <button type="submit"class="btn">Log-out</button>
-    </form></a>
+                        <a class="nav-link">
+                            <form action="logout.php">
+                                <button type="submit" class="btn">Log-out</button>
+                            </form>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current ="page">
-    <form action="moedas.php" >
-          <button type="submit" class="btn">Moedas</button>
-              
-    </form></a>
-                    </li>
-                </ul>
-                <div class="dropdown-center" >
-                    <form action="pesquisa_por_moedas.php">
-                        <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
-                            <option value="nome">Nome</option>
-                            <option value="sigla">Sigla</option>
-                        </select>
-                        <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
-                        <button class="btn btn-outline-success" type="submit">  
-                        <i class="bi bi-search"></i>Pesquisar
-                        </button>
-                    </form>
-                </div>
+                        <a class="nav-link active" aria-current="page">
+                            <form action="moedas.php">
+                                <button type="submit" class="btn">Moedas</button>
+                                </form>
+                </li>
+            </ul>
+            <div class="dropdown-center" >
+                <form action="pesquisa_por_moedas.php">
+                    <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
+                        <option value="nome">Nome</option>
+                        <option value="sigla">Sigla</option>
+                    </select>
+                    <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
+                    <button class="btn btn-outline-success" type="submit">  
+                    <i class="bi bi-search"></i>Pesquisar
+                    </button>
+                </form>
             </div>
-        </nav>
-
+        </div>
+    </nav>
         
  
-    <div>
-        Moedas em Destasque 
+        <div class='mt-5 container'>
+      <div class='row'>
+      <div class="col-sm"> <h1> Moedas em Destasque</h1></div> 
     </div>
-    <br> <br> 
+   </div>
     
 
 <div>
+
+
+<div class='mt-5 container'>
+      <div class='row'>
 <?php
       
     echo "$botao_de_editar";
@@ -109,20 +116,25 @@
                 mysqli_query($conexao,$update_valor_moeda);
 #}
 # Echo de carrosel {
-                echo $nome_moeda . "<br>";
-                echo "R$ " . $calculo_valor_atual_moeda . "<br> ";
 
-
-                echo $sigla_moeda . "<br><br>";
-                echo"<form action='inspecionar_moeda.php'>
-                    <input type='hidden' name='id_moeda' value='$id_moeda'>
-                    <input type='hidden' name='ispc_local' value='moedas'>
-                    <button class='btn btn-outline-success'>inspecionar</button>
-                  </form>
+    echo "<div class='col-sm'>";
+    echo "<div class='card mb-3' style='width: 13rem;'>";
+    echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
+    echo           " <div class='card-body'>";
+    echo               "<h5 class='card-title'> $nome_moeda</h5>";
+    echo               "<p class='card-text'>$calculo_valor_atual_moeda.</p>" ;
+    echo                   "<p class='card-text'>$$sigla_moeda.</p>" ;       
+    echo        " <form action='inspecionar_moeda.php'>
+           <input type='hidden' name='id_moeda' value='$id_moeda'>
+           <input type='hidden' name='ispc_local' value='moedas'>
+               <button class='btn btn-outline-success'>inspecionar</button>
+             </form>
                 ";
-                
-                  
-                    
+    echo           "</div>" ;
+    echo           "</div>";
+    echo           "</div>";
+
+                   
               
     #}
   #}
@@ -138,6 +150,7 @@
         
         
     ?>
+    </div>
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
