@@ -80,7 +80,7 @@
     
 
 <div>
-<?php $_SESSION['contador'] ?>
+
 
 <div class='mt-5 container'>
       <div class='row'>
