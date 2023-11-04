@@ -58,7 +58,7 @@
 
     <?php
         require_once "conexao.php";
-          $sql = "SELECT tb_moeda_id_moeda, quantidade FROM tb_carteira WHERE tb_usuario_id_usuario = $id_usuario";
+          $sql = "SELECT tb_moeda_id_moeda, quantidade FROM tb_carteira WHERE tb_usuario_id_usuario = $id_usuario AND quantidade > 0";
           $resultado = mysqli_query($conexao,$sql);
           if (mysqli_num_rows($resultado) > 0) {
               $selectnome = "SELECT nome_usuario FROM tb_usuario WHERE id_usuario = $id_usuario";
@@ -75,6 +75,10 @@
                   echo $moeda . "<br>";
                   echo $valor . "<br>";
                   echo $row["quantidade"] . "<br>";
+                  echo "<form action='venda.php' method='post'>
+                            <input type='hidden' name='id_moeda' value='$id_moeda'>
+                            <button type='submit'>Vender</button>
+                        </form>";
             }
         }
     

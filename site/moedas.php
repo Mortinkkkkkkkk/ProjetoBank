@@ -1,17 +1,27 @@
 <?php
     session_start();
     require_once 'conexao.php';
-    require_once 'porcentagem_aleatoria.php';
+    require_once 'altera_valor_moeda.php';
     $botao_de_editar = "<input type='hidden'>";
-    
+    $botao_de_remocao = "<input type='hidden'>";
+    $botao_de_cadastrar = "<input type='hidden'>";
+
     if (isset($_SESSION["tipo_usuario"])) {
-      if ($_SESSION["tipo_usuario"] == 'funcionario') {
+    if ($_SESSION["tipo_usuario"] == 'funcionario') {
         $botao_de_editar ="
-        <form action='cle'>
-        <button type='submit'>adicionar moeda em destaque</button>
+        <form action='alterar_moedas_destaque.php'>
+            <button type='submit' class='btn btn-outline-success'>alterar</button>
+            <br><br>
         </form>
         ";
-      }
+        $botao_de_cadastrar ="
+        <form action='cadastro_moedas_form.php'>
+            <button type='submit' class='btn btn-outline-success'>Cadastrar</button>
+            <br><br>
+        </form>
+        ";
+
+    }
     }
     
     ?>
@@ -74,6 +84,53 @@
         <div class='mt-5 container'>
       <div class='row'>
       <div class="col-sm"> <h1> Moedas em Destasque</h1></div> 
+<nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link">
+                    <form action="carteira.php">
+                    <button class="btn" type="submit">Carteira</button>
+
+                        </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"> <form action="logout.php">
+         <button type="submit"class="btn">Log-out</button>
+    </form></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current ="page">
+    <form action="moedas.php" >
+          <button type="submit" class="btn">Moedas</button>
+              
+    </form></a>
+                    </li>
+                </ul>
+                <div class="dropdown-center" >
+                    <form action="pesquisa_por_moedas.php">
+                        <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
+                            <option value="nome">Nome</option>
+                            <option value="sigla">Sigla</option>
+                        </select>
+                        <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
+                        <button class="btn btn-outline-success" type="submit">  
+                        <i class="bi bi-search"></i>Pesquisar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+<div class='mt-5 container'>
+ <div class="row">
+    <div class="col-sm">
+       <h1> Moedas em Destasque </h1>
+    </div>
+    </div>
     </div>
    </div>
     
@@ -85,7 +142,7 @@
       <div class='row'>
 <?php
       
-    echo "$botao_de_editar";
+    echo "$botao_de_editar $botao_de_cadastrar";
   
 # Parte responsável por mostrar apenas moedas em destaque na página moedas{
         $mais_menos = 0;
@@ -95,53 +152,62 @@
 #}
 #Coloca os dados das moedas em destaque dentro de um vetor{
         if (mysqli_num_rows($resultado) > 0) {
-            while ($linha_tabela_moeda = mysqli_fetch_assoc($resultado)){
-                $id_moeda = $linha_tabela_moeda['id_moeda'];
+            while ($linha_tabela_moeda = mysqli_fetch_array($resultado)){
                 $id_moeda = $linha_tabela_moeda['id_moeda'];
                 $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                 $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
                 $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
-#}
-# Calculo do valor da moeda de acordo com a porcentagem que foi definida aleatoriamente entre um valor de um vetor{       
-                $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
-                while ($mais_menos == 0) {
-                  $mais_menos = rand(-1,1);
-                }
-                $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
-#}
-# Update Valor "Fixo" da moeda e Insert do historico {
-                $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda" ;
-                $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
-                mysqli_query($conexao,$insert_valor_da_moeda_no_historico,);
-                mysqli_query($conexao,$update_valor_moeda);
-#}
-# Echo de carrosel {
 
-    echo "<div class='col-sm'>";
-    echo "<div class='card mb-3' style='width: 13rem;'>";
-    echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
-    echo           " <div class='card-body'>";
-    echo               "<h5 class='card-title'> $nome_moeda</h5>";
-    echo               "<p class='card-text'>$calculo_valor_atual_moeda.</p>" ;
-    echo                   "<p class='card-text'>$$sigla_moeda.</p>" ;       
-    echo        " <form action='inspecionar_moeda.php'>
-           <input type='hidden' name='id_moeda' value='$id_moeda'>
-           <input type='hidden' name='ispc_local' value='moedas'>
-               <button class='btn btn-outline-success'>inspecionar</button>
-             </form>
-                ";
-    echo           "</div>" ;
-    echo           "</div>";
-    echo           "</div>";
+                $sql_compara = "SELECT valor_moeda FROM `tb_historico_v_moeda` WHERE `id_moeda` = '$id_moeda' ORDER BY `hora_atual` DESC LIMIT 2";
 
-                   
-              
-    #}
-  #}
-                ?>
+                $resultado_compara = mysqli_query($conexao,$sql_compara);
+                $valor1 = mysqli_fetch_array($resultado_compara);
+                $valor2 = mysqli_fetch_array($resultado_compara);
+                $v_inicial = $valor2['valor_moeda'];
+                $v_final = $valor1['valor_moeda'];
+                $continha_de_porcentagem = '';
+
+                if ($valor1 > $valor2) {
+                    $cor = "green";
+                    $sinal = "↑";
+                    $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) * -1 . '%';
                     
+                } 
+                elseif ($valor1 < $valor2) {
+                    $cor = "red";
+                    $sinal = "↓";
+                    $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) . '%';
+                }
+                else{
+                    $cor = "black";
+                    $sinal = "-";
+                    $continha_de_porcentagem = '';
+                }
 
-                    <br><br>
+                
+
+                echo "<div class='col-sm'>";
+                echo "<div class='card mb-3' style='width: 13rem;'>";
+                echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
+                echo           " <div class='card-body'>";
+                echo               "<h5 class='card-title'> $nome_moeda</h5>";
+                echo               "<p class='card-text' style = 'color : $cor'>$valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>" ;
+                echo                   "<p class='card-text'>$sigla_moeda</p>" ;       
+                echo "<form action='inspecionar_moeda.php'>
+                          <button class='btn btn-outline-success'>Verificar</button>
+                          <input type='hidden' name='id_moeda' value='$id_moeda'>
+                          <input type='hidden' name='ispc_local' value='moedas'>
+                      </form>
+                      <br><br>
+                              ";
+                echo           "</div>" ;
+                echo           "</div>";
+                echo           "</div>";
+                
+
+                ?>
+               
+
                   <?php
                 
             }
@@ -150,6 +216,9 @@
         
         
     ?>
+          </div>
+            </div>
+    </div>
     </div>
     </div>
 

@@ -1,3 +1,6 @@
+<?php
+require_once 'altera_valor_moeda.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,60 +11,32 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
     <body>
-        <?php
-            
-            $local = $_GET['ispc_local'];
-        ?>
-        
-        <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><img
-                    src="../img/Firefly logo minimalista para um banco digital de criptomoedas com o tema verde 62636.jpg"
-                    alt="imagem" height="50px" width="50px" style="border-radius: 40px"></a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <form action="carteira.php">
-                                <button class="btn" type="submit">Carteira</button>
-
-                            </form>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <form action="logout.php">
-                                <button type="submit" class="btn">Log-out</button>
-                            </form>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page">
-                            <form action="moedas.php">
-                                <button type="submit" class="btn">Moedas</button>
-                                </form>
-                </li>
-            </ul>
-            <div class="dropdown-center" >
-                <form action="pesquisa_por_moedas.php">
-                    <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
-                        <option value="nome">Nome</option>
-                        <option value="sigla">Sigla</option>
-                    </select>
-                    <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
-                    <button class="btn btn-outline-success" type="submit">  
-                    <i class="bi bi-search"></i>Pesquisar
-                    </button>
-                </form>
-            </div>
-        </div>
-    </nav>
+       
+        <nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <div class="dropdown-center" >
             
                     <?php
                     if ($local == 'pesquisa') {
                         $id_moeda = $_GET['id_moeda'];
                         $nome_sigla_moeda_pesquisada = $_GET['moeda_pesquisada'];
-                        $opcoes_de_pesquisa = $_GET['opcoes_de_pesquisa'];
+                        $opcoes_de_pesquisa = $_GET['opcao_pesquisada'];
                        echo"<form action='pesquisa_por_moedas.php'>
                             <input name='opcoes_de_pesquisa' type='hidden' 
                             value='$opcoes_de_pesquisa'>
@@ -83,12 +58,7 @@
                             echo "</div>";
 
                     }
-                    
-                    
-                    
                     ?>
-                    
-              
         </form>
         
       </div>
@@ -96,8 +66,10 @@
   </nav>
  
   <?php
+  
+  
   //conexao com o banco
-  require_once "conexao.php";
+
   $id_moeda = $_GET['id_moeda'];
   $sql = "SELECT * FROM `tb_historico_v_moeda` WHERE `id_moeda` = '$id_moeda' ORDER BY `id_moeda`, `id_valor` DESC LIMIT 15";
   $sqlmoeda = "SELECT * FROM tb_moeda WHERE id_moeda = '$id_moeda'";
@@ -154,6 +126,12 @@
       <?php echo"}";?>
     </script>
     <div id="chart_div" style="width: 100%; height: 500px;"></div>
+    
+    <form action="compra_de_moeda.php" method="post">
+      <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
+      <button type="submit">Comprar</button><br><br>
+    </form>
+    
   </body>
 </html>
 

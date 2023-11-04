@@ -1,7 +1,5 @@
 <?php
 session_start();
-require_once 'conexao.php';
-require_once 'porcentagem_aleatoria.php';
 if (isset($_SESSION['logado'])) {
     $conta = "";
     if ($_SESSION["tipo_usuario"] == "funcionario") {
