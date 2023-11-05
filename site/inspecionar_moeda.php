@@ -49,8 +49,7 @@ require_once 'altera_valor_moeda.php';
                             </button>";
                     }
                     elseif ($local == 'moedas') {
-                      echo "<div class='mt-5 container'>";
-                      echo "<div row'>";
+                      
                         echo"<form action='moedas.php'>
                             
                             <button class='btn btn-outline-success' type='submit'>  
