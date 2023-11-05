@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'conexao.php';
 if (isset($_SESSION['logado'])) {
     $conta = "";
     if ($_SESSION["tipo_usuario"] == "funcionario") {
@@ -108,19 +109,6 @@ if (isset($_SESSION['logado'])) {
                                     $nome_moeda = $linha_tabela_moeda['nome_moeda'];
                                     $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
                                     $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
-                                    #}
-                                    # Calculo do valor da moeda de acordo com a porcentagem que foi definida aleatoriamente entre um valor de um vetor{       
-                                    $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0, 82)];
-                                    while ($mais_menos == 0) {
-                                        $mais_menos = rand(-1, 1);
-                                    }
-                                    $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria);
-                                    #}
-                                    # Update Valor "Fixo" da moeda e Insert do historico {
-                                    $update_valor_moeda = "UPDATE tb_moeda SET valor_moeda_fixo = $calculo_valor_atual_moeda WHERE id_moeda = $id_moeda";
-                                    $insert_valor_da_moeda_no_historico = "INSERT INTO tb_historico_v_moeda (id_moeda, valor_moeda, hora_atual, data_atual) VALUES ('$id_moeda','$calculo_valor_atual_moeda', '$hora_atual','$data_atual')";
-                                    mysqli_query($conexao, $insert_valor_da_moeda_no_historico, );
-                                    mysqli_query($conexao, $update_valor_moeda);
                                     #}
                                     # Echo de carrosel {
                             
