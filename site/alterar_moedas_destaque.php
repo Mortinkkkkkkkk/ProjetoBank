@@ -53,15 +53,21 @@
                 </div>
             </nav>
 
-        <br> <br> 
+        <br> <br>
+        <form action="moedas.php">
+            <button class='btn btn-outline-success' type='submit'>  
+                Voltar
+            </button>
+        </form>
     <?php
+    
         $moedas_em_destaque = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = 1";
         $moedas_fora_de_destaque = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = 0";
         
         $conexao_moedas_destaque = mysqli_query($conexao,$moedas_em_destaque) ;
         $conexao_moedas_fora_destaque = mysqli_query($conexao,$moedas_fora_de_destaque) ;
         if (mysqli_num_rows($conexao_moedas_destaque) > 0) {
-            echo"Moedas em destaque atualmente";
+            echo"Moedas em destaque atualmente <br>";
             while ($linha_destaque = mysqli_fetch_array($conexao_moedas_destaque)) {
                 $id_moeda = $linha_destaque['id_moeda'];
                 $nome_moeda = $linha_destaque['nome_moeda'];
@@ -69,20 +75,20 @@
                 $valor_moeda_fixo = $linha_destaque['valor_moeda_fixo'];
                 ?>
                 
-                <form action='altera_moeda_destaque.php?' method='post'>
+                <form action='altera_moeda_destaque.php' method='post'>
                     
                     <input type='hidden' name='id_moeda' value='<?php echo $id_moeda; ?>'>
                     <input type='hidden' name='alteracao' value='dell'>
                         
                         <div class="p-2">
-                            <button type='submit'>-</button>
+                            <button type='submit' class="btn btn-outline-danger">-</button>
                             <?php echo $nome_moeda; ?>
+                            
                         </div>
                         
                         
                        
                         
-                    </tr>
                     
                 </form>
                 <?php
@@ -91,6 +97,7 @@
         }
 echo"<br> <br>";
         if (mysqli_num_rows($conexao_moedas_fora_destaque) > 0) {
+            echo"Moedas em fora destaque atualmente <br>";
             while ($linha_destaque = mysqli_fetch_array($conexao_moedas_fora_destaque)) {
                 $id_moeda = $linha_destaque['id_moeda'];
                 $nome_moeda = $linha_destaque['nome_moeda'];
@@ -104,7 +111,7 @@ echo"<br> <br>";
                     <input type='hidden' name='alteracao' value='add'>
                     
                     <div class="p-2">
-                        <button type='submit'>+</button>
+                        <button type='submit' class="btn btn-outline-success">+</button>
                         <?php echo $nome_moeda; ?>
                     </div>
                         
@@ -117,11 +124,7 @@ echo"<br> <br>";
                     }
                 }        
         ?>
-        <form action="moedas.php">
-            <button class='btn btn-outline-success' type='submit'>  
-                Voltar
-            </button>
-        </form>
+        
         
 </body>
 </html>

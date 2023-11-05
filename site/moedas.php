@@ -10,7 +10,7 @@
     if ($_SESSION["tipo_usuario"] == 'funcionario') {
         $botao_de_editar ="
         <form action='alterar_moedas_destaque.php'>
-            <button type='submit' class='btn btn-outline-success'>alterar</button>
+            <button type='submit' class='btn btn-outline-success'>Alterar</button>
             <br><br>
         </form>
         ";
@@ -19,6 +19,12 @@
             <button type='submit' class='btn btn-outline-success'>Cadastrar</button>
             <br><br>
         </form>
+        ";
+        $botao_de_remocao ="
+            <form action='remover_moeda.php'>
+                <button type='submit' class='btn btn-outline-success'>Remover</button>
+                <br><br>
+            </form>
         ";
 
     }
@@ -97,7 +103,7 @@
       <div class='row'>
 <?php
       
-    echo "$botao_de_editar $botao_de_cadastrar";
+    echo "$botao_de_editar $botao_de_cadastrar $botao_de_remocao";
   
 # Parte responsável por mostrar apenas moedas em destaque na página moedas{
         $mais_menos = 0;
