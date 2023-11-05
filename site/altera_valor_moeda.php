@@ -22,7 +22,7 @@
         
         if ($_SESSION['contador'] == 10) {
             $_SESSION['contador'] = 0;
-            $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = '1'";
+            $sql = "SELECT * FROM tb_moeda";
             $resultado = mysqli_query($conexao,$sql);
             
             if (mysqli_num_rows($resultado) > 0) {

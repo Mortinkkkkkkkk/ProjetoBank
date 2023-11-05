@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'conexao.php';
     require_once 'altera_valor_moeda.php';
     ?>
@@ -91,19 +92,26 @@
                         $resultado_compara = mysqli_query($conexao,$sql_compara);
                         $valor1 = mysqli_fetch_array($resultado_compara);
                         $valor2 = mysqli_fetch_array($resultado_compara);
+                        $v_inicial = $valor2['valor_moeda'];
+                        $v_final = $valor1['valor_moeda'];
+                        $continha_de_porcentagem = '';
+
                         if ($valor1 > $valor2) {
                             $cor = "green";
                             $sinal = "↑";
+                            $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) * -1 . '%';
+                            
                         } 
                         elseif ($valor1 < $valor2) {
                             $cor = "red";
                             $sinal = "↓";
+                            $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) . '%';
                         }
                         else{
                             $cor = "black";
                             $sinal = "-";
+                            $continha_de_porcentagem = '';
                         }
-                        
                         
 
                         echo "<div class='col-sm'>";
@@ -111,7 +119,7 @@
                         echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
                         echo           " <div class='card-body'>";
                         echo               "<h5 class='card-title'> $nome_moeda</h5>";
-                        echo               "<p class='card-text' style = 'color : $cor'>$valor_moeda_fixo $sinal</p>" ;
+                        echo               "<p class='card-text' style = 'color : $cor'>$valor_moeda_fixo $sinal $continha_de_porcentagem</p>" ;
                         echo                   "<p class='card-text'>$sigla_moeda</p>" ;       
                         echo "<form action='inspecionar_moeda.php'>
                                     <input type='hidden' name='moeda_pesquisada' value='$nome_sigla_moeda_pesquisada'>
