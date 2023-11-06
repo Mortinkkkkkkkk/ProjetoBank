@@ -4,22 +4,31 @@
 
     $idusuario = $_SESSION['id_usuario'];
     $idmoeda = $_POST['id_moeda'];
-    $carteirasql = "SELECT * FROM tb_carteira WHERE tb_usuario_id_usuario = $idusuario AND tb_moeda_id_moeda = $idmoeda";
-    $resultcarteira = mysqli_query($conexao,$carteirasql);
-    if (mysqli_num_rows($resultcarteira) > 0) {
-        $linha = mysqli_fetch_array($resultcarteira);
-        $idcarteira = $linha['id_carteira'];
-        $quantidade = $linha['quantidade'];
-        $quantidade += 1;
-        $insersao = "UPDATE `tb_carteira` SET
-        `id_carteira` = '$idcarteira',
-        `tb_usuario_id_usuario` = '$idusuario',
-        `tb_moeda_id_moeda` = '$idmoeda',
-        `quantidade` = '$quantidade'
-        WHERE `id_carteira` = '$idcarteira' AND `tb_usuario_id_usuario` = '$idusuario' AND `tb_moeda_id_moeda` = '$idmoeda' LIMIT 1";
-    }
-    else {
-        $insersao = "INSERT INTO `tb_carteira` (`tb_usuario_id_usuario`, `tb_moeda_id_moeda`, `quantidade`) VALUES ('$idusuario', '$idmoeda', '1')";
+    $quantcomprada = $_POST['quantidade'];
+    if ($quantcomprada < 1) {
+        $numeropossivel = false;
+    }else{
+        $carteirasql = "SELECT * FROM tb_carteira WHERE tb_usuario_id_usuario = $idusuario AND tb_moeda_id_moeda = $idmoeda";
+        $resultcarteira = mysqli_query($conexao,$carteirasql);
+        if (mysqli_num_rows($resultcarteira) > 0) {
+            global $quantcomprada;
+            $linha = mysqli_fetch_array($resultcarteira);
+            $idcarteira = $linha['id_carteira'];
+            $quantidade = $linha['quantidade'];
+            $total = $quantidade + $quantcomprada;
+            $insersao = "UPDATE `tb_carteira` SET
+            `id_carteira` = '$idcarteira',
+            `tb_usuario_id_usuario` = '$idusuario',
+            `tb_moeda_id_moeda` = '$idmoeda',
+            `quantidade` = '$total'
+            WHERE `id_carteira` = '$idcarteira' AND `tb_usuario_id_usuario` = '$idusuario' AND `tb_moeda_id_moeda` = '$idmoeda' LIMIT 1";
+            $teste = mysqli_query($conexao,$insersao);    
+            }
+        else {
+            $insersao = "INSERT INTO `tb_carteira` (`tb_usuario_id_usuario`, `tb_moeda_id_moeda`, `quantidade`) VALUES ('$idusuario', '$idmoeda', '1')";
+            $teste = mysqli_query($conexao,$insersao);
+        }
+        $numeropossivel = true;    
     }
 ?>
 <!DOCTYPE html>
@@ -31,9 +40,13 @@
 </head>
 <body>
     <?php
-        $query = mysqli_query($conexao,$insersao);
-        if ($query) {
-            echo "Compra efetuada";
+        
+        if ($numeropossivel) {
+            if ($teste){
+                echo "Compra efetuada";
+            }else{
+                echo "Deu Errado";
+            }
         }
         else{
             echo "Deu Errado";

@@ -130,7 +130,8 @@ require_once 'altera_valor_moeda.php';
     
     <form action="compra_de_moeda.php" method="post">
       <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
-      <button type="submit">Comprar</button><br><br>
+      <button type="submit">Comprar</button>
+      <input type="number" name="quantidade" value="1"style="width: 50px">
     </form>
     
   </body>
