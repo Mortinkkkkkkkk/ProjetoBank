@@ -13,25 +13,43 @@ require_once 'altera_valor_moeda.php';
 </head>
     <body>
        
-        <nav class="navbar navbar-expand-lg ">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <div class="dropdown-center" >
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php"><img
+                    src="../img/Firefly logo minimalista para um banco digital de criptomoedas com o tema verde 62636.jpg"
+                    alt="imagem" height="50px" width="50px" style="border-radius: 40px"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <form action="carteira.php">
+                                <button class="btn" type="submit">Carteira</button>
+
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <form action="logout.php">
+                                <button type="submit" class="btn">Log-out</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="moedas.php">
+                                <button type="submit" class="btn">Moedas</button>
+
+                            </form>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+    </nav>  
+      
+            <div class="mt-5 container">
+              <div class="row">
             
                     <?php
                     $local = $_GET['ispc_local'];
@@ -49,24 +67,36 @@ require_once 'altera_valor_moeda.php';
                             </button>";
                     }
                     elseif ($local == 'moedas') {
-                      
-                        echo"<form action='moedas.php'>
-                            
-                            <button class='btn btn-outline-success' type='submit'>  
-                                Voltar
-                            </button>";
-                            echo "</div>";
-                            echo "</div>";
+                        
 
                     }
                     ?>
-        </form>
-        
-      </div>
-    </div>
-  </nav>
- 
-  <?php
+                          
+                          <div class='col-sm'>
+                          
+                            <form action='moedas.php'>
+                                
+                                <button class='btn btn-outline-success' type='submit'>  
+                                    Voltar
+                                </button>
+                                </div>
+                  </form>
+                          <div class='col-sm'>
+                      <form action='compra_de_moeda.php' method='post'>
+                      <input type='hidden' name='id_moeda' value='<?php echo $id_moeda; ?>'>
+                      <button type='submit' class='btn btn-outline-success'>Comprar</button>
+                      </form>
+                      </div>
+
+
+</div>
+
+
+</div>
+</div>
+</div>
+
+<?php
   
   
   //conexao com o banco
@@ -128,10 +158,6 @@ require_once 'altera_valor_moeda.php';
     </script>
     <div id="chart_div" style="width: 100%; height: 500px;"></div>
     
-    <form action="compra_de_moeda.php" method="post">
-      <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
-      <button type="submit">Comprar</button><br><br>
-    </form>
     
   </body>
 </html>
