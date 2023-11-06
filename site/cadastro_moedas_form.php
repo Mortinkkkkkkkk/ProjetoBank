@@ -48,21 +48,29 @@
         <br> <br> 
 
         <form action="cadastro_moedas.php" enctype="multipart/form-data" method="post">
-            Nome Moeda: <br>
-                <input type="text" name="nome_moeda" placeholder="..."> <br><br>
-            Sigla_moeda: <br>
-                <input type="text" name="sigla" placeholder="..."> <br><br>
-            Valor Inicial da Moeda: <br>
-                <input type="text" name="valor_moeda_inicial" placeholder="..."> <br><br>
-            <input type="radio" name="destaque_moeda" value="1"> Moeda em Destaque <br>
-            <input type="radio" name="destaque_moeda" value="0"> Moeda Fora de Destaque<br><br>
-            
-            Imagem da Moeda: <br>
-            <input type="file" name="imagem_moeda"> <br><br>
+        <div class="form-floating">
+            <input class="form-control" name="nome_moeda" type="text" id="nome_usuario" placeholder="Nome aqui..."> <br><br>
+            <label for="nome_usuario">Nome da moeda</label>
+        </div>
 
-            Imagem de Fundo da Moeda: <br>
-            <input type="file" name="imagem_fundo_moeda"> <br><br>
-            <input type="submit" value = "Cadastrar">
+        <div class="form-floating">
+            <input class="form-control" name="sigla_moeda" placeholder="Sigla" type="text" id="sigla_moeda"> <br><br>
+            <label for="sigla_moeda">Sigla</label>
+        </div>
+        
+        Valor Inicial da Moeda: <br>
+        <input type="text" name="valor_moeda_inicial" placeholder="..."> <br><br>
+        <input type="radio" name="destaque_moeda" value="1"> Moeda em Destaque <br>
+        <input type="radio" name="destaque_moeda" value="0"> Moeda Fora de Destaque<br><br>
+        
+        Imagem da Moeda: <br>
+        <input type="file" name="imagem_moeda"> <br><br>
+        
+        Imagem de Fundo da Moeda: <br>
+        <input type="file" name="imagem_fundo_moeda"> <br><br>
+        <input type="submit" value = "Cadastrar"> <br><br>
+
+        <button class="btn btn-success">Cadastrar</button>
         </form>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
