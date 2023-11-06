@@ -56,7 +56,19 @@ if (isset($_SESSION['logado'])) {
                             </form>
                         </a>
                     </li>
-                </ul>
+              
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="cadastro.html">
+                                <button type="submit" class="btn">Cadastro</button>
+
+                            </form>
+                        </a>
+                
+              
+            </ul>
+            </div>
+               
 
             </div>
     </nav>
