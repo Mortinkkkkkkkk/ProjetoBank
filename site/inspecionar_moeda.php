@@ -128,7 +128,7 @@ require_once 'altera_valor_moeda.php';
     </script>
     <div id="chart_div" style="width: 100%; height: 500px;"></div>
     
-    <form action="compra_de_moeda.php" method="post">
+    <form action="insera_carrinho.php" method="post">
       <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
       <button type="submit">Comprar</button>
       <input type="number" name="quantidade" value="1"style="width: 50px">
