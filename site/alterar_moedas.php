@@ -59,6 +59,12 @@
                 Voltar
             </button>
         </form>
+        <form action="alterar_moedas.php">
+            <input type="hidden" name="edicao" value="abilitada">
+            <button type='submit' class="btn btn-outline-success">
+                Editar
+            </button>
+        </form>  
     <?php
     
         $moedas_em_destaque = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = 1";
@@ -77,31 +83,51 @@
 
                 <div class="col-sm container-fluid">
                     <div class='card mb-3' style='width: 13rem;'>
-                        <?php echo $nome_moeda; ?> <br><br>
-                        <form action="altera_moeda.php">
-                            <input type="hidden" value="<?php echo $id_moeda?>" name="id_moeda">
-                            <input type="hidden" value="editar" name="alteracao">
-                            Nome da moeda: <br>
-                            <input type="text" value="<?php echo $nome_moeda;?>" name="novo_nome"> <br><br>
-                            Sigla Moeda: <br>
-                            <input type="text" value="<?php echo $sigla_moeda;?>" name="nova_sigla"> <br><br>
-                            Valor Atual da Moeda: <br>
-                            <input type="text" value="<?php echo $valor_moeda_fixo;?>" name="novo_valor"> <br><br>
-                            <button type='submit' class="btn btn-outline-success">Salvar</button> <br><br>
-                        </form>
-                        <a 
-                        href="altera_moeda.php?id_moeda=<?php echo $id_moeda?>&alteracao=dell" 
-                        class="btn btn-outline-danger">Remover de Destaque</a>
-                    </div>
-                    <a 
-                    href="altera_moeda.php?id_moeda=<?php echo $id_moeda?>&alteracao=remover" 
-                    class="btn btn-outline-danger">
-                    Remover <?php echo $nome_moeda; ?> </a> <br><br>
-                </div>
+                        
 
-                <?php
+                    <?php
+                        $edicao = $_GET['edicao'];
+                        if ($edicao == 'desabilitada'){
+                            
+                            echo "
+                        
+                            $nome_moeda <br> <br> 
+                            $sigla_moeda <br> <br> 
+                            $valor_moeda_fixo <br> <br>
+                            ";
+                            
+                        }
+                        else {
+                                    
+                    ?>
+                                <form action="altera_moeda.php">
+                                    <?php echo $nome_moeda; ?> <br><br>
+                                    <input type="hidden" value="<?php echo $id_moeda?>" name="id_moeda">
+                                    <input type="hidden" value="editar" name="alteracao">
+                                    Nome da moeda: <br>
+                                    <input type="text" value="<?php echo $nome_moeda;?>" name="novo_nome"> <br><br>
+                                    Sigla Moeda: <br>
+                                    <input type="text" value="<?php echo $sigla_moeda;?>" name="nova_sigla"> <br><br>
+                                    Valor Atual da Moeda: <br>
+                                    <input type="text" value="<?php echo $valor_moeda_fixo;?>" name="novo_valor"> <br><br>
+                                    <button type='submit' class="btn btn-outline-success">Salvar</button> <br><br>
+                                </form> 
+                        <?php
+                    }
+                
+                    ?>
+                                <a 
+                                href="altera_moeda.php?id_moeda=<?php echo $id_moeda?>&alteracao=dell" 
+                                class="btn btn-outline-danger">Remover de Destaque</a>
+                            </div>
+                            <a 
+                            href="altera_moeda.php?id_moeda=<?php echo $id_moeda?>&alteracao=remover" 
+                            class="btn btn-outline-danger">
+                            Remover <?php echo $nome_moeda; ?> </a> <br><br>
+                        </div>
+
+                    <?php
             }
-            
         }
 echo"<br> <br>";
         if (mysqli_num_rows($conexao_moedas_fora_destaque) > 0) {
@@ -115,7 +141,30 @@ echo"<br> <br>";
                 <div class="col-sm container-fluid">
                     
                     <div class='card mb-3' style='width: 13rem;'>
-                        <h6>Editar Moeda:</h6>
+
+                    <?php
+                        if ($edicao == 'desabilitada'){
+                            
+                            echo "
+                        
+                            $nome_moeda <br> <br> 
+                            $sigla_moeda <br> <br> 
+                            $valor_moeda_fixo <br> <br>
+                            ";
+                            ?>
+                            <form action="alterar_moedas.php">
+                                <input type="hidden" name="edicao" value="abilitada">
+                                <input type="hidden" name="id_moeda_edit" value="<?php echo $id_moeda; ?>">
+                                
+                                
+                            </form> 
+                            
+                            <?php
+                            }
+                            else {
+                                    
+                    ?>
+
                         <form action="altera_moeda.php">
                             <input type="hidden" value="<?php echo $id_moeda?>" name="id_moeda">
                             <input type="hidden" value="editar" name="alteracao">
@@ -127,6 +176,10 @@ echo"<br> <br>";
                             <input type="text" value="<?php echo $valor_moeda_fixo;?>" name="novo_valor"> <br><br>
                             <button type='submit' class="btn btn-outline-success">Salvar</button> <br><br>
                         </form> 
+                        
+                        <?php
+                            }
+                        ?>
                         <a 
                         href="altera_moeda.php?id_moeda=<?php echo $id_moeda?>&alteracao=add" 
                         class="btn btn-outline-success">Adicionar em Destaque</a>
