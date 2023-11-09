@@ -4,7 +4,7 @@
 
     $idusuario = $_SESSION['id_usuario'];
     $idmoeda = $_POST['id_moeda'];
-    $carteirasql = "SELECT * FROM tb_carteira WHERE tb_usuario_id_usuario = $idusuario AND tb_moeda_id_moeda = $idmoeda";
+    $carteirasql = "SELECT * FROM tb_carteira WHERE id_usuario = $idusuario AND id_moeda = $idmoeda";
     $resultcarteira = mysqli_query($conexao,$carteirasql);
      
 ?>
@@ -23,10 +23,10 @@
         $quantidadde -= 1;
         $uptade = "UPDATE `tb_carteira` SET
         `id_carteira` = '$idcarteira',
-        `tb_usuario_id_usuario` = '$idusuario',
-        `tb_moeda_id_moeda` = '$idmoeda',
+        `id_usuario` = '$idusuario',
+        `id_moeda` = '$idmoeda',
         `quantidade` = '$quantidadde'
-        WHERE `id_carteira` = '$idcarteira' AND `tb_usuario_id_usuario` = '$idusuario' AND `tb_moeda_id_moeda` = '$idmoeda' LIMIT 1";
+        WHERE `id_carteira` = '$idcarteira' AND `id_usuario` = '$idusuario' AND `id_moeda` = '$idmoeda' LIMIT 1";
         $confirma = mysqli_query($conexao,$uptade);
         if ($confirma) {
             echo "Venda efetuada";

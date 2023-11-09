@@ -25,27 +25,25 @@ CREATE TABLE `tb_carrinho` (
   CONSTRAINT `tb_carrinho_ibfk_2` FOREIGN KEY (`id_moeda`) REFERENCES `tb_moeda` (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `tb_carrinho` (`id_carrinho`, `id_usuario`, `id_moeda`, `quantidade`, `valor_total`) VALUES
+(1,	1,	1,	5,	750935),
+(2,	1,	6,	5,	0),
+(3,	1,	2,	5,	510.085),
+(4,	1,	1,	7,	1069590);
 
 DROP TABLE IF EXISTS `tb_carteira`;
 CREATE TABLE `tb_carteira` (
   `id_carteira` int(11) NOT NULL AUTO_INCREMENT,
-  `tb_usuario_id_usuario` int(11) NOT NULL,
-  `tb_moeda_id_moeda` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_moeda` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
   PRIMARY KEY (`id_carteira`),
-  KEY `tb_moeda_id_moeda` (`tb_moeda_id_moeda`),
-  KEY `tb_usuario_id_usuario` (`tb_usuario_id_usuario`),
-  CONSTRAINT `tb_carteira_ibfk_2` FOREIGN KEY (`tb_moeda_id_moeda`) REFERENCES `tb_moeda` (`id_moeda`),
-  CONSTRAINT `tb_carteira_ibfk_3` FOREIGN KEY (`tb_usuario_id_usuario`) REFERENCES `tb_usuario` (`id_usuario`)
+  KEY `id_usuario` (`id_usuario`),
+  KEY `id_moeda` (`id_moeda`),
+  CONSTRAINT `tb_carteira_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuario` (`id_usuario`),
+  CONSTRAINT `tb_carteira_ibfk_2` FOREIGN KEY (`id_moeda`) REFERENCES `tb_moeda` (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `tb_carteira` (`id_carteira`, `tb_usuario_id_usuario`, `tb_moeda_id_moeda`, `quantidade`) VALUES
-(1,	1,	1,	15),
-(2,	1,	2,	49),
-(3,	1,	3,	11),
-(4,	2,	3,	4),
-(5,	1,	6,	0),
-(6,	1,	8,	3);
 
 DROP TABLE IF EXISTS `tb_historico_v_moeda`;
 CREATE TABLE `tb_historico_v_moeda` (
@@ -97,4 +95,4 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_us
 (3,	'gugu',	'789',	'64656454658',	'gugu@gugu.com',	''),
 (4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'');
 
--- 2023-11-09 16:22:12
+-- 2023-11-09 16:34:10
