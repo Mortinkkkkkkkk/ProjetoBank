@@ -11,7 +11,7 @@
             $quantidade = $rowcarrinho['quantidade'];
             $id_carrihno = $rowcarrinho['id_carrinho'];
             $carteirasql = "SELECT id_carteira, quantidade FROM tb_carteira WHERE id_usuario = $idusuario AND id_moeda = $id_moeda";
-            $resultcarteira = mysqli_query($conexao,$resultcarteira);
+            $resultcarteira = mysqli_query($conexao,$carteirasql);
             if (mysqli_num_rows($resultcarteira) > 0) {
                 $linha = mysqli_fetch_array($resultcarteira);
                 $id_carteira = $linha['id_carteira'];
