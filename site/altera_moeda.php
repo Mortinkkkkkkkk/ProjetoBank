@@ -1,5 +1,5 @@
 <?php
-    require_once 'conexao.php';
+    require_once 'conexao.php'; 
 
     $id_moeda = $_GET['id_moeda'];
     $alteracao = $_GET['alteracao'];
@@ -39,7 +39,7 @@
         
         mysqli_query($conexao,$removendo_historico_moeda);
         
-        $removendo_das_carteiras = "DELETE FROM tb_carteira WHERE tb_moeda_id_moeda = '$id_moeda'";
+        $removendo_das_carteiras = "DELETE FROM tb_carteira WHERE id_moeda = '$id_moeda'";
         mysqli_query($conexao,$removendo_das_carteiras);
 
         $moeda_removida = "DELETE FROM tb_moeda WHERE id_moeda = '$id_moeda'";

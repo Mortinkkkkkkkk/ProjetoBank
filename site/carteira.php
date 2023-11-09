@@ -58,7 +58,7 @@
 
     <?php
         require_once "conexao.php";
-          $sql = "SELECT tb_moeda_id_moeda, quantidade FROM tb_carteira WHERE tb_usuario_id_usuario = $id_usuario AND quantidade > 0";
+          $sql = "SELECT id_moeda, quantidade FROM tb_carteira WHERE id_usuario = $id_usuario AND quantidade > 0";
           $resultado = mysqli_query($conexao,$sql);
           if (mysqli_num_rows($resultado) > 0) {
               $selectnome = "SELECT nome_usuario FROM tb_usuario WHERE id_usuario = $id_usuario";
@@ -66,7 +66,7 @@
               $nome = mysqli_fetch_array($resultnome);
               echo $nome["nome_usuario"] . "<br>";
               while ($row = mysqli_fetch_assoc($resultado)) {
-                  $id_moeda = $row["tb_moeda_id_moeda"];
+                  $id_moeda = $row["id_moeda"];
                   $selectmoeda = "SELECT nome_moeda, valor_moeda_fixo FROM tb_moeda WHERE id_moeda = $id_moeda";
                   $resultmoeda = mysqli_query($conexao,$selectmoeda);
                   $arraymoeda = mysqli_fetch_array($resultmoeda);

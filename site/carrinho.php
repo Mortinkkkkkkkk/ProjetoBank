@@ -41,7 +41,7 @@
         echo "Valor total à pagar: " . $compratotal;
 
 ?>
-<form action="compra_de_moeda.php" method="post">
+<form action="compra_de_moeda.php">
     <button type="submit">Efetuar compra</button>
 </form>
 </body>
