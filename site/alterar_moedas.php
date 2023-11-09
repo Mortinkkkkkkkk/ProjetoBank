@@ -162,7 +162,8 @@ echo"<br> <br>";
                             <?php
                             }
                             else {
-                                    
+                                
+
                     ?>
 
                         <form action="altera_moeda.php">
