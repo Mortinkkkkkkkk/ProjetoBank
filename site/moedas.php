@@ -9,7 +9,9 @@
     if ($_SESSION["tipo_usuario"] == 'funcionario') {
         $botao_de_editar ="
         <form action='alterar_moedas.php'>
+            <input type='hidden' name='id_moeda_edit' value='0'>
             <input type='hidden' name='edicao' value='desabilitada'>
+            
             <button type='submit' class='btn btn-outline-success'>Alterar</button>
             <br><br>
         </form>

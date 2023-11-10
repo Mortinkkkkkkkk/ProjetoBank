@@ -8,13 +8,13 @@
     if ($alteracao == 'add') {
         $novo_destaque = "UPDATE tb_moeda SET moeda_em_destaque = 1 WHERE id_moeda = $id_moeda";
         mysqli_query($conexao,$novo_destaque);
-        header('location: alterar_moedas.php');
+        header('location: alterar_moedas.php?edicao=desabilitada&id_moeda_edit=0');
         exit();
     }
     elseif ($alteracao == 'dell') {
         $remover_destaque = "UPDATE tb_moeda SET moeda_em_destaque = 0 WHERE id_moeda = $id_moeda";
         mysqli_query($conexao,$remover_destaque);
-        header('location: alterar_moedas.php');
+        header('location: alterar_moedas.php?edicao=desabilitada&id_moeda_edit=0');
         exit();
     }
     elseif ($alteracao == 'editar') {
@@ -30,7 +30,7 @@
 
         mysqli_query($conexao,$editando_moeda);
 
-        header('location: alterar_moedas.php');
+        header('location: alterar_moedas.php?edicao=desabilitada&id_moeda_edit=0');
         exit();
     }
     elseif ($alteracao == 'remover') {
@@ -45,11 +45,11 @@
         $moeda_removida = "DELETE FROM tb_moeda WHERE id_moeda = '$id_moeda'";
         mysqli_query($conexao,$moeda_removida);
         
-        header('location: alterar_moedas.php');
+        header('location: alterar_moedas.php?edicao=desabilitada&id_moeda_edit=0');
         exit();
     }
     else {
-        header('location: alterar_moedas.php');
+        header('location: alterar_moedas.php?edicao=desabilitada&id_moeda_edit=0');
         exit();
     }
 ?>
