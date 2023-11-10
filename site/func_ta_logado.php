@@ -3,6 +3,9 @@
     if ($_SESSION["tipo_usuario"] != "funcionario") {
         header('location: login.php');
         exit();
+    }else {
+        $login = "hidden";
+        $logado = "";
     }
     
 ?>

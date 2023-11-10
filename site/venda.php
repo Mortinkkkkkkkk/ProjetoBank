@@ -7,16 +7,7 @@
     $carteirasql = "SELECT * FROM tb_carteira WHERE id_usuario = $idusuario AND id_moeda = $idmoeda";
     $resultcarteira = mysqli_query($conexao,$carteirasql);
      
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
+
         $linha = mysqli_fetch_array($resultcarteira);
         $idcarteira = $linha['id_carteira'];
         $quantidadde = $linha['quantidade'];

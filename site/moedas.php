@@ -90,6 +90,26 @@
                             </form>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <form action="carrinho.php">
+                                <button type="submit" class="btn"<?php echo $logado; ?>>Carrinho</button>
+                            </form>
+                        </a>
+                    </li>
+                </div>
+                <li class="nav-item" style="list-style: none;">
+                <form  action="pesquisa_por_moedas.php">
+                    <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
+                        <option value="nome">Nome</option>
+                        <option value="sigla">Sigla</option>
+                    </select>
+                    <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
+                    <button class="btn btn-outline-success" type="submit">  
+                    <i class="bi bi-search"></i>Pesquisar
+                    </button>
+                </form>
+            </li>
                 </ul>
 
             </div>

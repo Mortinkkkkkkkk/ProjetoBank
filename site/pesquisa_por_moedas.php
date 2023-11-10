@@ -1,5 +1,12 @@
 <?php
     session_start();
+    if (isset($_SESSION['logado'])) {
+        $logado = "";
+        $login = "hidden";
+    } else {
+        $logado = "hidden";
+        $login = "";
+    }
     require_once 'conexao.php';
     require_once 'altera_valor_moeda.php';
     ?>
@@ -24,40 +31,62 @@
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="carteira.php">
-                                <button class="btn" type="submit">Carteira</button>
-
+                                <button class="btn" type="submit" <?php echo $logado; ?>>Carteira</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="moedas.php">
+                                <button type="submit" class="btn">Moedas</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="login.php">
+                                <button type="submit" class="btn" <?php echo $login; ?>>Login</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="cadastro.php">
+                                <button type="submit" class="btn" <?php echo $login; ?>>Cadastro</button>
                             </form>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="logout.php">
-                                <button type="submit" class="btn">Log-out</button>
+                                <button type="submit" class="btn"<?php echo $logado; ?>>Log-out</button>
                             </form>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current ="page">
-    <form action="moedas.php" >
-          <button type="submit" class="btn">Moedas</button>
-              
-    </form></a>
+                        <a class="nav-link">
+                            <form action="carrinho.php">
+                                <button type="submit" class="btn"<?php echo $logado; ?>>Carrinho</button>
+                            </form>
+                        </a>
                     </li>
-                </ul>
-                <div class="dropdown-center" >
-                    <form action="pesquisa_por_moedas.php">
-                        <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
-                            <option value="nome">Nome</option>
-                            <option value="sigla">Sigla</option>
-                        </select>
-                        <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
-                        <button class="btn btn-outline-success" type="submit">  
-                        <i class="bi bi-search"></i>Pesquisar
-                        </button>
-                    </form>
                 </div>
+                <li class="nav-item" style="list-style: none;">
+                <form  action="pesquisa_por_moedas.php">
+                    <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
+                        <option value="nome">Nome</option>
+                        <option value="sigla">Sigla</option>
+                    </select>
+                    <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
+                    <button class="btn btn-outline-success" type="submit">  
+                    <i class="bi bi-search"></i>Pesquisar
+                    </button>
+                </form>
+            </li>
+                </ul>
+
             </div>
-        </nav>
+    </nav>
 
         <div class='mt-5 container'>
       <div class='row'>

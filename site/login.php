@@ -65,6 +65,13 @@ if (isset($_SESSION['logado'])) {
                             </form>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <form action="carrinho.php">
+                                <button type="submit" class="btn"<?php echo $logado; ?>>Carrinho</button>
+                            </form>
+                        </a>
+                    </li>
                 </ul>
 
             </div>

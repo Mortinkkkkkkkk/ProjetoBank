@@ -3,5 +3,9 @@
     if (!isset($_SESSION["logado"])){
         header('location: login.php');
         exit();
+    }else {
+        $login = "hidden";
+        $logado = "";
+
     }
 ?>

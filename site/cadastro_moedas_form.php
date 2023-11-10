@@ -13,37 +13,60 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg ">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#"><img src="#" alt="imagem" height="50px" width="50px"></a>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php"><img
+                    src="../img/Firefly logo minimalista para um banco digital de criptomoedas com o tema verde 62636.jpg"
+                    alt="imagem" height="50px" width="50px" style="border-radius: 40px"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
                         <a class="nav-link">
-                        <form action="carteira.php">
-                        <button class="btn" type="submit">Carteira</button>
-
+                            <form action="carteira.php">
+                                <button class="btn" type="submit" <?php echo $logado; ?>>Carteira</button>
                             </form>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"> <form action="logout.php">
-            <button type="submit"class="btn">Log-out</button>
-        </form></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current ="page">
-        <form action="moedas.php" >
-            <button type="submit" class="btn">Moedas</button>
-                
-        </form></a>
-                        </li>
-                    </ul>
-                    <div class="dropdown-center" >
-                        
-                    </div>
-                </div>
-            </nav>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="moedas.php">
+                                <button type="submit" class="btn">Moedas</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="login.php">
+                                <button type="submit" class="btn" <?php echo $login; ?>>Login</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="cadastro.php">
+                                <button type="submit" class="btn" <?php echo $login; ?>>Cadastro</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <form action="logout.php">
+                                <button type="submit" class="btn"<?php echo $logado; ?>>Log-out</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <form action="carrinho.php">
+                                <button type="submit" class="btn"<?php echo $logado; ?>>Carrinho</button>
+                            </form>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+    </nav>
+
 
         <br> <br> 
 
