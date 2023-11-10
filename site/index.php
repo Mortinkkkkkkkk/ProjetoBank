@@ -61,7 +61,7 @@ if (isset($_SESSION['logado'])) {
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="logout.php">
-                                <button type="submit" class="btn"<?php echo $logado; ?>Log-out</button>
+                                <button type="submit" class="btn"<?php echo $logado; ?>>Log-out</button>
                             </form>
                         </a>
                     </li>
