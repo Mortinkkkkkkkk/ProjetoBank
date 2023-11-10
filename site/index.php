@@ -2,14 +2,11 @@
 session_start();
 require_once 'conexao.php';
 if (isset($_SESSION['logado'])) {
-    $conta = "";
-    if ($_SESSION["tipo_usuario"] == "funcionario") {
-        $criarmoeda = "<form action='criar_moeda.php'>
-                Clique <button type='submit'>aqui</button> pra criar moeda
-            </form>";
-    }
+    $logado = "";
+    $login = "hidden";
 } else {
-    $conta = "hidden";
+    $logado = "hidden";
+    $login = "";
 }
 
 ?>
@@ -36,15 +33,7 @@ if (isset($_SESSION['logado'])) {
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="carteira.php">
-                                <button class="btn" type="submit">Carteira</button>
-
-                            </form>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <form action="logout.php">
-                                <button type="submit" class="btn">Log-out</button>
+                                <button class="btn" type="submit" <?php echo $logado; ?>>Carteira</button>
                             </form>
                         </a>
                     </li>
@@ -52,7 +41,27 @@ if (isset($_SESSION['logado'])) {
                         <a class="nav-link active" aria-current="page">
                             <form action="moedas.php">
                                 <button type="submit" class="btn">Moedas</button>
-
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="login.php">
+                                <button type="submit" class="btn" <?php echo $login; ?>>Login</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <form action="cadastro.php">
+                                <button type="submit" class="btn" <?php echo $login; ?>>Cadastro</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <form action="logout.php">
+                                <button type="submit" class="btn"<?php echo $logado; ?>Log-out</button>
                             </form>
                         </a>
                     </li>
