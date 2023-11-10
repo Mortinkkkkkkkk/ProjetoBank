@@ -18,9 +18,11 @@
         if (mysqli_num_rows($resultcarrinho) > 0){
             while ($linha = mysqli_fetch_array($resultcarrinho)) {
                 global $compratotal;
+                $idcarrinho = $linha['id_carrinho'];
                 $idmoeda = $linha['id_moeda'];
                 $sqlmoeda = "SELECT nome_moeda, sigla_moeda FROM tb_moeda WHERE id_moeda = $idmoeda";
                 $resultmoeda = mysqli_query($conexao,$sqlmoeda);
+                $excluir = "<form action='remover_carrinho.php' method='post'><input type='hidden' name='id_carrinho' value='$idcarrinho'><button type='submit'>Remover</button></form>";
                 $row = mysqli_fetch_array($resultmoeda);
                 $nomemoeda = $row['nome_moeda'];
                 $siglamoeda = $row['sigla_moeda'];
@@ -32,15 +34,16 @@
                 echo $quantidade . $br;
                 echo $valortotal . $br;
                 $compratotal = $compratotal + $valortotal;
+                echo $excluir . $br;
                 }
             }
             else {
                 echo "carrinho vazio";
             }
             
-        echo "Valor total à pagar: " . $compratotal;
-
-?>
+            echo "Valor total à pagar: " . $compratotal;
+            
+            ?>
 <form action="compra_de_moeda.php">
     <button type="submit">Efetuar compra</button>
 </form>
