@@ -61,7 +61,7 @@ if (isset($_SESSION['logado'])) {
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="logout.php">
-                                <button type="submit" class="btn"<?php echo $logado; ?>Log-out</button>
+                                <button type="submit" class="btn"<?php echo $logado; ?>>Log-out</button>
                             </form>
                         </a>
                     </li>
@@ -78,7 +78,7 @@ if (isset($_SESSION['logado'])) {
     <div class="container mt-5">
         <h1>Login no Banco</h1> <br><br> <br>
     
-    <form action="login.php">
+    <form action="fazer_login.php">
     
         <div class="form-floating">
             <input class="form-control" name="email_login" placeholder="Email" type="text" id="email_login"> <br><br>

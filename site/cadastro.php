@@ -61,7 +61,7 @@ if (isset($_SESSION['logado'])) {
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="logout.php">
-                                <button type="submit" class="btn"<?php echo $logado; ?>Log-out</button>
+                                <button type="submit" class="btn"<?php echo $logado; ?>>Log-out</button>
                             </form>
                         </a>
                     </li>
@@ -79,7 +79,7 @@ if (isset($_SESSION['logado'])) {
     <div class="container mt-5">
         <h1>Cadastro no Banco</h1> <br><br> <br>
     
-  <form action="cadastro.php">
+  <form action="cadastrar.php">
         <div class="form-floating">
             <input class="form-control" name="nome_usuario" type="text" id="nome_usuario" placeholder="Nome aqui..."> <br><br>
             <label for="nome_usuario">Nome</label>
