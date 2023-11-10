@@ -62,21 +62,21 @@ CREATE TABLE `tb_moeda` (
   `nome_moeda` varchar(100) NOT NULL,
   `sigla_moeda` varchar(100) NOT NULL,
   `valor_moeda_fixo` float NOT NULL,
-  `imagem_moeda` varchar(200) NOT NULL,
-  `imagem_moeda_fundo` varchar(200) NOT NULL,
+  `imagem_moeda` varchar(200) NOT NULL DEFAULT './img/imagem_nula.png',
+  `imagem_moeda_fundo` varchar(200) NOT NULL DEFAULT './img/imagem_nula.png',
   `moeda_em_destaque` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`, `imagem_moeda`, `imagem_moeda_fundo`, `moeda_em_destaque`) VALUES
-(1,	'Bitcoin',	'BTC',	149790,	'',	'',	1),
-(2,	'SetinhaCoin',	'STC',	100.628,	'',	'',	1),
-(3,	'MonaCoin',	'MNC',	121.176,	'',	'',	0),
-(4,	'Ethereum',	'ETH',	7827.1,	'',	'',	0),
-(5,	'Ripple',	'XRP',	2.59556,	'',	'',	0),
-(6,	'PobreCoin',	'PBC',	0,	'',	'',	0),
-(7,	'LiteCoin',	'LTC',	354.999,	'',	'',	0),
-(8,	'Santos FC Fan Token',	'SANTOS',	13.5467,	'',	'',	0)
+(1,	'Bitcoin',	'BTC',	149790,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	1),
+(2,	'SetinhaCoin',	'STC',	100.628,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	1),
+(3,	'MonaCoin',	'MNC',	121.176,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(4,	'Ethereum',	'ETH',	7827.1,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(5,	'Ripple',	'XRP',	2.59556,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(6,	'PobreCoin',	'PBC',	0,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(7,	'LiteCoin',	'LTC',	354.999,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(8,	'Santos FC Fan Token',	'SANTOS',	13.5467,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0)
 ON DUPLICATE KEY UPDATE `id_moeda` = VALUES(`id_moeda`), `nome_moeda` = VALUES(`nome_moeda`), `sigla_moeda` = VALUES(`sigla_moeda`), `valor_moeda_fixo` = VALUES(`valor_moeda_fixo`), `imagem_moeda` = VALUES(`imagem_moeda`), `imagem_moeda_fundo` = VALUES(`imagem_moeda_fundo`), `moeda_em_destaque` = VALUES(`moeda_em_destaque`);
 
 DROP TABLE IF EXISTS `tb_usuario`;
@@ -97,4 +97,4 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_us
 (4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'')
 ON DUPLICATE KEY UPDATE `id_usuario` = VALUES(`id_usuario`), `nome_usuario` = VALUES(`nome_usuario`), `senha_usuario` = VALUES(`senha_usuario`), `cpf_usuario` = VALUES(`cpf_usuario`), `email_usuario` = VALUES(`email_usuario`), `tipo_usuario` = VALUES(`tipo_usuario`);
 
--- 2023-11-10 17:15:55
+-- 2023-11-10 17:24:05
