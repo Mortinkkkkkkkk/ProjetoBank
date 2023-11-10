@@ -35,17 +35,19 @@
                 echo $valortotal . $br;
                 $compratotal = $compratotal + $valortotal;
                 echo $excluir . $br;
-                }
             }
-            else {
-                echo "carrinho vazio";
-            }
+        echo "Valor total à pagar: " . $compratotal;
+        $efetuar = " <button type='submit'>Efetuar compra</button>";
+    }
+    else {
+        echo "carrinho vazio";
+        $efetuar = "";
+        }
             
-            echo "Valor total à pagar: " . $compratotal;
             
             ?>
 <form action="compra_de_moeda.php">
-    <button type="submit">Efetuar compra</button>
+    <?php echo $efetuar; ?>
 </form>
 </body>
 </html>
