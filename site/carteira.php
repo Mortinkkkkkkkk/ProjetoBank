@@ -88,11 +88,12 @@
                   echo $row["quantidade"] . "<br>";
                   echo "<form action='venda.php' method='post'>
                             <input type='hidden' name='id_moeda' value='$id_moeda'>
+                            <input type='number' name='quantidade' value='1' style='width: 50px;'>
                             <button type='submit'>Vender</button>
-                        </form>";
-            }
-        }
-    
-    ?>
+                            </form>";
+                        }
+                    }
+                    
+                    ?>
 </body>
 </html>
