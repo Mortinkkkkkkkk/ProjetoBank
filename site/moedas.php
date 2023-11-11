@@ -21,13 +21,13 @@
             <input type='hidden' name='id_moeda_edit' value='0'>
             <input type='hidden' name='edicao' value='desabilitada'>
             
-            <button type='submit' class='btn btn-outline-success'>Alterar</button>
+            <button type='submit' class='btn btn-outline-success'><i class='fa-regular fa-pen-to-square fa-lg'></i> Alterar</button>
             <br><br>
         </form>
         ";
         $botao_de_cadastrar ="
         <form action='cadastro_moedas_form.php'>
-            <button type='submit' class='btn btn-outline-success'>Cadastrar</button>
+            <button type='submit' class='btn btn-outline-success'><i class='fa-solid fa-plus fa-lg'></i> Cadastrar</button>
             <br><br>
         </form>
         ";
@@ -43,9 +43,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Link de resetador css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Link animador (animate.css) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    
 
 </head>
 <body>
@@ -59,14 +66,14 @@
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="carteira.php">
-                                <button class="btn" type="submit" <?php echo $logado; ?>>Carteira</button>
+                                <button class="btn" type="submit" <?php echo $logado; ?>><i class="fa-solid fa-wallet fa-lg"></i> Carteira</button>
                             </form>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page">
                             <form action="moedas.php">
-                                <button type="submit" class="btn">Moedas</button>
+                                <button type="submit" class="btn"><i class="fa-solid fa-coins fa-lg"></i> Moedas</button>
                             </form>
                         </a>
                     </li>
@@ -87,14 +94,14 @@
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="logout.php">
-                                <button type="submit" class="btn"<?php echo $logado; ?>>Log-out</button>
+                                <button type="submit" class="btn"<?php echo $logado; ?>><i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i> Log-out</button>
                             </form>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="carrinho.php">
-                                <button type="submit" class="btn"<?php echo $logado; ?>>Carrinho</button>
+                                <button type="submit" class="btn"<?php echo $logado; ?>><i class="fa-solid fa-cart-shopping fa-lg"></i> Carrinho</button>
                             </form>
                         </a>
                     </li>
@@ -102,12 +109,12 @@
                 <li class="nav-item" style="list-style: none;">
                 <form  action="pesquisa_por_moedas.php">
                     <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
-                        <option value="nome">Nome</option>
+                        <option value="nome"> Nome</option>
                         <option value="sigla">Sigla</option>
                     </select>
                     <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
                     <button class="btn btn-outline-success" type="submit">  
-                    <i class="bi bi-search"></i>Pesquisar
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i> Pesquisar
                     </button>
                 </form>
             </li>
@@ -163,18 +170,18 @@
 
                 if ($valor1 > $valor2) {
                     $cor = "green";
-                    $sinal = "↑";
+                    $sinal = " <i class='fa-solid fa-arrow-up fa-lg'></i> ";
                     $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) * -1 . '%';
                     
                 } 
                 elseif ($valor1 < $valor2) {
                     $cor = "red";
-                    $sinal = "↓";
+                    $sinal = " <i class='fa-solid fa-arrow-down fa-lg'></i> ";
                     $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) . '%';
                 }
                 else{
                     $cor = "black";
-                    $sinal = "-";
+                    $sinal = " <i class='fa-solid fa-equals fa-lg'></i> ";
                     $continha_de_porcentagem = '';
                 }
 
@@ -185,10 +192,10 @@
                 echo            " <img src='$imagem' class='card-img-top'>";
                 echo           " <div class='card-body'>";
                 echo               "<h5 class='card-title'> $nome_moeda</h5>";
-                echo               "<p class='card-text' style = 'color : $cor'>$valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>" ;
+                echo               "<p class='card-text' style = 'color : $cor'>R$ $valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>" ;
                 echo                   "<p class='card-text'>$sigla_moeda</p>" ;       
                 echo "<form action='inspecionar_moeda.php'>
-                          <button class='btn btn-outline-success'>Verificar</button>
+                          <button class='btn btn-outline-success'><i class='fa-solid fa-magnifying-glass-chart fa-lg'></i> Verificar</button>
                           <input type='hidden' name='id_moeda' value='$id_moeda'>
                           <input type='hidden' name='ispc_local' value='moedas'>
                       </form>
@@ -216,6 +223,7 @@
     </div>
     </div>
 
+    <script src="https://kit.fontawesome.com/bc42253982.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 </body>

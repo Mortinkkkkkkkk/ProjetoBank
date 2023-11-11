@@ -7,7 +7,7 @@
     WHERE ((id_carrinho = $id_carrihno));";
     $result = mysqli_query($conexao,$sql);
     if ($result) {
-        header('location: carrinho.php');
+        header('location: carrinho.php?animacao_carrinho=1');
         exit();
     }
     else {
