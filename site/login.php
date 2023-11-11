@@ -99,7 +99,7 @@ if (isset($_SESSION['logado'])) {
         <label for="senha_login">Senha</label>
     </div>
     
-        <button class="btn btn-success">Cadastrar</button>
+        <button class="btn btn-success">Entrar</button>
     </div> <br><br>
     </form>
 
