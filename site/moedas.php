@@ -52,7 +52,8 @@
     <!-- Link animador (animate.css) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-    
+    <!-- Script de icones -->
+    <script src="https://kit.fontawesome.com/bc42253982.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -223,7 +224,7 @@
     </div>
     </div>
 
-    <script src="https://kit.fontawesome.com/bc42253982.js" crossorigin="anonymous"></script>
+    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 </body>
