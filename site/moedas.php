@@ -17,19 +17,14 @@
     if (isset($_SESSION["tipo_usuario"])) {
     if ($_SESSION["tipo_usuario"] == 'funcionario') {
         $botao_de_editar ="
-        <form action='alterar_moedas.php'>
-            <input type='hidden' name='id_moeda_edit' value='0'>
-            <input type='hidden' name='edicao' value='desabilitada'>
-            
-            <button type='submit' class='btn btn-outline-success'><i class='fa-regular fa-pen-to-square fa-lg'></i> Alterar</button>
-            <br><br>
-        </form>
+        <a href='alterar_moedas.php?id_moeda_edit=0&edicao=desabilitada' class='btn btn-outline-success'>
+            <i class='fa-regular fa-pen-to-square fa-lg'></i> Alterar
+        </a>
         ";
         $botao_de_cadastrar ="
-        <form action='cadastro_moedas_form.php'>
-            <button type='submit' class='btn btn-outline-success'><i class='fa-solid fa-plus fa-lg'></i> Cadastrar</button>
-            <br><br>
-        </form>
+        <a href='cadastro_moedas_form.php' class='btn btn-outline-success'>
+            <i class='fa-solid fa-plus fa-lg'></i> Cadastrar
+        </a>
         ";
         
 
@@ -137,12 +132,13 @@
 
 <div>
 
+    <?php
 
-<div class='mt-5 container'>
-      <div class='row'>
-<?php
-      
-    echo "$botao_de_editar $botao_de_cadastrar";
+    echo"
+    $botao_de_editar $botao_de_cadastrar
+        <div class='mt-5 container'>
+            <div class='row'>";
+     
   
 # Parte responsável por mostrar apenas moedas em destaque na página moedas{
         $mais_menos = 0;
