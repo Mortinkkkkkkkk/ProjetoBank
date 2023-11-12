@@ -137,40 +137,40 @@
 
                         if ($valor1 > $valor2) {
                             $cor = "green";
-                            $sinal = "↑";
+                            $sinal = " <i class='fa-solid fa-arrow-up fa-lg'></i> ";
                             $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) * -1 . '%';
                             
                         } 
                         elseif ($valor1 < $valor2) {
                             $cor = "red";
-                            $sinal = "↓";
+                            $sinal = " <i class='fa-solid fa-arrow-down fa-lg'></i> ";
                             $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) . '%';
                         }
                         else{
                             $cor = "black";
-                            $sinal = "-";
+                            $sinal = " <i class='fa-solid fa-equals fa-lg'></i> ";
                             $continha_de_porcentagem = '';
                         }
+        
                         
-
+        
                         echo "<div class='col-sm'>";
                         echo "<div class='card mb-3' style='width: 13rem;'>";
                         echo            " <img src='$imagem' class='card-img-top'>";
                         echo           " <div class='card-body'>";
                         echo               "<h5 class='card-title'> $nome_moeda</h5>";
-                        echo               "<p class='card-text' style = 'color : $cor'>$valor_moeda_fixo $sinal $continha_de_porcentagem</p>" ;
+                        echo               "<p class='card-text' style = 'color : $cor'>R$ $valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>" ;
                         echo                   "<p class='card-text'>$sigla_moeda</p>" ;       
                         echo "<form action='inspecionar_moeda.php'>
-                                    <input type='hidden' name='moeda_pesquisada' value='$nome_sigla_moeda_pesquisada'>
-                                    <input type='hidden' name='id_moeda' value='$id_moeda'>
-                                    <input type='hidden' name='opcao_pesquisada' value='$opcao_de_pesquisa'>
-                                    <input type='hidden' name='ispc_local' value='pesquisa'>
-                                    <button class='btn btn-outline-success'>inspecionar</button>
-                                </form>
-                                <br><br>";
+                                  <button class='btn btn-outline-success'><i class='fa-solid fa-magnifying-glass-chart fa-lg'></i> Verificar</button>
+                                  <input type='hidden' name='id_moeda' value='$id_moeda'>
+                                  <input type='hidden' name='ispc_local' value='moedas'>
+                              </form>
+                              <br><br>
+                                      ";
                         echo           "</div>" ;
                         echo           "</div>";
-                        echo           "</div>";        
+                        echo           "</div>";
                     
                 }
             }

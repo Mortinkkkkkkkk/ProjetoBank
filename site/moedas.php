@@ -17,13 +17,16 @@
     if (isset($_SESSION["tipo_usuario"])) {
     if ($_SESSION["tipo_usuario"] == 'funcionario') {
         $botao_de_editar ="
-        <a href='alterar_moedas.php?id_moeda_edit=0&edicao=desabilitada' class='btn btn-outline-success'>
-            <i class='fa-regular fa-pen-to-square fa-lg'></i> Alterar
+        <a href='alterar_moedas.php?id_moeda_edit=0&edicao=desabilitada' 
+            class='btn btn-outline-success icon-link-hover' 
+            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
+                <i class='fa-regular fa-pen-to-square fa-lg bi'></i> Alterar
         </a>
         ";
         $botao_de_cadastrar ="
-        <a href='cadastro_moedas_form.php' class='btn btn-outline-success'>
-            <i class='fa-solid fa-plus fa-lg'></i> Cadastrar
+        <a href='cadastro_moedas_form.php' class='btn btn-outline-success icon-link-hover'
+        style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);'>
+            <i class='fa-solid fa-plus fa-lg bi'></i> Cadastrar
         </a>
         ";
         
@@ -57,47 +60,59 @@
             <a class="navbar-brand" href="index.php"><img
                     src="../img/Firefly logo minimalista para um banco digital de criptomoedas com o tema verde 62636.jpg"
                     alt="imagem" height="50px" width="50px" style="border-radius: 40px"></a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="carteira.php">
-                                <button class="btn" type="submit" <?php echo $logado; ?>><i class="fa-solid fa-wallet fa-lg"></i> Carteira</button>
+                                <button class="btn icon-link-hover" type="submit" <?php echo $logado; ?>
+                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                <i class="fa-solid fa-wallet fa-lg bi"></i> Carteira</button>
                             </form>
-                        </a>
+                        </a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page">
                             <form action="moedas.php">
-                                <button type="submit" class="btn"><i class="fa-solid fa-coins fa-lg"></i> Moedas</button>
+                                <button type="submit" class="btn icon-link-hover"
+                                    style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                    <i class="fa-solid fa-coins fa-lg bi"></i> Moedas</button>
                             </form>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page">
                             <form action="login.php">
-                                <button type="submit" class="btn" <?php echo $login; ?>>Login</button>
+                                <button type="submit" class="btn icon-link-hover" <?php echo $login; ?>
+                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                <i class="fa-solid fa-user-check fa-lg bi"></i> Login</button>
                             </form>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page">
                             <form action="cadastro.php">
-                                <button type="submit" class="btn" <?php echo $login; ?>>Cadastro</button>
-                            </form>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <form action="logout.php">
-                                <button type="submit" class="btn"<?php echo $logado; ?>><i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i> Log-out</button>
+                                <button type="submit" class="btn icon-link-hover" <?php echo $login; ?> 
+                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                <i class="fa-solid fa-user-plus fa-lg bi"></i> Cadastro</button>
                             </form>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="carrinho.php">
-                                <button type="submit" class="btn"<?php echo $logado; ?>><i class="fa-solid fa-cart-shopping fa-lg"></i> Carrinho</button>
+                                <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
+                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                <i class="fa-solid fa-cart-shopping fa-lg bi"></i> Carrinho</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <form action="logout.php">
+                                <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
+                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                <i class="fa-solid fa-arrow-right-from-bracket fa-lg bi"></i> Log-out</button>
                             </form>
                         </a>
                     </li>
@@ -115,7 +130,10 @@
                 </form>
             </li>
                 </ul>
-
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
             </div>
     </nav>
 
