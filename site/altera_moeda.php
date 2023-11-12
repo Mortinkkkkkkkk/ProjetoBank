@@ -1,8 +1,8 @@
 <?php
     require_once 'conexao.php'; 
 
-    $id_moeda = $_GET['id_moeda'];
-    $alteracao = $_GET['alteracao'];
+    $id_moeda = $_POST['id_moeda'];
+    $alteracao = $_POST['alteracao'];
     
 
     if ($alteracao == 'add') {
@@ -18,14 +18,35 @@
         exit();
     }
     elseif ($alteracao == 'editar') {
-        $nome_moeda = $_GET['novo_nome'];
-        $sigla_moeda = $_GET['nova_sigla'];
-        $novo_valor = $_GET['novo_valor'];
+        $pasta = "./img/";
+    
+        #imagem moeda
+        $extensao_imagem_moeda = "." . pathinfo($_FILES['imagem_moeda']['name'], PATHINFO_EXTENSION);
+        
+        $novo_nome_moeda = time() . md5(uniqid()) . rand(1,100);
+        $arquivo_servidor_moeda = $pasta . $novo_nome_moeda . $extensao_imagem_moeda;
+        
+        move_uploaded_file($_FILES['imagem_moeda']['tmp_name'], $arquivo_servidor_moeda);
+        
+        #imagem de fundo moeda
+        
+        $extensao_imagem_fundo_moeda = "." . pathinfo($_FILES['imagem_fundo_moeda']['name'], PATHINFO_EXTENSION);
+        
+        $novo_nome_fundo = time() . md5(uniqid()) . rand(-100,-1);
+        $arquivo_servidor_fundo = $pasta . $novo_nome_fundo . $extensao_imagem_fundo_moeda;
+        
+        move_uploaded_file($_FILES['imagem_fundo_moeda']['tmp_name'], $arquivo_servidor_fundo);
+        # --------------------------------------------------------------------------------------------------------------
+        $nome_moeda = $_POST['novo_nome'];
+        $sigla_moeda = $_POST['nova_sigla'];
+        $novo_valor = $_POST['novo_valor'];
         
         $editando_moeda = "UPDATE tb_moeda SET 
         nome_moeda = '$nome_moeda',
         sigla_moeda = '$sigla_moeda',
-        valor_moeda_fixo = $novo_valor 
+        valor_moeda_fixo = $novo_valor,
+        imagem_moeda = '$arquivo_servidor_moeda',
+        imagem_moeda_fundo	= '$arquivo_servidor_fundo' 
         WHERE id_moeda = $id_moeda";
 
         mysqli_query($conexao,$editando_moeda);

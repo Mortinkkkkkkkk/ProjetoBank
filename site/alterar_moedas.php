@@ -111,9 +111,7 @@
         $conexao_moedas_fora_destaque = mysqli_query($conexao,$moedas_fora_de_destaque) ;
 
         if ($edicao == 'abilitada' and $id_moeda_editada != 0) {
-            echo "
-            <div class='col-sm container-fluid'>
-            <div class='card mb-3' style='width: 13rem;'>";
+            
             
             $moeda_editada = "SELECT * FROM tb_moeda WHERE id_moeda = $id_moeda_editada";
             $resultado = mysqli_query($conexao, $moeda_editada);
@@ -122,10 +120,21 @@
             $nome_moeda = $linha_moeda_editada['nome_moeda'];
             $sigla_moeda = $linha_moeda_editada['sigla_moeda'];
             $valor_moeda_fixo = $linha_moeda_editada['valor_moeda_fixo'];
-                    
-?>
-            <form action="altera_moeda.php">
-                <?php echo $nome_moeda; ?> <br><br>
+            $imagem_moeda = $linha_moeda_editada['imagem_moeda'];
+            $imagem_fundo_moeda = $linha_moeda_editada['imagem_moeda_fundo'];
+            echo "<h2> Editando $nome_moeda:</h2>
+            <div class='p-2'>";
+            
+?>          
+            <form action="altera_moeda.php" enctype='multipart/form-data' method='post'>
+                Imagem da Moeda: <br> <br>
+                <img src="<?php echo $imagem_moeda ?>" alt="" style='max-height: 200px; max-width: 300px;'><br> <br>
+                <input type='file' name='imagem_moeda' value="<?php echo $imagem_moeda ?>"> <br> <br>
+
+                Imagem de Fundo da Moeda: <br> <br>
+                <img src="<?php echo $imagem_fundo_moeda ?>" alt="" style='max-height: 200px; max-width: 300px;'><br> <br>
+                <input type="file" name="imagem_fundo_moeda" value="<?php echo $imagem_fundo_moeda ?>";> <br><br>
+
                 <input type="hidden" value="<?php echo $id_moeda?>" name="id_moeda">
                 <input type="hidden" value="editar" name="alteracao">
                 Nome da moeda: <br>
@@ -134,23 +143,17 @@
                 <input type="text" value="<?php echo $sigla_moeda;?>" name="nova_sigla"> <br><br>
                 Valor Atual da Moeda: <br>
                 <input type="text" value="<?php echo $valor_moeda_fixo;?>" name="novo_valor"> <br><br>
-                <button type='submit' class="btn btn-outline-success">Salvar</button> <br><br>
+                <button type='submit' class="btn btn-outline-success icon-link-hover" style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
+                <i class="fa-solid fa-check fa-lg bi"></i> Salvar</button> <br><br>
             </form> 
             <?php
             $edicao = 'desabilitada';
-            echo "<a 
-            href='altera_moeda.php?id_moeda=$id_moeda&alteracao=dell' 
-            class='btn btn-outline-danger'>Remover de Destaque</a>
-            </div>
-            <a 
-            href='altera_moeda.php?id_moeda=$id_moeda&alteracao=remover' 
-            class='btn btn-outline-danger'>
-            Remover $nome_moeda  </a> <br><br> 
-            </div>";
             
         }
 
-        echo"<strong> Moedas em destaque atualmente </strong> <br> <br> <br>";
+        echo"<h1 class='p-2'> Moedas em destaque atualmente: </h1> <br> <br>";
+        echo "<div class='row row-cols-1 row-cols-md-5 g-4'>
+                 ";
         if (mysqli_num_rows($conexao_moedas_destaque) > 0) {
             
             while ($linha_destaque = mysqli_fetch_array($conexao_moedas_destaque)) {
@@ -158,77 +161,94 @@
                 $nome_moeda = $linha_destaque['nome_moeda'];
                 $sigla_moeda = $linha_destaque['sigla_moeda'];
                 $valor_moeda_fixo = $linha_destaque['valor_moeda_fixo'];
+                $imagem_moeda = $linha_destaque['imagem_moeda'];
+                $imagem_fundo_moeda = $linha_destaque['imagem_moeda_fundo'];
  
                 if ($edicao == 'desabilitada' and $id_moeda != $id_moeda_editada){
                     echo "
                     <div class='col-sm container-fluid'>
                     <div class='card mb-3' style='width: 13rem;'>
-                    $nome_moeda <br> <br> 
-                    $sigla_moeda <br> <br> 
-                    $valor_moeda_fixo <br> <br>
+                    <img src='$imagem_moeda' class='card-img-top' alt=''>
+                    <div class='card-body'>
+                    <h5 class='card-title'>$nome_moeda</h5>
+                    <p class='card-text'>R$ $valor_moeda_fixo </p>
+                    <p class='card-text'>$sigla_moeda</p>
+                    
                     
                     <form action='alterar_moedas.php'>
                         <input type='hidden' name='edicao' value='abilitada'>
                         <input type='hidden' name='id_moeda_edit' value='$id_moeda'>
-                        <button type='submit' class='btn btn-outline-success'>
-                            Editar
+                        <button type='submit' class='btn btn-outline-success icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
+                        <i class='fa-solid fa-pen fa-lg bi'></i> Editar
                         </button>
-                    </form>  <br> <br>
-                    
+                    </form>  <br>
                     <a 
                     href='altera_moeda.php?id_moeda=$id_moeda&alteracao=dell' 
-                    class='btn btn-outline-danger'>Remover de Destaque</a>
-                    </div>
+                    class='btn btn-outline-danger icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
+                    <i class='fa-solid fa-minus fa-lg bi'></i> Remover Destaque</a><br><br>
                     <a 
                     href='altera_moeda.php?id_moeda=$id_moeda&alteracao=remover' 
-                    class='btn btn-outline-danger'>
-                    Remover $nome_moeda  </a> <br><br>
+                    class='btn btn-outline-danger icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);'>
+                    <i class='fa-solid fa-trash fa-lg bi'></i> Remover $nome_moeda  </a> 
+                    </div>
+                    
+                    </div>
+                    
                     </div>
                 ";
                 
                 }
             }
         }
+
     
-echo"<br> <br>";
+echo"</div>
+
+<br>";
         if (mysqli_num_rows($conexao_moedas_fora_destaque) > 0) {
-            echo"<strong> Moedas em fora destaque atualmente </strong> <br> <br>";
-            while ($linha_destaque = mysqli_fetch_array($conexao_moedas_fora_destaque)) {
-                $id_moeda = $linha_destaque['id_moeda'];
-                $nome_moeda = $linha_destaque['nome_moeda'];
-                $sigla_moeda = $linha_destaque['sigla_moeda'];
-                $valor_moeda_fixo = $linha_destaque['valor_moeda_fixo'];
+            echo"<h1 class='p-2'> Moedas em fora destaque atualmente: </h1> <br> <br>";
+            echo "<div class='row row-cols-1 row-cols-md-5 g-4'>";
+            while ($linha_fora_de_destaque = mysqli_fetch_array($conexao_moedas_fora_destaque)) {
+                $id_moeda = $linha_fora_de_destaque['id_moeda'];
+                $nome_moeda = $linha_fora_de_destaque['nome_moeda'];
+                $sigla_moeda = $linha_fora_de_destaque['sigla_moeda'];
+                $valor_moeda_fixo = $linha_fora_de_destaque['valor_moeda_fixo'];
+                $imagem_moeda = $linha_fora_de_destaque['imagem_moeda'];
+                $imagem_fundo_moeda = $linha_fora_de_destaque['imagem_moeda_fundo'];
                 
                 if ($edicao == 'desabilitada' and $id_moeda != $id_moeda_editada){  
                     echo "
                     <div class='col-sm container-fluid'>
                     <div class='card mb-3' style='width: 13rem;'>
-                    $nome_moeda <br> <br> 
-                    $sigla_moeda <br> <br> 
-                    $valor_moeda_fixo <br> <br>
+                    <img src='$imagem_moeda' class='card-img-top' alt=''>
+                    <div class='card-body'>
+                    <h5 class='card-title'>$nome_moeda</h5>
+                    <p class='card-text'>R$ $valor_moeda_fixo </p>
+                    <p class='card-text'>$sigla_moeda</p>
                     
                     <form action='alterar_moedas.php'>
                         <input type='hidden' name='edicao' value='abilitada'>
                         <input type='hidden' name='id_moeda_edit' value='$id_moeda'>
-                        <button type='submit' class='btn btn-outline-success'>
-                            Editar
+                        <button type='submit' class='btn btn-outline-success icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);'>
+                        <i class='fa-solid fa-pen fa-lg bi'></i> Editar
                         </button>
-                    </form>  <br> <br>
-                    
+                    </form>  <br>
                     <a 
                     href='altera_moeda.php?id_moeda=$id_moeda&alteracao=add' 
-                    class='btn btn-outline-success'>Adicionar de Destaque</a>
-                    </div>
+                    class='btn btn-outline-success icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
+                    <i class='fa-solid fa-plus fa-lg bi'></i> Adicionar Destaque</a> <br><br>
                     <a 
                     href='altera_moeda.php?id_moeda=$id_moeda&alteracao=remover' 
-                    class='btn btn-outline-danger'>
-                    Remover $nome_moeda  </a> <br><br>
+                    class='btn btn-outline-danger icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);'>
+                    <i class='fa-solid fa-trash fa-lg bi'></i> Remover $nome_moeda  </a> 
+                    </div>
+                    </div>
                     </div>  
                 "; 
             }                    
         }
     }
-            
+echo "</div>";            
 ?>
         
         

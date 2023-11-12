@@ -95,7 +95,7 @@
 
         <br> <br> 
 
-        <form action="cadastro_moedas.php" enctype="multipart/form-data" method="post">
+        <form action="cadastro_moedas.php" enctype='multipart/form-data' method='post'>
             Nome Moeda: <br>
                 <input type="text" name="nome_moeda" placeholder="..."> <br><br>
             Sigla_moeda: <br>
@@ -106,7 +106,7 @@
             <input type="radio" name="destaque_moeda" value="0"> Moeda Fora de Destaque<br><br>
             
             Imagem da Moeda: <br>
-            <input type="file" name="imagem_moeda"> <br><br>
+            <input type='file' name='imagem_moeda'> <br><br>
 
             Imagem de Fundo da Moeda: <br>
             <input type="file" name="imagem_fundo_moeda"> <br><br>
