@@ -9,7 +9,6 @@
         $login = "";
     }
 
-    require_once 'conexao.php';
     require_once 'altera_valor_moeda.php';
     $botao_de_editar = "<input type='hidden'>";
     $botao_de_cadastrar = "<input type='hidden'>";
@@ -29,7 +28,7 @@
             <i class='fa-solid fa-plus fa-lg bi'></i> Cadastrar
         </a>
         ";
-        
+            
 
     }
     }

@@ -19,7 +19,7 @@
     }
     elseif ($alteracao == 'editar') {
         $alteracao_imagem = $_POST['alteracao_imagem'];
-        if ($alteracao_imagem == '0') {
+        if ($alteracao_imagem == 0) {
             $arquivo_servidor_moeda = $_POST['imagem_moeda'];
             $arquivo_servidor_fundo = $_POST['imagem_fundo_moeda'];
         }
@@ -64,7 +64,6 @@
     elseif ($alteracao == 'remover') {
 
         $removendo_historico_moeda = "DELETE FROM tb_historico_v_moeda WHERE id_moeda = '$id_moeda'";
-        
         mysqli_query($conexao,$removendo_historico_moeda);
         
         $removendo_das_carteiras = "DELETE FROM tb_carteira WHERE id_moeda = '$id_moeda'";

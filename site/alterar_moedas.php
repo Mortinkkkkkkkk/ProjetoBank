@@ -209,18 +209,30 @@
                         <i class='fa-solid fa-pen fa-lg bi'></i> Editar
                         </button>
                     </form>  <br>
-                    <a 
-                    href='altera_moeda.php?id_moeda=$id_moeda&alteracao=dell' 
-                    class='btn btn-outline-danger icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
-                    <i class='fa-solid fa-minus fa-lg bi'></i> Remover Destaque</a><br><br>
-                    <a 
-                    href='altera_moeda.php?id_moeda=$id_moeda&alteracao=remover' 
-                    class='btn btn-outline-danger icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);'>
-                    <i class='fa-solid fa-trash fa-lg bi'></i> Remover $nome_moeda  </a> 
+
+                    <form action='altera_moeda.php' enctype='multipart/form-data' method='post'>
+                        <input type='hidden' name='id_moeda' value='$id_moeda'>
+                        <input type='hidden' name='alteracao' value='dell'>
+                        
+                        <button class='btn btn-outline-danger icon-link-hover' 
+                            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' type='submit'>
+                            <i class='fa-solid fa-minus fa-lg bi'></i> Remover Destaque
+                        </button><br><br>
+
+                    </form>
+
+                    <form action='altera_moeda.php' enctype='multipart/form-data' method='post'>
+                        <input type='hidden' name='id_moeda' value='$id_moeda'>
+                        <input type='hidden' name='alteracao' value='remover'>
+
+                        <button class='btn btn-outline-danger icon-link-hover' 
+                            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' type='submit'>
+                            <i class='fa-solid fa-minus fa-lg bi'></i> Remover $nome_moeda 
+                        </button><br><br>
+
+                    </form>
                     </div>
-                    
                     </div>
-                    
                     </div>
                 ";
                 
@@ -254,20 +266,34 @@ echo"</div>
                     <p class='card-text'>$sigla_moeda</p>
                     
                     <form action='alterar_moedas.php'>
+                        <input type='hidden' name='alteracao_imagem' value='0'>
                         <input type='hidden' name='edicao' value='abilitada'>
                         <input type='hidden' name='id_moeda_edit' value='$id_moeda'>
                         <button type='submit' class='btn btn-outline-success icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);'>
                         <i class='fa-solid fa-pen fa-lg bi'></i> Editar
                         </button>
                     </form>  <br>
-                    <a 
-                    href='altera_moeda.php?id_moeda=$id_moeda&alteracao=add' 
-                    class='btn btn-outline-success icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
-                    <i class='fa-solid fa-plus fa-lg bi'></i> Adicionar Destaque</a> <br><br>
-                    <a 
-                    href='altera_moeda.php?id_moeda=$id_moeda&alteracao=remover' 
-                    class='btn btn-outline-danger icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);'>
-                    <i class='fa-solid fa-trash fa-lg bi'></i> Remover $nome_moeda  </a> 
+                    
+                    <form action='altera_moeda.php' enctype='multipart/form-data' method='post'>
+                        <input type='hidden' name='id_moeda' value='$id_moeda'>
+                        <input type='hidden' name='alteracao' value='add'>
+                        
+                        <button class='btn btn-outline-success icon-link-hover' 
+                            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
+                            <i class='fa-solid fa-plus fa-lg bi'></i> Adicionar Destaque
+                        </button><br><br>
+
+                    </form>
+                    <form action='altera_moeda.php' enctype='multipart/form-data' method='post'>
+                        <input type='hidden' name='id_moeda' value='$id_moeda'>
+                        <input type='hidden' name='alteracao' value='remover'>
+
+                        <button class='btn btn-outline-danger icon-link-hover' 
+                            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' type='submit'>
+                            <i class='fa-solid fa-minus fa-lg bi'></i> Remover $nome_moeda 
+                        </button><br><br>
+
+                    </form>
                     </div>
                     </div>
                     </div>  
@@ -277,7 +303,6 @@ echo"</div>
     }
 echo "</div>";            
 ?>
-        
         
 </body>
 </html>
