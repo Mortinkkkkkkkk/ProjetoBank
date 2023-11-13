@@ -11,27 +11,37 @@ DROP DATABASE IF EXISTS `bd_bank`;
 CREATE DATABASE `bd_bank` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `bd_bank`;
 
+DROP TABLE IF EXISTS `tb_carrinho`;
+CREATE TABLE `tb_carrinho` (
+  `id_carrinho` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `id_moeda` int(11) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `valor_total` float NOT NULL,
+  PRIMARY KEY (`id_carrinho`),
+  KEY `id_usuario` (`id_usuario`),
+  KEY `id_moeda` (`id_moeda`),
+  CONSTRAINT `tb_carrinho_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuario` (`id_usuario`),
+  CONSTRAINT `tb_carrinho_ibfk_2` FOREIGN KEY (`id_moeda`) REFERENCES `tb_moeda` (`id_moeda`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 DROP TABLE IF EXISTS `tb_carteira`;
 CREATE TABLE `tb_carteira` (
   `id_carteira` int(11) NOT NULL AUTO_INCREMENT,
-  `tb_usuario_id_usuario` int(11) NOT NULL,
-  `tb_moeda_id_moeda` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_moeda` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
   PRIMARY KEY (`id_carteira`),
-  KEY `tb_moeda_id_moeda` (`tb_moeda_id_moeda`),
-  KEY `tb_usuario_id_usuario` (`tb_usuario_id_usuario`),
-  CONSTRAINT `tb_carteira_ibfk_2` FOREIGN KEY (`tb_moeda_id_moeda`) REFERENCES `tb_moeda` (`id_moeda`),
-  CONSTRAINT `tb_carteira_ibfk_3` FOREIGN KEY (`tb_usuario_id_usuario`) REFERENCES `tb_usuario` (`id_usuario`)
+  KEY `id_usuario` (`id_usuario`),
+  KEY `id_moeda` (`id_moeda`),
+  CONSTRAINT `tb_carteira_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuario` (`id_usuario`),
+  CONSTRAINT `tb_carteira_ibfk_2` FOREIGN KEY (`id_moeda`) REFERENCES `tb_moeda` (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `tb_carteira` (`id_carteira`, `tb_usuario_id_usuario`, `tb_moeda_id_moeda`, `quantidade`) VALUES
-(1,	1,	1,	10),
-(2,	1,	2,	47),
-(3,	1,	3,	9),
-(4,	2,	3,	4),
-(5,	1,	6,	0),
-(6,	1,	8,	3)
-ON DUPLICATE KEY UPDATE `id_carteira` = VALUES(`id_carteira`), `tb_usuario_id_usuario` = VALUES(`tb_usuario_id_usuario`), `tb_moeda_id_moeda` = VALUES(`tb_moeda_id_moeda`), `quantidade` = VALUES(`quantidade`);
+INSERT INTO `tb_carteira` (`id_carteira`, `id_usuario`, `id_moeda`, `quantidade`) VALUES
+(1,	1,	6,	4)
+ON DUPLICATE KEY UPDATE `id_carteira` = VALUES(`id_carteira`), `id_usuario` = VALUES(`id_usuario`), `id_moeda` = VALUES(`id_moeda`), `quantidade` = VALUES(`quantidade`);
 
 DROP TABLE IF EXISTS `tb_historico_v_moeda`;
 CREATE TABLE `tb_historico_v_moeda` (
@@ -52,21 +62,21 @@ CREATE TABLE `tb_moeda` (
   `nome_moeda` varchar(100) NOT NULL,
   `sigla_moeda` varchar(100) NOT NULL,
   `valor_moeda_fixo` float NOT NULL,
-  `imagem_moeda` varchar(200) NOT NULL,
-  `imagem_moeda_fundo` varchar(200) NOT NULL,
+  `imagem_moeda` varchar(200) NOT NULL DEFAULT './img/imagem_nula.png',
+  `imagem_moeda_fundo` varchar(200) NOT NULL DEFAULT './img/imagem_nula.png',
   `moeda_em_destaque` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_moeda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`, `imagem_moeda`, `imagem_moeda_fundo`, `moeda_em_destaque`) VALUES
-(1,	'Bitcoin',	'BTC',	174856,	'',	'',	1),
-(2,	'SetinhaCoin',	'STC',	116.216,	'',	'',	0),
-(3,	'MonaCoin',	'MNC',	123.731,	'',	'',	1),
-(4,	'Ethereum',	'ETH',	8449.71,	'',	'',	1),
-(5,	'Ripple',	'XRP',	2.48387,	'',	'',	1),
-(6,	'PobreCoin',	'PBC',	0,	'',	'',	0),
-(7,	'LiteCoin',	'LTC',	326.615,	'',	'',	0),
-(8,	'Santos FC Fan Token',	'SANTOS',	16.7593,	'',	'',	0)
+(1,	'Bitcoin',	'BTC',	149790,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	1),
+(2,	'SetinhaCoin',	'STC',	100.628,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	1),
+(3,	'MonaCoin',	'MNC',	121.176,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(4,	'Ethereum',	'ETH',	7827.1,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(5,	'Ripple',	'XRP',	2.59556,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(6,	'PobreCoin',	'PBC',	0,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(7,	'LiteCoin',	'LTC',	354.999,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
+(8,	'Santos FC Fan Token',	'SANTOS',	13.5467,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0)
 ON DUPLICATE KEY UPDATE `id_moeda` = VALUES(`id_moeda`), `nome_moeda` = VALUES(`nome_moeda`), `sigla_moeda` = VALUES(`sigla_moeda`), `valor_moeda_fixo` = VALUES(`valor_moeda_fixo`), `imagem_moeda` = VALUES(`imagem_moeda`), `imagem_moeda_fundo` = VALUES(`imagem_moeda_fundo`), `moeda_em_destaque` = VALUES(`moeda_em_destaque`);
 
 DROP TABLE IF EXISTS `tb_usuario`;
@@ -87,4 +97,4 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_us
 (4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'')
 ON DUPLICATE KEY UPDATE `id_usuario` = VALUES(`id_usuario`), `nome_usuario` = VALUES(`nome_usuario`), `senha_usuario` = VALUES(`senha_usuario`), `cpf_usuario` = VALUES(`cpf_usuario`), `email_usuario` = VALUES(`email_usuario`), `tipo_usuario` = VALUES(`tipo_usuario`);
 
--- 2023-11-04 16:07:16
+-- 2023-11-10 17:24:05

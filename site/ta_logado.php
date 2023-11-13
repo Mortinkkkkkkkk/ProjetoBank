@@ -1,7 +1,11 @@
 <?php
     session_start();
     if (!isset($_SESSION["logado"])){
-        header('location: login.html');
+        header('location: login.php');
         exit();
+    }else {
+        $login = "hidden";
+        $logado = "";
+
     }
 ?>
