@@ -26,17 +26,21 @@ if (isset($_SESSION['logado'])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><ion-icon name="wallet-outline" size ="large" style="color: lightgreen;"></ion-icon></a></a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <form action="carteira.php">
-                                <button class="btn text-white" type="submit">Carteira</button>
 
-                            </form>
+
+            
+            <nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 100px; margin-left: 100px">
+              
+            <div class="container-fluid">
+                    <a class="navbar-brand" href="index.php"><ion-icon name="wallet-outline" size ="large" style="color: lightgreen;"></ion-icon></a></a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    <form action="carteira.php">
+                                        <button class="btn text-white" type="submit">Carteira</button>
+                                        
+                                    </form>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -50,11 +54,11 @@ if (isset($_SESSION['logado'])) {
                         <a class="nav-link active" aria-current="page">
                             <form action="moedas.php">
                                 <button type="submit" class="btn text-white">Moedas</button>
-
+                                
                             </form>
                         </a>
                     </li>
-              
+                    
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page">
                             <form action="cadastro.html">
@@ -62,23 +66,31 @@ if (isset($_SESSION['logado'])) {
 
                             </form>
                         </a>
-                
-              
-            </ul>
-            </div>
+                        
+                        
+                    </ul>
+
                
-
+                </div>
+              
+                
+                
             </div>
-    </nav>
-
-
+        </nav>
+        
+        
     </li>
+    
+</div>
+</nav>
+</div>
 
-    </div>
-    </nav>
-    <div class='mt-5 container'>
-        <div class='row'>
-            <div class="col-sm" style="border-radius: 32px 64px;  background-color: #60f043; height: 50px; margin-left: 200px; margin-right: 200px">
+
+</div>
+</div>
+<div class='mt-5 container'>
+    <div class='row'>
+        <div class="col-sm" style="border-radius: 32px 64px;  background-color: #60f043; height: 50px; margin-left: 200px; margin-right: 200px">
             <div style="background-color:#0b6e20; border-radius: 32px 64px;">
                 <center>
                     <div>
