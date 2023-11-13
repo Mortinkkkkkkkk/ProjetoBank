@@ -124,17 +124,43 @@
             $imagem_fundo_moeda = $linha_moeda_editada['imagem_moeda_fundo'];
             echo "<h2> Editando $nome_moeda:</h2>
             <div class='p-2'>";
-            
+        
 ?>          
             <form action="altera_moeda.php" enctype='multipart/form-data' method='post'>
-                Imagem da Moeda: <br> <br>
-                <img src="<?php echo $imagem_moeda ?>" alt="" style='max-height: 200px; max-width: 300px;'><br> <br>
-                <input type='file' name='imagem_moeda' value="<?php echo $imagem_moeda ?>"> <br> <br>
+                <?php
+                $alteracao_imagem = $_GET['alteracao_imagem'];
+                    if ($alteracao_imagem == 1) {
+                        echo "
+                        <input type='hidden' name='alteracao_imagem' value='1'>
 
-                Imagem de Fundo da Moeda: <br> <br>
-                <img src="<?php echo $imagem_fundo_moeda ?>" alt="" style='max-height: 200px; max-width: 300px;'><br> <br>
-                <input type="file" name="imagem_fundo_moeda" value="<?php echo $imagem_fundo_moeda ?>";> <br><br>
+                            Imagem da Moeda: <br> <br>
+                        <img src='$imagem_moeda ' alt='' style='max-height: 200px; max-width: 300px;'><br> <br>
+                        <input type='file' name='imagem_moeda' value='$imagem_moeda '> <br> <br>
+        
+                        Imagem de Fundo da Moeda: <br> <br>
+                        <img src='$imagem_fundo_moeda ' alt='' style='max-height: 200px; max-width: 300px;'><br> <br>
+                        <input type='file' name='imagem_fundo_moeda' value='$imagem_fundo_moeda ';> <br><br>
+                        ";
+                        
+                    }
+                    else {
+                        echo "
+                        <input type='hidden' name='alteracao_imagem' value='0'>
+                        <input type='hidden' name='imagem_moeda' value='$imagem_moeda'>
+                        <input type='hidden' name='imagem_fundo_moeda' value='$imagem_fundo_moeda'>
 
+                        Imagem da Moeda: <br> <br>
+                            <img src='$imagem_moeda' alt='' style='max-height: 200px; max-width: 300px;'><br> <br>
+                        
+                        Imagem de Fundo da Moeda: <br> <br>
+                            <img src='$imagem_fundo_moeda?>' alt='' style='max-height: 200px; max-width: 300px;'><br><br>
+
+                        <a href='alterar_moedas.php?alteracao_imagem=1&id_moeda_edit=$id_moeda&edicao=abilitada' class='btn btn-outline-primary'>Alterar Imagems</a> <br><br>";
+                    }
+                
+                ?>
+                
+                
                 <input type="hidden" value="<?php echo $id_moeda?>" name="id_moeda">
                 <input type="hidden" value="editar" name="alteracao">
                 Nome da moeda: <br>
@@ -147,8 +173,8 @@
                 <i class="fa-solid fa-check fa-lg bi"></i> Salvar</button> <br><br>
             </form> 
             <?php
+        
             $edicao = 'desabilitada';
-            
         }
 
         echo"<h1 class='p-2'> Moedas em destaque atualmente: </h1> <br> <br>";
@@ -178,6 +204,7 @@
                     <form action='alterar_moedas.php'>
                         <input type='hidden' name='edicao' value='abilitada'>
                         <input type='hidden' name='id_moeda_edit' value='$id_moeda'>
+                        <input type='hidden' name='alteracao_imagem' value='0'>
                         <button type='submit' class='btn btn-outline-success icon-link-hover' style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
                         <i class='fa-solid fa-pen fa-lg bi'></i> Editar
                         </button>
