@@ -115,7 +115,7 @@
                         
 
                         echo "<div class='col-sm'>";
-                        echo "<div class='card mb-3' style='width: 13rem;'>";
+                        echo "<div class='card mb-3' style='width: 13rem;border-color: green'>";
                         echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
                         echo           " <div class='card-body'>";
                         echo               "<h5 class='card-title'> $nome_moeda</h5>";
@@ -166,7 +166,7 @@
                         
                         
                         echo "<div class='col-sm'>";
-                        echo "<div class='card mb-3' style='width: 13rem;'>";
+                        echo "<div class='card mb-3' style='width: 13rem;border-color: green'>";
                         echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
                         echo           " <div class='card-body'>";
                         echo               "<h5 class='card-title'> $nome_moeda</h5>";
