@@ -1,6 +1,6 @@
 <?php
    require_once 'conexao.php';
-   $vetor_de_porcentagens_menor_que_dois_porcento = [0.01, 
+   $vetor_de_porcentagens_menor_que_dois_porcento = [ 0.0010, 0.0020, 0.0030, 0.0040, 0.0050, 0.0060, 0.0070, 0.0080, 0.0090, 0.01,  
                                                      0.011, 0.0011, 0.0021 , 0.0031, 0.0041, 0.0051, 0.0061, 0.0071, 0.0081, 0.0091,
                                                      0.012, 0.0012, 0.0022 , 0.0032, 0.0042, 0.0052, 0.0062, 0.0072, 0.0082, 0.0092,
                                                      0.013, 0.0013, 0.0023 , 0.0033, 0.0043, 0.0053, 0.0063, 0.0073, 0.0083, 0.0093,
@@ -35,7 +35,7 @@
                    
                    $mais_menos = rand(-1,1);
                    
-                   $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,82)];
+                   $porcentagem_aleatoria = $vetor_de_porcentagens_menor_que_dois_porcento[rand(0,100)];
                    
                    
                    $calculo_valor_atual_moeda = $valor_moeda_fixo + $mais_menos * ($valor_moeda_fixo * $porcentagem_aleatoria) ;
