@@ -69,14 +69,14 @@ CREATE TABLE `tb_moeda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `tb_moeda` (`id_moeda`, `nome_moeda`, `sigla_moeda`, `valor_moeda_fixo`, `imagem_moeda`, `imagem_moeda_fundo`, `moeda_em_destaque`) VALUES
-(1,	'Bitcoin',	'BTC',	149790,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	1),
-(2,	'SetinhaCoin',	'STC',	100.628,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	1),
-(3,	'MonaCoin',	'MNC',	121.176,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
-(4,	'Ethereum',	'ETH',	7827.1,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
-(5,	'Ripple',	'XRP',	2.59556,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
-(6,	'PobreCoin',	'PBC',	0,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
-(7,	'LiteCoin',	'LTC',	354.999,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0),
-(8,	'Santos FC Fan Token',	'SANTOS',	13.5467,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0)
+(1,	'Bitcoin',	'BTC',	151843,	'./img/17000812739a3fbcac9470b69971dcb226fa97ee7385.jpg',	'./img/1700081273dd01ba1451d924fc8319978c2b39e335-44.webp',	1),
+(2,	'SetinhaCoin',	'STC',	101.433,	'./img/17000812559fdc0c466055d3e2fda956d9c9e730b161.png',	'./img/17000812557dae60e14be2f1d3a1a3c36be15bcee3-86.png',	1),
+(3,	'MonaCoin',	'MNC',	121.583,	'./img/17000812873fd457408a671c757fd170f40718589b21.png',	'./img/17000812870e6c8e9e565e31a807dde896656e71f0-20.jpg',	1),
+(4,	'Ethereum',	'ETH',	7769.96,	'./img/1700081397f2d723c3a247a03b1a3cb31a179ff88881.jpg',	'./img/1700081397ec0c32a429b4662e58c5119c8eadfd5f-94.jpeg',	0),
+(5,	'Ripple',	'XRP',	2.63778,	'./img/17000815484c221c60a8b7149da85eedcb8497489574.jpg',	'./img/17000815482b2ea7e9a2b519371bdd573ba8679f50-31.jpg',	1),
+(6,	'PobreCoin',	'PBC',	0,	'./img/1700081443e3237c2541a50d34b2a62c4efc2d4f1f51.png',	'./img/17000814433c291999452fd62d40b1ac3eaca337c1-24.png',	0),
+(7,	'LiteCoin',	'LTC',	345.258,	'./img/1700081318cd78d04da0254f364f17d4633b66d592100.png',	'./img/170008131857eec54573746e18b9f697d995b08047-97.jpeg',	0),
+(8,	'Santos FC Fan Token',	'SANTOS',	13.5877,	'./img/imagem_nula.png',	'./img/imagem_nula.png',	0)
 ON DUPLICATE KEY UPDATE `id_moeda` = VALUES(`id_moeda`), `nome_moeda` = VALUES(`nome_moeda`), `sigla_moeda` = VALUES(`sigla_moeda`), `valor_moeda_fixo` = VALUES(`valor_moeda_fixo`), `imagem_moeda` = VALUES(`imagem_moeda`), `imagem_moeda_fundo` = VALUES(`imagem_moeda_fundo`), `moeda_em_destaque` = VALUES(`moeda_em_destaque`);
 
 DROP TABLE IF EXISTS `tb_usuario`;
@@ -97,4 +97,4 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `cpf_us
 (4,	'adfha',	'we3rol',	'865465463',	'asjfhdk@gmail.com',	'')
 ON DUPLICATE KEY UPDATE `id_usuario` = VALUES(`id_usuario`), `nome_usuario` = VALUES(`nome_usuario`), `senha_usuario` = VALUES(`senha_usuario`), `cpf_usuario` = VALUES(`cpf_usuario`), `email_usuario` = VALUES(`email_usuario`), `tipo_usuario` = VALUES(`tipo_usuario`);
 
--- 2023-11-10 17:24:05
+-- 2023-11-15 20:53:30
