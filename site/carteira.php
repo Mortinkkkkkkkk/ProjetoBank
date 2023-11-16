@@ -88,7 +88,23 @@
                   </div>
                   </div>
     </nav>
-    
+    <div class='mt-5 container'>
+    <div class='row'>
+        <div class="col-sm" style="border-radius: 32px 64px;  background-color: #60f043; height: 50px; margin-left: 200px; margin-right: 200px">
+            <div style="background-color:#0b6e20; border-radius: 32px 64px;">
+                <center>
+                    <div>
+                        <h1 class="text-white"> Carteira</h1>
+                    </div>
+                </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <BR><BR></BR></BR>
+
+    <div class='mt-5 container'>
+    <div class='row'>
     <?php
         $sql =  "SELECT * FROM tb_usuario WHERE id_usuario = $id_usuario";
 
@@ -98,10 +114,22 @@
             $nome_usuario = $linha['nome_usuario'];
             $email_usuario = $linha['email_usuario'];
             $cpf_usuario = $linha['cpf_usuario'];
-            echo $nome_usuario . "<br>";
-            echo $email_usuario . "<br>";
-            echo $cpf_usuario . "<br><br>";
 
+            echo "<div class='col-sm'>";
+            echo      "<div class='card' style='width: 18rem;'>";
+            echo     "<div class='card-header'>";
+            echo         $nome_usuario;
+            echo     "</div>";
+            echo     "<ul class='list-group list-group-flush'>";
+            echo         "<li class='list-group-item'>$email_usuario</li>";
+            echo         "<li class='list-group-item'>$cpf_usuario</li>";
+            echo     "</ul>";
+            echo     "</div>";
+            echo     "</div>";
+
+            echo "<br>";
+            echo "<br>";
+            
         }
         }
           $sql = "SELECT id_moeda, quantidade FROM tb_carteira WHERE id_usuario = $id_usuario AND quantidade > 0";
@@ -114,14 +142,23 @@
                   $arraymoeda = mysqli_fetch_array($resultmoeda);
                   $moeda = $arraymoeda["nome_moeda"];
                   $valor = $arraymoeda["valor_moeda_fixo"];
-                  echo $moeda . "<br>";
-                  echo $valor . "<br>";
-                  echo $row["quantidade"] . "<br>";
-                  echo "<form action='venda.php' method='post'>
-                            <input type='hidden' name='id_moeda' value='$id_moeda'>
-                            <input type='number' name='quantidade' value='1' style='width: 50px;'>
-                            <button type='submit'>Vender</button>
-                            </form>";
+
+                  echo "<div class='col-sm'>";
+                  echo "<div class='card' style='width: 18rem;'>";
+                echo   "<div class='card-header'>";
+                echo     $moeda;
+                echo   "</div>";
+                echo   "<ul class='list-group list-group-flush'>";
+                echo     "<li class='list-group-item'>$valor</li>";
+                echo $row["quantidade"] . "<br>";
+                echo "<form action='venda.php' method='post'>
+                          <input type='hidden' name='id_moeda' value='$id_moeda'>
+                          <input type='number' name='quantidade' value='1' style='width: 50px;'>
+                          <button type='submit'>Vender</button>
+                          </form>";
+                          echo   "</ul>";
+                          echo "</div>";
+                          echo "</div>";
                         }
                     }
                     

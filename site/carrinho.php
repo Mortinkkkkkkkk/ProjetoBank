@@ -87,6 +87,9 @@
                   </div>
     </nav>
     
+    <div class='mt-5 container'>
+      <div class='row'>
+    
 
     <?php
         $id_usuario = $_SESSION['id_usuario'];
@@ -107,26 +110,57 @@
                 $quantidade = $linha['quantidade'];
                 $valortotal = $linha['valor_total'];
                 $br = "<br>";
-                echo $nomemoeda . $br;
-                echo $siglamoeda . $br;
-                echo $quantidade . $br;
-                echo $valortotal . $br;
+             
                 $compratotal = $compratotal + $valortotal;
-                echo $excluir . $br;
-            }
-        echo "Valor total à pagar: " . $compratotal;
-        $efetuar = " <button type='submit'>Efetuar compra</button>";
-    }
-    else {
-        echo "carrinho vazio";
-        $efetuar = "";
-        }
+
+            
+                echo "<div class='col-sm'>";
+                  echo "<div class='card' style='width: 18rem;'>";
+                echo   "<div class='card-header'>";
+                echo     $nomemoeda;
+                echo   "</div>";
+                echo   "<ul class='list-group list-group-flush'>";
+                echo     "<li class='list-group-item'>$siglamoeda</li>";
+                echo     "<li class='list-group-item'> $quantidade</li>";
+                echo     "<li class='list-group-item'> $compratotal</li>";
+                echo     "<li class='list-group-item'>$excluir</li>";
+                          echo   "</ul>";
+                          echo "</div>";
+                          echo "</div>";
+                        }
             
             
             ?>
+  
+  <div class='mt-5 container'>
+      <div class='row'>          
+<div class="col-sm">
+
 <form action="compra_de_moeda.php">
-    <?php echo $efetuar; ?>
+    </div>
+    
+    <div class="col-sm">
+        
+    <?php echo "<h3>Valor total à pagar: " . $compratotal."</h3>";
+                $efetuar = " <button type='submit' class='btn btn-success'>Efetuar compra</button>"; 
+           }else {
+                    echo "<br>";
+                    echo "<br>";
+                    echo "<h3>Carrinho vazio</h3>";
+                    $efetuar = "";
+                    }
+            
+              echo $efetuar;
+              
+              ?>
+
+              </div>
 </form>
+</div>
+</div>
+</div>
+</div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

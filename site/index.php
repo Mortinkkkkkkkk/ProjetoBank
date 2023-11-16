@@ -252,7 +252,7 @@ if (isset($_SESSION['logado'])) {
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-  <a href="adsa" style="height: ;"></a>
+ 
 </div>
     
 <script script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" > </script> 
