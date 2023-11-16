@@ -103,7 +103,7 @@
                 $idmoeda = $linha['id_moeda'];
                 $sqlmoeda = "SELECT nome_moeda, sigla_moeda FROM tb_moeda WHERE id_moeda = $idmoeda";
                 $resultmoeda = mysqli_query($conexao,$sqlmoeda);
-                $excluir = "<form action='remover_carrinho.php' method='post'><input type='hidden' name='id_carrinho' value='$idcarrinho'><button type='submit'>Remover</button></form>";
+                $excluir = "<form action='remover_carrinho.php' method='post'><input  type='hidden' name='id_carrinho' value='$idcarrinho'><button class='btn btn-success' type='submit'>Remover</button></form>";
                 $row = mysqli_fetch_array($resultmoeda);
                 $nomemoeda = $row['nome_moeda'];
                 $siglamoeda = $row['sigla_moeda'];
