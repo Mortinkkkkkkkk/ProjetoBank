@@ -104,11 +104,7 @@ if (isset($_SESSION['logado'])) {
 
 </div>
 </nav>
-    
-</li>
 
-</div>
-</nav>
     <div class="container mt-5">
         <h1>Login no Banco</h1> <br><br> <br>
     
