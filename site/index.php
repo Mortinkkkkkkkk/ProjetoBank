@@ -227,7 +227,7 @@ if (isset($_SESSION['logado'])) {
                 
                 echo "<div class='carousel-item '>
                 <img src='$imagem_fundo' style='width: $width; height: $height ;  'class='d-block w-100' alt='deu certo naun'>
-                <div class='carousel-caption d-none d-md-block'>
+                <div class='carousel-caption d-none d-md-block'style='backdrop-filter: blur(20px); border-radius: 100px;'>
                   <h5>$nome_moeda</h5>
                   <p style = 'color : $cor'>R$ $valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>
                   <p>$sigla_moeda</p>
@@ -252,7 +252,6 @@ if (isset($_SESSION['logado'])) {
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-  <a href="adsa" style="height: ;"></a>
 </div>
     
 <script script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" > </script> 
