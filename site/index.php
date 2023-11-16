@@ -34,17 +34,19 @@ if (isset($_SESSION['logado'])) {
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><img
-                    src="../img/Firefly logo minimalista para um banco digital de criptomoedas com o tema verde 62636.jpg"
-                    alt="imagem" height="50px" width="50px" style="border-radius: 40px"></a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <form action="carteira.php">
-                                <button class="btn icon-link-hover" type="submit" <?php echo $logado; ?>
+
+
+            
+        <nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 100px; margin-left: 100px">
+              
+            <div class="container-fluid">
+                    <a class="navbar-brand" href="index.php"><ion-icon name="wallet-outline" size ="large" style="color: lightgreen;"></ion-icon></a></a>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    <form action="carteira.php">
+                                        <button class="btn text-white icon-link-hover" type="submit" <?php echo $logado; ?>
                                 style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                 <i class="fa-solid fa-wallet fa-lg bi"></i> Carteira</button>
                             </form>
@@ -55,8 +57,8 @@ if (isset($_SESSION['logado'])) {
                             <form action="moedas.php">
                                 <button type="submit" class="btn icon-link-hover"
                                     style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                                    <i class="fa-solid fa-coins fa-lg bi"></i> Moedas</button>
-                            </form>
+                                    <i class="fa-solid fa-coins fa-lg bi"></i> Moedas</button>                                        
+                                    </form>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -95,15 +97,61 @@ if (isset($_SESSION['logado'])) {
                             </form>
                         </a>
                     </li>
+                    </ul>
                 </div>
-                </ul>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                </div>
+              
+                
+                
             </div>
     </nav>
 
+    <div class='mt-5 container'>
+    <div class='row'>
+        <div class="col-sm" style="border-radius: 32px 64px;  background-color: #60f043; height: 50px; margin-left: 200px; margin-right: 200px">
+            <div style="background-color:#0b6e20; border-radius: 32px 64px;">
+                <center>
+                    <div>
+                        <h1 class="text-white"> Bem-vindo ao Futuro Financeiro!</h1>
+                    </div>
+                </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='mt-5 container'>
+        <div class='row'>
+            <div class="col-sm"style="border-radius: 32px 64px;  background-color: #0b6e20; margin-left: 20px; margin-right: 20px">
+            <div style="border-radius: 32px 64px;  background-color: #60f043; margin-left: 20px; margin-right: 20px; margin-top: 20px">
+                <div class="fw-light fs-4 text-center" style="margin-left: 20px; margin-right: 20px ; margin-bottom: 20px">Em nosso banco digital de criptomoedas, embarque em uma jornada além das fronteiras convencionais da moeda. Aqui, a inovação é a nossa moeda corrente, e a liberdade financeira é o nosso destino.</div>
+            </div>
+            </div>
+            <div class="col-sm"style="border-radius: 32px 64px;  background-color:#0b6e20; margin-left: 20px; margin-right: 20px">
+            <div  style="border-radius: 32px 64px;  background-color: #60f043; margin-left: 10px; margin-right: 10px; margin-top: 20px">
+                <div class="fw-light fs-4 text-center" style="margin-left: 20px; margin-right: 20px; margin-bottom: 20px ">Imagine um mundo onde o seu poder de transacionar está completamente nas suas mãos. Com um toque, você acessa um universo de possibilidades financeiras sem limites geográficos, sem intermediários, sem fronteiras.</div>
+            </div>
+            </div>
+            <div class="col-sm" style="border-radius: 32px 64px;  background-color:#0b6e20; margin-left: 20px; margin-right: 20px">
+            <div  style="border-radius: 32px 64px;  background-color: #60f043; margin-left: 10px; margin-right: 10px; margin-top: 20px; margin-bottom: 0px ">
+                <div class="fw-light fs-4 text-center" style="margin-left: 20px; margin-right: 20px ; margin-bottom: 20px"> Utilizamos tecnologia de ponta, garantindo a proteção dos seus ativos, proporcionando tranquilidade para explorar as infinitas oportunidades que as criptomoedas oferecem.
+
+        Aqui, a revolução financeira é uma realidade, e você é parte dela. </div>
+            </div>
+                </div>
+
+    <div class='mt-5 container'>
+        <div class='row'>
+        <div class="col-sm" style="border-radius: 32px 64px;  background-color: #60f043; height: 50px; margin-left: 200px; margin-right: 200px">
+            <div style="background-color:#0b6e20; border-radius: 32px 64px;">
+                <center>
+                    <div>
+                        <h1 class="text-white">Moedas em Destaque</h1>
+                    </div>
+                </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br> <br> <br><br><br>
 
     <div id="carousel" class="carousel slide">
         <div class="carousel-indicators">
@@ -114,12 +162,12 @@ if (isset($_SESSION['logado'])) {
         $resultado = mysqli_query($conexao,$sql);
         $slide_data_bs = 0;
         $num_slide = 1;
-        while ($var_inutiu = mysqli_fetch_row($resultado)) {
+        while ($var_inutiu = mysqli_fetch_array($resultado)) {
             $slide_data_bs += 1;
             $num_slide += 1;
             echo "<button type='button' data-bs-target='#carousel' 
             data-bs-slide-to='$slide_data_bs' 
-            aria-label='Slide $num_slide'></button>
+            aria-label='Slide $num_slide' ></button>
             ";
         }
     ?>
@@ -131,8 +179,10 @@ if (isset($_SESSION['logado'])) {
       <div class="carousel-caption d-none d-md-block">
         <h5>Moedas em Destaque</h5>
         <p></p>
-      </div>
     </div>
+</div>
+
+
     
     <?php
         $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = 1";
@@ -172,7 +222,7 @@ if (isset($_SESSION['logado'])) {
                     $continha_de_porcentagem = '';
                 }
                 
-                echo "<div class='carousel-item'>
+                echo "<div class='carousel-item '>
                 <img src='$imagem_fundo' class='d-block w-100' alt='deu certo naun'>
                 <div class='carousel-caption d-none d-md-block'>
                   <h5>$nome_moeda</h5>
@@ -183,11 +233,14 @@ if (isset($_SESSION['logado'])) {
                           <input type='hidden' name='id_moeda' value='$id_moeda'>
                           <input type='hidden' name='ispc_local' value='moedas'>
                       </form>
-                </div>";
+                </div>
+                </div>
+                    ";
 
         }
     
     ?>
+
   <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>

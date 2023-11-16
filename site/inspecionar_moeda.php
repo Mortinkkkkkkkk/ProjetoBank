@@ -92,41 +92,68 @@ if (isset($_SESSION['logado'])) {
                         </a>
                     </li>
                 </div>
+              </nav>
+              <div class="mt-5 container">
+                <div class="row">
+
                     <?php
                     $local = $_GET['ispc_local'];
                     if ($local == 'pesquisa') {
                         $id_moeda = $_GET['id_moeda'];
                         $nome_sigla_moeda_pesquisada = $_GET['moeda_pesquisada'];
                         $opcoes_de_pesquisa = $_GET['opcao_pesquisada'];
-                       echo"<form action='pesquisa_por_moedas.php'>
+                        ?>
+
+                         <div class='col-sm'>
+                        <form action='pesquisa_por_moedas.php'>
                             <input name='opcoes_de_pesquisa' type='hidden' 
-                            value='$opcoes_de_pesquisa'>
-                            <input name='nome_sigla_moeda_pesquisada' type='hidden' 
-                            value='$nome_sigla_moeda_pesquisada'>
+                            value='<?php $opcoes_de_pesquisa ?>'>
+                         </div>
+                         <div class='col-sm'>
+                          <input name='nome_sigla_moeda_pesquisada' type='hidden' 
+                            value='<?php $nome_sigla_moeda_pesquisada ?>'>
                             <button class='btn btn-outline-success' type='submit'>  
                                 Voltar
-                            </button>";
+                            </button>
+                             </div>
+                            
+                      <?php
                     }
                     elseif ($local == 'moedas') {
-                      
-                        echo"<form action='moedas.php'>
-                            
-                            <button class='btn btn-outline-success' type='submit'>  
-                                Voltar
-                            </button>";
-                            
+                        
 
                     }
                     ?>
-        </form>
-        </ul>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-      </div>
-  </nav>
- 
-  <?php
+
+                </div>
+
+              </div>
+                          
+                          <div class='col-sm'>
+                          
+                            <form action='moedas.php'>
+                                
+                                <button class='btn btn-outline-success' type='submit'>  
+                                    Voltar
+                                </button>
+                                </div>
+                  </form>
+                          <div class='col-sm'>
+                      <form action='compra_de_moeda.php' method='post'>
+                      <input type='hidden' name='id_moeda' value='<?php echo $id_moeda; ?>'>
+                      <button type='submit' class='btn btn-outline-success'>Comprar</button>
+                      </form>
+                      </div>
+
+
+</div>
+
+
+</div>
+</div>
+</div>
+
+<?php
   
   
   //conexao com o banco
