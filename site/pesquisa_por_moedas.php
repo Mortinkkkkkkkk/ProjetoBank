@@ -30,75 +30,85 @@
 
 </head>
     <body>
-    <nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 10px; margin-left: 10px">
+    <nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 100px; margin-left: 100px">
               
               <div class="container-fluid">
-                      <a class="navbar-brand" href="index.php"><ion-icon name="wallet-outline" size ="large" style="color: lightgreen;"></ion-icon></a></a>
-                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <a class="navbar-brand icon-link-hover" style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;' href="index.php"><i class="fa-solid fa-building-columns fa-lg bi" style="color: #ffffff;"></i></a>
+                      <div class="collapse navbar-collapse" id="navbarNav">
                           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                               <li class="nav-item">
                                   <a class="nav-link">
                                       <form action="carteira.php">
-                                          <button class="btn text-white" type="submit" <?php echo $logado;?>>Carteira</button>
-                                          
-                                      </form>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link">
-                              <form action="logout.php">
-                                  <button type="submit" class="btn text-white" <?php echo $logado;?>>Log-out</button>
+                                          <button class="btn text-white icon-link-hover" type="submit" <?php echo $logado; ?>
+                                  style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                  <i class="fa-solid fa-wallet fa-lg bi"></i> Carteira</button>
                               </form>
-                          </a>
+                          </a> 
                       </li>
                       <li class="nav-item">
                           <a class="nav-link active" aria-current="page">
                               <form action="moedas.php">
-                                  <button type="submit" class="btn text-white">Moedas</button>
-                                  
+                                  <button type="submit" class="btn  text-white icon-link-hover "
+                                      style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                      <i class="fa-solid fa-coins fa-lg bi"></i> Moedas</button>                                        
+                                      </form>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page">
+                              <form action="login.php">
+                                  <button type="submit" class="btn text-white icon-link-hover" <?php echo $login; ?>
+                                  style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                  <i class="fa-solid fa-user-check fa-lg bi"></i> Login</button>
                               </form>
                           </a>
                       </li>
-                      
                       <li class="nav-item">
                           <a class="nav-link active" aria-current="page">
-                              <form action="cadastro.html">
-                                  <button type="submit" class="btn text-white" <?php echo $login;?>>Cadastro</button>
+                              <form action="cadastro.php">
+                                  <button type="submit" class="btn text-white icon-link-hover" <?php echo $login; ?> 
+                                  style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                  <i class="fa-solid fa-user-plus fa-lg bi"></i> Cadastro</button>
                               </form>
                           </a>
-                          
-                     </li>
-                        <li class="nav-item">
-                          <a class="nav-link active" aria-current="page">
-                              <form action="login.php">
-                                  <button type="submit" class="btn text-white" <?php echo $login; ?>>Login</button>
-                              </form>
-                          </a>
-                        </li>
-                    <li class="nav-item">
+                      </li>
+                      <li class="nav-item">
                           <a class="nav-link">
                               <form action="carrinho.php">
-                                  <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
+                                  <button type="submit" class="btn text-white icon-link-hover"<?php echo $logado; ?>
                                   style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                   <i class="fa-solid fa-cart-shopping fa-lg bi"></i> Carrinho</button>
                               </form>
                           </a>
                       </li>
-                      </ul>
-                    </div>
-            <div class="dropdown-center" >
-                <form action="pesquisa_por_moedas.php">
+                      <li class="nav-item">
+                          <a class="nav-link">
+                              <form action="logout.php">
+                                  <button type="submit" class="btn text-white icon-link-hover"<?php echo $logado; ?>
+                                  style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                  <i class="fa-solid fa-arrow-right-from-bracket fa-lg bi"></i> Log-out</button>
+                              </form>
+                          </a>
+                      </li>
+                </div>
+                <li class="nav-item" style="list-style: none;">
+                <form  action="pesquisa_por_moedas.php">
                     <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-light">
-                        <option value="nome">Nome</option>
+                        <option value="nome"> Nome</option>
                         <option value="sigla">Sigla</option>
                     </select>
-                    <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
+                    <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: white">
                     <button class="btn btn-outline-light" type="submit">  
-                    <i class="bi bi-search"></i>Pesquisar
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i> Pesquisar
                     </button>
                 </form>
+            </li>
+                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
             </div>
-        </div>
     </nav>
 
         <div class='mt-5 container'>
@@ -160,7 +170,7 @@
         
                         echo "<div class='col-sm'>";
                         echo "<div class='card mb-3' style='width: 13rem;border-color: green'>";
-                        echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
+                        echo            " <img src='$imagem' class='card-img-top'>";
                         echo           " <div class='card-body'>";
                         echo               "<h5 class='card-title'> $nome_moeda</h5>";
                         echo               "<p class='card-text' style = 'color : $cor'>R$ $valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>" ;
@@ -177,6 +187,8 @@
                         echo           "</div>";
                     
                 }
+            }else {
+                echo "<h1>Sem Resultados</h1>";
             }
         }
             if ($opcao_de_pesquisa == 'sigla') {
@@ -211,7 +223,7 @@
                         
                         echo "<div class='col-sm'>";
                         echo "<div class='card mb-3' style='width: 13rem;border-color: green'>";
-                        echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
+                        echo            " <img src='$imagem' class='card-img-top'>";
                         echo           " <div class='card-body'>";
                         echo               "<h5 class='card-title'> $nome_moeda</h5>";
                         echo               "<p class='card-text' style = 'color : $cor'>$valor_moeda_fixo $sinal</p>" ;
@@ -233,6 +245,8 @@
                         <?php          
                     
                 }
+            }else {
+                echo "<h1>Sem Resultados</h1>";
             }
         }
                 

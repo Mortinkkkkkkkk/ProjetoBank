@@ -57,7 +57,7 @@
 <nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 100px; margin-left: 100px">
               
               <div class="container-fluid">
-                      <a class="navbar-brand" href="index.php"><ion-icon name="wallet-outline" size ="large" style="color: lightgreen;"></ion-icon></a></a>
+                      <a class="navbar-brand icon-link-hover" style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;' href="index.php"><i class="fa-solid fa-building-columns fa-lg bi" style="color: #ffffff;"></i></a>
                       <div class="collapse navbar-collapse" id="navbarNav">
                           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                               <li class="nav-item">
@@ -72,7 +72,7 @@
                       <li class="nav-item">
                           <a class="nav-link active" aria-current="page">
                               <form action="moedas.php">
-                                  <button type="submit" class="btn icon-link-hover"
+                                  <button type="submit" class="btn  text-white icon-link-hover "
                                       style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                       <i class="fa-solid fa-coins fa-lg bi"></i> Moedas</button>                                        
                                       </form>
@@ -81,7 +81,7 @@
                       <li class="nav-item">
                           <a class="nav-link active" aria-current="page">
                               <form action="login.php">
-                                  <button type="submit" class="btn icon-link-hover" <?php echo $login; ?>
+                                  <button type="submit" class="btn text-white icon-link-hover" <?php echo $login; ?>
                                   style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                   <i class="fa-solid fa-user-check fa-lg bi"></i> Login</button>
                               </form>
@@ -90,7 +90,7 @@
                       <li class="nav-item">
                           <a class="nav-link active" aria-current="page">
                               <form action="cadastro.php">
-                                  <button type="submit" class="btn icon-link-hover" <?php echo $login; ?> 
+                                  <button type="submit" class="btn text-white icon-link-hover" <?php echo $login; ?> 
                                   style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                   <i class="fa-solid fa-user-plus fa-lg bi"></i> Cadastro</button>
                               </form>
@@ -99,7 +99,7 @@
                       <li class="nav-item">
                           <a class="nav-link">
                               <form action="carrinho.php">
-                                  <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
+                                  <button type="submit" class="btn text-white icon-link-hover"<?php echo $logado; ?>
                                   style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                   <i class="fa-solid fa-cart-shopping fa-lg bi"></i> Carrinho</button>
                               </form>
@@ -108,20 +108,21 @@
                       <li class="nav-item">
                           <a class="nav-link">
                               <form action="logout.php">
-                                  <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
+                                  <button type="submit" class="btn text-white icon-link-hover"<?php echo $logado; ?>
                                   style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                   <i class="fa-solid fa-arrow-right-from-bracket fa-lg bi"></i> Log-out</button>
                               </form>
                           </a>
                       </li>
+                </div>
                 <li class="nav-item" style="list-style: none;">
                 <form  action="pesquisa_por_moedas.php">
-                    <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
+                    <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-light">
                         <option value="nome"> Nome</option>
                         <option value="sigla">Sigla</option>
                     </select>
-                    <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
-                    <button class="btn btn-outline-success" type="submit">  
+                    <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: white">
+                    <button class="btn btn-outline-light" type="submit">  
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i> Pesquisar
                     </button>
                 </form>

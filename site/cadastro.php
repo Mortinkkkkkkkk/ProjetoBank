@@ -29,84 +29,71 @@ if (isset($_SESSION['logado'])) {
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 100px; margin-left: 100px">
+<nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 100px; margin-left: 100px">
               
-        <div class="container-fluid">
-                <a class="navbar-brand" href="index.php"><ion-icon name="wallet-outline" size ="large" style="color: lightgreen;"></ion-icon></a></a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link">
-                                <form action="carteira.php">
-                                    <button class="btn text-white icon-link-hover" type="submit" <?php echo $logado; ?>
-                            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                            <i class="fa-solid fa-wallet fa-lg bi"></i> Carteira</button>
-                        </form>
-                    </a> 
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page">
-                        <form action="moedas.php">
-                            <button type="submit" class="btn icon-link-hover"
-                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                                <i class="fa-solid fa-coins fa-lg bi"></i> Moedas</button>                                        
-                                </form>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page">
-                        <form action="login.php">
-                            <button type="submit" class="btn icon-link-hover" <?php echo $login; ?>
-                            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                            <i class="fa-solid fa-user-check fa-lg bi"></i> Login</button>
-                        </form>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page">
-                        <form action="cadastro.php">
-                            <button type="submit" class="btn icon-link-hover" <?php echo $login; ?> 
-                            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                            <i class="fa-solid fa-user-plus fa-lg bi"></i> Cadastro</button>
-                        </form>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">
-                        <form action="carrinho.php">
-                            <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
-                            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                            <i class="fa-solid fa-cart-shopping fa-lg bi"></i> Carrinho</button>
-                        </form>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">
-                        <form action="logout.php">
-                            <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
-                            style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                            <i class="fa-solid fa-arrow-right-from-bracket fa-lg bi"></i> Log-out</button>
-                        </form>
-                    </a>
-                </li>
-          </ul>
-
-           
-            </div>
-          
-            
-            
-        </div>
+              <div class="container-fluid">
+                      <a class="navbar-brand icon-link-hover" style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;' href="index.php"><i class="fa-solid fa-building-columns fa-lg bi" style="color: #ffffff;"></i></a>
+                      <div class="collapse navbar-collapse" id="navbarNav">
+                          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                              <li class="nav-item">
+                                  <a class="nav-link">
+                                      <form action="carteira.php">
+                                          <button class="btn text-white icon-link-hover" type="submit" <?php echo $logado; ?>
+                                  style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                  <i class="fa-solid fa-wallet fa-lg bi"></i> Carteira</button>
+                              </form>
+                          </a> 
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page">
+                              <form action="moedas.php">
+                                  <button type="submit" class="btn  text-white icon-link-hover "
+                                      style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                      <i class="fa-solid fa-coins fa-lg bi"></i> Moedas</button>                                        
+                                      </form>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page">
+                              <form action="login.php">
+                                  <button type="submit" class="btn text-white icon-link-hover" <?php echo $login; ?>
+                                  style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                  <i class="fa-solid fa-user-check fa-lg bi"></i> Login</button>
+                              </form>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page">
+                              <form action="cadastro.php">
+                                  <button type="submit" class="btn text-white icon-link-hover" <?php echo $login; ?> 
+                                  style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                  <i class="fa-solid fa-user-plus fa-lg bi"></i> Cadastro</button>
+                              </form>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link">
+                              <form action="carrinho.php">
+                                  <button type="submit" class="btn text-white icon-link-hover"<?php echo $logado; ?>
+                                  style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                  <i class="fa-solid fa-cart-shopping fa-lg bi"></i> Carrinho</button>
+                              </form>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link">
+                              <form action="logout.php">
+                                  <button type="submit" class="btn text-white icon-link-hover"<?php echo $logado; ?>
+                                  style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
+                                  <i class="fa-solid fa-arrow-right-from-bracket fa-lg bi"></i> Log-out</button>
+                              </form>
+                          </a>
+                      </li>
+                      </ul>
+                  </div>
+                  </div>
     </nav>
     
-    
-</li>
-
-</div>
-</nav>
-    
-
-
 
     <div class="container mt-5">
         <h1>Cadastro no Banco</h1> <br><br> <br>
