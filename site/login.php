@@ -1,3 +1,15 @@
+<?php
+session_start();
+require_once 'conexao.php';
+if (isset($_SESSION['logado'])) {
+    $logado = "";
+    $login = "hidden";
+} else {
+    $logado = "hidden";
+    $login = "";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

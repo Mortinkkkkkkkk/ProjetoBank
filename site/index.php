@@ -55,7 +55,7 @@ if (isset($_SESSION['logado'])) {
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page">
                             <form action="moedas.php">
-                                <button type="submit" class="btn icon-link-hover"
+                                <button type="submit" class="btn  text-white icon-link-hover "
                                     style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                     <i class="fa-solid fa-coins fa-lg bi"></i> Moedas</button>                                        
                                     </form>
@@ -64,7 +64,7 @@ if (isset($_SESSION['logado'])) {
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page">
                             <form action="login.php">
-                                <button type="submit" class="btn icon-link-hover" <?php echo $login; ?>
+                                <button type="submit" class="btn text-white icon-link-hover" <?php echo $login; ?>
                                 style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                 <i class="fa-solid fa-user-check fa-lg bi"></i> Login</button>
                             </form>
@@ -73,7 +73,7 @@ if (isset($_SESSION['logado'])) {
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page">
                             <form action="cadastro.php">
-                                <button type="submit" class="btn icon-link-hover" <?php echo $login; ?> 
+                                <button type="submit" class="btn text-white icon-link-hover" <?php echo $login; ?> 
                                 style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                 <i class="fa-solid fa-user-plus fa-lg bi"></i> Cadastro</button>
                             </form>
@@ -82,7 +82,7 @@ if (isset($_SESSION['logado'])) {
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="carrinho.php">
-                                <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
+                                <button type="submit" class="btn text-white icon-link-hover"<?php echo $logado; ?>
                                 style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                 <i class="fa-solid fa-cart-shopping fa-lg bi"></i> Carrinho</button>
                             </form>
@@ -91,7 +91,7 @@ if (isset($_SESSION['logado'])) {
                     <li class="nav-item">
                         <a class="nav-link">
                             <form action="logout.php">
-                                <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
+                                <button type="submit" class="btn text-white icon-link-hover"<?php echo $logado; ?>
                                 style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
                                 <i class="fa-solid fa-arrow-right-from-bracket fa-lg bi"></i> Log-out</button>
                             </form>
@@ -175,7 +175,7 @@ if (isset($_SESSION['logado'])) {
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="./img/firefly_logo_minimalista_para_um_banco_digital_de_criptomoedas_com_o_tema_verde_62636.jpg" class="d-block w-100" alt="...">
+      <img src="./img/firefly_logo_minimalista_para_um_banco_digital_de_criptomoedas_com_o_tema_verde_62636.jpg" style="height: 823px; width: 523px;" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Moedas em Destaque</h5>
         <p></p>
@@ -187,6 +187,9 @@ if (isset($_SESSION['logado'])) {
     <?php
         $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = 1";
         $resultado = mysqli_query($conexao,$sql);
+        // tamanhos:
+        $width = '523px';
+        $height = '823px';
         while ($linha_tabela_moeda = mysqli_fetch_array($resultado)) {
                 $id_moeda = $linha_tabela_moeda['id_moeda'];
                 $nome_moeda = $linha_tabela_moeda['nome_moeda'];
@@ -223,7 +226,7 @@ if (isset($_SESSION['logado'])) {
                 }
                 
                 echo "<div class='carousel-item '>
-                <img src='$imagem_fundo' class='d-block w-100' alt='deu certo naun'>
+                <img src='$imagem_fundo' style='width: $width; height: $height ;  'class='d-block w-100' alt='deu certo naun'>
                 <div class='carousel-caption d-none d-md-block'>
                   <h5>$nome_moeda</h5>
                   <p style = 'color : $cor'>R$ $valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>
@@ -249,8 +252,11 @@ if (isset($_SESSION['logado'])) {
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+  <a href="adsa" style="height: ;"></a>
 </div>
     
+<script script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" > </script> 
+      <script script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js" > </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
