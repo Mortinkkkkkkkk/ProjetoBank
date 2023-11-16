@@ -83,15 +83,8 @@
                               </form>
                           </a>
                       </li>
+                    </ul>
                       
-                      <li class="nav-item">
-                          <a class="nav-link active" aria-current="page">
-                              <form action="cadastro.html">
-                                  <button type="submit" class="btn text-white ">Cadastro</button>
-  
-                              </form>
-                          </a>
-                          </ul>
             <div class="dropdown-center" >
                 <form action="pesquisa_por_moedas.php">
                     <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-light">
