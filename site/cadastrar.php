@@ -10,7 +10,8 @@
    $resultado = mysqli_query($conexao,$sql);
 
    if (mysqli_num_rows($resultado) == 0) {
-        $sql = "INSERT INTO `tb_usuario` (`nome_usuario`, `senha_usuario`, `cpf_usuario`, `email_usuario`) VALUES ('$nome_usuario', '$senha_usuario', '$cpf_usuario', '$email_usuario')";
+        $sql = "INSERT INTO `tb_usuario` (`nome_usuario`, `senha_usuario`, `cpf_usuario`, `email_usuario`) 
+        VALUES ('$nome_usuario', '$senha_usuario', '$cpf_usuario', '$email_usuario')";
 
         mysqli_query($conexao,$sql);
 

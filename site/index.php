@@ -105,97 +105,100 @@ if (isset($_SESSION['logado'])) {
     </nav>
 
 
+    <div id="carousel" class="carousel slide">
+        <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 
-    <div class='mt-5 container'>
-        <div class='row'>
-            <div class="col-sm"
-                style="border-radius: 40px; background-color: #e3f2fd; height: 50px; margin-left: 200px; margin-right: 200px">
-                <center>
-                    <div>
-                        <h1> Moedas em Destasque</h1>
-                    </div>
-                </center>
-            </div>
-        </div>
+    <?php
+        $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = 1";
+        $resultado = mysqli_query($conexao,$sql);
+        $slide_data_bs = 0;
+        $num_slide = 1;
+        while ($var_inutiu = mysqli_fetch_row($resultado)) {
+            $slide_data_bs += 1;
+            $num_slide += 1;
+            echo "<button type='button' data-bs-target='#carousel' 
+            data-bs-slide-to='$slide_data_bs' 
+            aria-label='Slide $num_slide'></button>
+            ";
+        }
+    ?>
+    
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./img/firefly_logo_minimalista_para_um_banco_digital_de_criptomoedas_com_o_tema_verde_62636.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Moedas em Destaque</h5>
+        <p></p>
+      </div>
     </div>
+    
+    <?php
+        $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = 1";
+        $resultado = mysqli_query($conexao,$sql);
+        while ($linha_tabela_moeda = mysqli_fetch_array($resultado)) {
+                $id_moeda = $linha_tabela_moeda['id_moeda'];
+                $nome_moeda = $linha_tabela_moeda['nome_moeda'];
+                $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
+                $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
+                $imagem_fundo = $linha_tabela_moeda['imagem_moeda_fundo'];
+                
 
-    <div>
-        <div style="background-color: #e3f2fd">
+                $sql_compara = "SELECT valor_moeda FROM `tb_historico_v_moeda` WHERE `id_moeda` = '$id_moeda' ORDER BY `hora_atual` DESC LIMIT 2";
 
+                $resultado_compara = mysqli_query($conexao,$sql_compara);
+                $valor1 = mysqli_fetch_array($resultado_compara);
+                $valor2 = mysqli_fetch_array($resultado_compara);
+                $v_inicial = $valor2['valor_moeda'];
+                $v_final = $valor1['valor_moeda'];
 
+                $continha_de_porcentagem = '';
 
-            <div class='mt-5 container'>
-                <div class='row'>
-                    <div class="col-sm">
+                if ($valor1 > $valor2) {
+                    $cor = "green";
+                    $sinal = " <i class='fa-solid fa-arrow-up fa-lg'></i> ";
+                    $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) * -1 . '%';
+                    
+                } 
+                elseif ($valor1 < $valor2) {
+                    $cor = "red";
+                    $sinal = " <i class='fa-solid fa-arrow-down fa-lg'></i> ";
+                    $continha_de_porcentagem = round(((($v_inicial - $v_final) / $v_inicial) * 100) ,3) . '%';
+                }
+                else{
+                    $cor = "black";
+                    $sinal = " <i class='fa-solid fa-equals fa-lg'></i> ";
+                    $continha_de_porcentagem = '';
+                }
+                
+                echo "<div class='carousel-item'>
+                <img src='$imagem_fundo' class='d-block w-100' alt='deu certo naun'>
+                <div class='carousel-caption d-none d-md-block'>
+                  <h5>$nome_moeda</h5>
+                  <p style = 'color : $cor'>R$ $valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>
+                  <p>$sigla_moeda</p>
+                  <form action='inspecionar_moeda.php'>
+                          <button class='btn btn-outline-success'><i class='fa-solid fa-magnifying-glass-chart fa-lg'></i> Verificar</button>
+                          <input type='hidden' name='id_moeda' value='$id_moeda'>
+                          <input type='hidden' name='ispc_local' value='moedas'>
+                      </form>
+                </div>";
 
-                       
-                            <?php
-
-
-
-                            # Parte responsável por mostrar apenas moedas em destaque na página moedas{
-                            $mais_menos = 0;
-                            # Select que mostra apenas as moedas que estão em destaque {
-                            $sql = "SELECT * FROM tb_moeda WHERE moeda_em_destaque = '1'";
-                            $resultado = mysqli_query($conexao, $sql);
-                            #}
-                            #Coloca os dados das moedas em destaque dentro de um vetor{
-                            if (mysqli_num_rows($resultado) > 0) {
-                                while ($linha_tabela_moeda = mysqli_fetch_assoc($resultado)) {
-                                    $id_moeda = $linha_tabela_moeda['id_moeda'];
-                                    $id_moeda = $linha_tabela_moeda['id_moeda'];
-                                    $nome_moeda = $linha_tabela_moeda['nome_moeda'];
-                                    $sigla_moeda = $linha_tabela_moeda['sigla_moeda'];
-                                    $valor_moeda_fixo = $linha_tabela_moeda['valor_moeda_fixo'];
-                                    #}
-                                    
-                                    # Echo de carrosel {
-                            
-                                    echo "<div id='carouselExampleCaptions' class='carousel slide'>";
-                                    echo "<div class='carousel-indicators'>";
-                                    echo "<button type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide-to='0'
-                                                class='active' aria-current='true' aria-label='Slide 1'></button>";
-                                    echo "<button type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide-to='1'
-                                            aria-label='Slide 2'></button>";
-                                    echo "<button type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide-to='2'
-                                            aria-label='Slide 3'></button>";
-                                    echo "</div>";
-                                    echo " <div class='carousel-inner'>";
-                                    echo " <div class='carousel-item active'>";
-                                    echo "     <img src='../img/Firefly logo minimalista para um banco digital de criptomoedas com o tema verde 62636.jpg'class='d-block w-100' alt=''>";
-                                    echo "     <div class='carousel-caption d-none d-md-block'>";
-                                    echo "<h5>$nome_moeda</h5>";
-                                    echo "<p>Some representative placeholder content for the first slide.</p>";
-                                    echo "</div>";
-                                    echo "</div>";
-                                    echo "</div>";
-                                   echo "</div>";
-
-
-
-                                    #}
-                                    #}
-                                    ?>
-                                    <?php
-                                    ?>
-                                    <?php
-                                    ?>
-
-                                    <br><br>
-                                    <?php
-
-                                }
-                            }
-
-
-
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        }
+    
+    ?>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>

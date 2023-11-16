@@ -155,7 +155,7 @@
                         Imagem de Fundo da Moeda: <br> <br>
                             <img src='$imagem_fundo_moeda?>' alt='' style='max-height: 200px; max-width: 300px;'><br><br>
 
-                        <a href='alterar_moedas.php?alteracao_imagem=1&id_moeda_edit=$id_moeda&edicao=abilitada' class='btn btn-outline-primary'>Alterar Imagems</a> <br><br>";
+                        <a href='alterar_moedas.php?alteracao_imagem=1&id_moeda_edit=$id_moeda&edicao=abilitada' class='btn btn-outline-primary'>Alterar Imagens</a> <br><br>";
                     }
                 
                 ?>
@@ -227,7 +227,7 @@
 
                         <button class='btn btn-outline-danger icon-link-hover' 
                             style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' type='submit'>
-                            <i class='fa-solid fa-minus fa-lg bi'></i> Remover $nome_moeda 
+                            <i class='fa-solid fa-trash fa-lg bi'></i> Remover $nome_moeda 
                         </button><br><br>
 
                     </form>
@@ -290,7 +290,7 @@ echo"</div>
 
                         <button class='btn btn-outline-danger icon-link-hover' 
                             style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' type='submit'>
-                            <i class='fa-solid fa-minus fa-lg bi'></i> Remover $nome_moeda 
+                            <i class='fa-solid fa-trash fa-lg bi'></i> Remover $nome_moeda 
                         </button><br><br>
 
                     </form>
