@@ -54,77 +54,53 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><img
-                    src="../img/Firefly logo minimalista para um banco digital de criptomoedas com o tema verde 62636.jpg"
-                    alt="imagem" height="50px" width="50px" style="border-radius: 40px"></a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <form action="carteira.php">
-                                <button class="btn icon-link-hover" type="submit" <?php echo $logado; ?>
-                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                                <i class="fa-solid fa-wallet fa-lg bi"></i> Carteira</button>
-                            </form>
-                        </a> 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page">
-                            <form action="moedas.php">
-                                <button type="submit" class="btn icon-link-hover"
-                                    style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                                    <i class="fa-solid fa-coins fa-lg bi"></i> Moedas</button>
-                            </form>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page">
-                            <form action="login.php">
-                                <button type="submit" class="btn icon-link-hover" <?php echo $login; ?>
-                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                                <i class="fa-solid fa-user-check fa-lg bi"></i> Login</button>
-                            </form>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page">
-                            <form action="cadastro.php">
-                                <button type="submit" class="btn icon-link-hover" <?php echo $login; ?> 
-                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                                <i class="fa-solid fa-user-plus fa-lg bi"></i> Cadastro</button>
-                            </form>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <form action="carrinho.php">
-                                <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
-                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                                <i class="fa-solid fa-cart-shopping fa-lg bi"></i> Carrinho</button>
-                            </form>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <form action="logout.php">
-                                <button type="submit" class="btn icon-link-hover"<?php echo $logado; ?>
-                                style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;'>
-                                <i class="fa-solid fa-arrow-right-from-bracket fa-lg bi"></i> Log-out</button>
-                            </form>
-                        </a>
-                    </li>
-                </div>
-                <li class="nav-item" style="list-style: none;">
-                <form  action="pesquisa_por_moedas.php">
-                    <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
-                        <option value="nome"> Nome</option>
+<nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 10px; margin-left: 10px">
+              
+              <div class="container-fluid">
+                      <a class="navbar-brand" href="index.php"><ion-icon name="wallet-outline" size ="large" style="color: lightgreen;"></ion-icon></a></a>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                              <li class="nav-item">
+                                  <a class="nav-link">
+                                      <form action="carteira.php">
+                                          <button class="btn text-white" type="submit">Carteira</button>
+                                          
+                                      </form>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link">
+                              <form action="logout.php">
+                                  <button type="submit" class="btn text-white">Log-out</button>
+                              </form>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page">
+                              <form action="moedas.php">
+                                  <button type="submit" class="btn text-white">Moedas</button>
+                                  
+                              </form>
+                          </a>
+                      </li>
+                      
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page">
+                              <form action="cadastro.html">
+                                  <button type="submit" class="btn text-white ">Cadastro</button>
+  
+                              </form>
+                          </a>
+                          </ul>
+            <div class="dropdown-center" >
+                <form action="pesquisa_por_moedas.php">
+                    <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-light">
+                        <option value="nome">Nome</option>
                         <option value="sigla">Sigla</option>
                     </select>
                     <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
-                    <button class="btn btn-outline-success" type="submit">  
-                    <i class="fa-solid fa-magnifying-glass fa-lg"></i> Pesquisar
+                    <button class="btn btn-outline-light" type="submit">  
+                    <i class="bi bi-search"></i>Pesquisar
                     </button>
                 </form>
             </li>
@@ -202,8 +178,8 @@
                 
 
                 echo "<div class='col-sm'>";
-                echo "<div class='card mb-3' style='width: 13rem;'>";
-                echo            " <img src='$imagem' class='card-img-top'>";
+                echo "<div class='card mb-3' style='width: 13rem; border-color: green'>";
+                echo            " <img src='./img/ethereum.jpg' class='card-img-top'>";
                 echo           " <div class='card-body'>";
                 echo               "<h5 class='card-title'> $nome_moeda</h5>";
                 echo               "<p class='card-text' style = 'color : $cor'>R$ $valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>" ;
@@ -236,8 +212,8 @@
     </div>
     </div>
     </div>
-
-    
+    <script script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" > </script> 
+      <script script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js" > </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 </body>
