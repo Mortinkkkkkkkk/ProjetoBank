@@ -139,7 +139,7 @@
  
         <div class='mt-5 container'>
       <div class='row'>
-      <div class="col-sm"> <h1> Moedas em Destasque</h1></div> 
+      <div class="col-sm"> <h1> Moedas</h1></div> 
 
 
 

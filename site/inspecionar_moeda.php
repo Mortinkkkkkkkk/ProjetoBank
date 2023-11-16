@@ -127,10 +127,7 @@ if (isset($_SESSION['logado'])) {
                     }
                     ?>
 
-                </div>
-
-              </div>
-                          
+                    
                           <div class='col-sm'>
                           
                             <form action='moedas.php'>
@@ -141,7 +138,16 @@ if (isset($_SESSION['logado'])) {
                                 </div>
                   </form>
                           <div class='col-sm'> 
+                            <form action="insera_carrinho.php" method="post">
+      <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
+      <button type="submit" class="btn btn-success">Comprar</button>
+      <input type="number" name="quantidade" value="1"style="width: 50px">
+    </form>
 </div>
+</div>
+
+              </div>
+                      
 
 
 </div>
@@ -210,11 +216,7 @@ if (isset($_SESSION['logado'])) {
     </script>
     <div id="chart_div" style="width: 100%; height: 500px;"></div>
     
-    <form action="insera_carrinho.php" method="post">
-      <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
-      <button type="submit">Comprar</button>
-      <input type="number" name="quantidade" value="1"style="width: 50px">
-    </form>
+    
     
   </body>
 </html>
