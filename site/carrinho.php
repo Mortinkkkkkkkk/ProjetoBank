@@ -1,16 +1,12 @@
 <?php
-    require "ta_logado.php";
+    require_once "ta_logado.php";
     require_once "conexao.php";
-    $id_usuario = $_SESSION['id_usuario'];
-    
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <!-- Link de resetador css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
@@ -22,6 +18,8 @@
 
     <!-- Script de icones -->
     <script src="https://kit.fontawesome.com/bc42253982.js" crossorigin="anonymous"></script>
+    
+    <title>Document</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
@@ -86,7 +84,18 @@
                         </a>
                     </li>
                 </div>
-                
+                <li class="nav-item" style="list-style: none;">
+                <form  action="pesquisa_por_moedas.php">
+                    <select name="opcoes_de_pesquisa" id="" class="btn btn-outline-primary">
+                        <option value="nome"> Nome</option>
+                        <option value="sigla">Sigla</option>
+                    </select>
+                    <input name="nome_sigla_moeda_pesquisada" type="text" class="btn  m-2 " placeholder="Digite aqui..." style="background-color: #2bcc48">
+                    <button class="btn btn-outline-success" type="submit">  
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i> Pesquisar
+                    </button>
+                </form>
+            </li>
                 </ul>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -94,43 +103,46 @@
                 </div>
             </div>
     </nav>
-    
+
     <?php
-        $sql =  "SELECT * FROM tb_usuario WHERE id_usuario = $id_usuario";
-
-        $resultado = mysqli_query($conexao,$sql);
-        if (mysqli_num_rows($resultado)) {
-        while ($linha = mysqli_fetch_array($resultado)) {
-            $nome_usuario = $linha['nome_usuario'];
-            $email_usuario = $linha['email_usuario'];
-            $cpf_usuario = $linha['cpf_usuario'];
-            echo $nome_usuario . "<br>";
-            echo $email_usuario . "<br>";
-            echo $cpf_usuario . "<br><br>";
-
+        $id_usuario = $_SESSION['id_usuario'];
+        $compratotal = 0;
+        $sqlcarrihno = "SELECT * FROM tb_carrinho WHERE id_usuario = $id_usuario";
+        $resultcarrinho = mysqli_query($conexao,$sqlcarrihno);
+        if (mysqli_num_rows($resultcarrinho) > 0){
+            while ($linha = mysqli_fetch_array($resultcarrinho)) {
+                global $compratotal;
+                $idcarrinho = $linha['id_carrinho'];
+                $idmoeda = $linha['id_moeda'];
+                $sqlmoeda = "SELECT nome_moeda, sigla_moeda FROM tb_moeda WHERE id_moeda = $idmoeda";
+                $resultmoeda = mysqli_query($conexao,$sqlmoeda);
+                $excluir = "<form action='remover_carrinho.php' method='post'><input type='hidden' name='id_carrinho' value='$idcarrinho'><button type='submit'>Remover</button></form>";
+                $row = mysqli_fetch_array($resultmoeda);
+                $nomemoeda = $row['nome_moeda'];
+                $siglamoeda = $row['sigla_moeda'];
+                $quantidade = $linha['quantidade'];
+                $valortotal = $linha['valor_total'];
+                $br = "<br>";
+                echo $nomemoeda . $br;
+                echo $siglamoeda . $br;
+                echo $quantidade . $br;
+                echo $valortotal . $br;
+                $compratotal = $compratotal + $valortotal;
+                echo $excluir . $br;
+            }
+        echo "Valor total à pagar: " . $compratotal;
+        $efetuar = " <button type='submit'>Efetuar compra</button>";
+    }
+    else {
+        echo "carrinho vazio";
+        $efetuar = "";
         }
-        }
-          $sql = "SELECT id_moeda, quantidade FROM tb_carteira WHERE id_usuario = $id_usuario AND quantidade > 0";
-          $resultado = mysqli_query($conexao,$sql);
-          if (mysqli_num_rows($resultado) > 0) {
-              while ($row = mysqli_fetch_assoc($resultado)) {
-                  $id_moeda = $row["id_moeda"];
-                  $selectmoeda = "SELECT nome_moeda, valor_moeda_fixo FROM tb_moeda WHERE id_moeda = $id_moeda";
-                  $resultmoeda = mysqli_query($conexao,$selectmoeda);
-                  $arraymoeda = mysqli_fetch_array($resultmoeda);
-                  $moeda = $arraymoeda["nome_moeda"];
-                  $valor = $arraymoeda["valor_moeda_fixo"];
-                  echo $moeda . "<br>";
-                  echo $valor . "<br>";
-                  echo $row["quantidade"] . "<br>";
-                  echo "<form action='venda.php' method='post'>
-                            <input type='hidden' name='id_moeda' value='$id_moeda'>
-                            <input type='number' name='quantidade' value='1' style='width: 50px;'>
-                            <button type='submit'>Vender</button>
-                            </form>";
-                        }
-                    }
-                    
-                    ?>
+            
+            
+            ?>
+<form action="compra_de_moeda.php">
+    <?php echo $efetuar; ?>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
