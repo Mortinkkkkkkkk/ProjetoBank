@@ -100,8 +100,9 @@ if (isset($_SESSION['logado'])) {
 
                     <?php
                     $local = $_GET['ispc_local'];
+                    $id_moeda = $_GET['id_moeda'];
                     if ($local == 'pesquisa') {
-                        $id_moeda = $_GET['id_moeda'];
+                        
                         $nome_sigla_moeda_pesquisada = $_GET['moeda_pesquisada'];
                         $opcoes_de_pesquisa = $_GET['opcao_pesquisada'];
                         ?>
@@ -122,27 +123,23 @@ if (isset($_SESSION['logado'])) {
                       <?php
                     }
                     elseif ($local == 'moedas') {
-                        
+                        echo "<div class='col-sm'>
+                          <form action='moedas.php'>    
+                              <button class='btn btn-outline-success' type='submit'>  
+                                  Voltar
+                              </button>
+                              </div>
+                          </form>";
 
                     }
                     ?>
 
-                    
-                          <div class='col-sm'>
-                          
-                            <form action='moedas.php'>
-                                
-                                <button class='btn btn-outline-success' type='submit'>  
-                                    Voltar
-                                </button>
-                                </div>
-                  </form>
-                          <div class='col-sm'> 
-                            <form action="insera_carrinho.php" method="post">
-      <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
-      <button type="submit" class="btn btn-success">Comprar</button>
-      <input type="number" name="quantidade" value="1"style="width: 50px">
-    </form>
+                  <div class='col-sm'> 
+                    <form action="insera_carrinho.php" method="post">
+                      <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
+                      <button type="submit" class="btn btn-success">Comprar</button>
+                      <input type="number" name="quantidade" value="1"style="width: 50px">
+                    </form>
 </div>
 </div>
 
