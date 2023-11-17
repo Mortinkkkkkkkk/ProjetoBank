@@ -178,7 +178,7 @@
                         echo "<form action='inspecionar_moeda.php'>
                                   <button class='btn btn-outline-success'><i class='fa-solid fa-magnifying-glass-chart fa-lg'></i> Verificar</button>
                                   <input type='hidden' name='id_moeda' value='$id_moeda'>
-                                  <input type='hidden' name='ispc_local' value='moedas'>
+                                  <input type='hidden' name='ispc_local' value='pesquisa'>
                               </form>
                               <br><br>
                                       ";
