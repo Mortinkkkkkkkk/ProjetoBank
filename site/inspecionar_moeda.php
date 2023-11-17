@@ -103,18 +103,18 @@ if (isset($_SESSION['logado'])) {
                     $id_moeda = $_GET['id_moeda'];
                     if ($local == 'pesquisa') {
                         
-                        $nome_sigla_moeda_pesquisada = $_GET['moeda_pesquisada'];
-                        $opcoes_de_pesquisa = $_GET['opcao_pesquisada'];
+                        $nome_sigla_moeda_pesquisada = $_GET['nome_sigla_moeda_pesquisada'];
+                        $opcoes_de_pesquisa = $_GET['opcoes_de_pesquisa'];
                         ?>
 
                          <div class='col-sm'>
                         <form action='pesquisa_por_moedas.php'>
                             <input name='opcoes_de_pesquisa' type='hidden' 
-                            value='<?php $opcoes_de_pesquisa ?>'>
+                            value='<?php echo $opcoes_de_pesquisa; ?>'>
                          </div>
                          <div class='col-sm'>
                           <input name='nome_sigla_moeda_pesquisada' type='hidden' 
-                            value='<?php $nome_sigla_moeda_pesquisada ?>'>
+                            value='<?php echo $nome_sigla_moeda_pesquisada; ?>'>
                             <button class='btn btn-outline-success' type='submit'>  
                                 Voltar
                             </button>

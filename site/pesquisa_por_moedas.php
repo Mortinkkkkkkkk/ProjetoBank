@@ -176,9 +176,11 @@
                         echo               "<p class='card-text' style = 'color : $cor'>R$ $valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>" ;
                         echo                   "<p class='card-text'>$sigla_moeda</p>" ;       
                         echo "<form action='inspecionar_moeda.php'>
+                                    <input type='hidden' name='id_moeda' value='$id_moeda'>
+                                    <input type='hidden' name='ispc_local' value='pesquisa'>
+                                    <input type='hidden' name='nome_sigla_moeda_pesquisada' value='$nome_sigla_moeda_pesquisada'>
+                                    <input type='hidden' name='opcoes_de_pesquisa' value='$opcao_de_pesquisa'>
                                   <button class='btn btn-outline-success'><i class='fa-solid fa-magnifying-glass-chart fa-lg'></i> Verificar</button>
-                                  <input type='hidden' name='id_moeda' value='$id_moeda'>
-                                  <input type='hidden' name='ispc_local' value='pesquisa'>
                               </form>
                               <br><br>
                                       ";
@@ -229,9 +231,9 @@
                         echo               "<p class='card-text' style = 'color : $cor'>$valor_moeda_fixo $sinal</p>" ;
                         echo                   "<p class='card-text'>$sigla_moeda</p>" ;       
                         echo "<form action='inspecionar_moeda.php'>
-                                    <input type='hidden' name='moeda_pesquisada' value='$nome_sigla_moeda_pesquisada'>
                                     <input type='hidden' name='id_moeda' value='$id_moeda'>
-                                    <input type='hidden' name='opcao_pesquisada' value='$opcao_de_pesquisa'>
+                                    <input type='hidden' name='nome_sigla_moeda_pesquisada' value='$nome_sigla_moeda_pesquisada'>
+                                    <input type='hidden' name='opcoes_de_pesquisa' value='$opcao_de_pesquisa'>
                                     <input type='hidden' name='ispc_local' value='pesquisa'>
                                     <button class='btn btn-outline-success'>inspecionar</button>
                                 </form>
