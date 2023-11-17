@@ -28,8 +28,8 @@ if (isset($_SESSION['logado'])) {
 
     <!-- Script de icones -->
     <script src="https://kit.fontawesome.com/bc42253982.js" crossorigin="anonymous"></script>
-
-    <title>Document</title>
+    <link rel="icon" href="./img/firefly_logo_minimalista_para_um_banco_digital_de_criptomoedas_com_o_tema_verde_62636.jpg">
+    <title>Pobre Bank</title>
 
 </head>
 

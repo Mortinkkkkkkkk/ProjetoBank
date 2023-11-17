@@ -18,8 +18,8 @@
 
     <!-- Script de icones -->
     <script src="https://kit.fontawesome.com/bc42253982.js" crossorigin="anonymous"></script>
-    
-    <title>Document</title>
+    <link rel="icon" href="./img/firefly_logo_minimalista_para_um_banco_digital_de_criptomoedas_com_o_tema_verde_62636.jpg">
+    <title>Carrinho do Usuários</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 100px; margin-left: 100px">
