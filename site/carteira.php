@@ -150,12 +150,12 @@
                 echo     $moeda;
                 echo   "</div>";
                 echo   "<ul class='list-group list-group-flush'>";
-                echo     "<li class='list-group-item'>$valor</li>";
-                echo $row["quantidade"] . "<br>";
-                echo "<form action='venda.php' method='post'>
+                echo     "<li class='list-group-item'>R$ $valor</li>";
+                echo "<li class='list-group-item'> " . $row["quantidade"] . " Moedas </li>";
+                echo "<form action='venda.php' method='post' class='p-3'>
                           <input type='hidden' name='id_moeda' value='$id_moeda'>
-                          <input type='number' name='quantidade' value='1' style='width: 50px;'>
                           <button type='submit' class='btn btn-success'>Vender</button>
+                          <input type='number' name='quantidade' value='1' style='width: 50px;' class='btn btn-outline-success'>
                           </form>";
                           echo   "</ul>";
                           echo "</div>";

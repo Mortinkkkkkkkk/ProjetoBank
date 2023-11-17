@@ -89,7 +89,7 @@
     </nav>
 
         <br> <br> 
-
+        <div class="p-3">
         <form action="cadastro_moedas.php" enctype="multipart/form-data" method="post">
         <div class="form-floating">
             <input class="form-control" name="nome_moeda" type="text" id="nome_usuario" placeholder="Nome aqui..."> <br><br>
@@ -101,21 +101,24 @@
             <label for="sigla_moeda">Sigla</label>
         </div>
         
-        Valor Inicial da Moeda: <br>
-        <input type="text" name="valor_moeda_inicial" placeholder="..."> <br><br>
-        <input type="radio" name="destaque_moeda" value="1"> Moeda em Destaque <br>
-        <input type="radio" name="destaque_moeda" value="0"> Moeda Fora de Destaque<br><br>
+        <div class="form-floating">
+            <input class="form-control" type="text" name="valor_moeda_inicial" placeholder="" id="valor"> <br><br>
+            <label for="valor">Valor Inicial da Moeda</label>
+        </div>
+
+        <input type="radio" name="destaque_moeda" value="1" class="p-2"> Moeda em Destaque <br>
+        <input type="radio" name="destaque_moeda" value="0" class="p-2"> Moeda Fora de Destaque<br><br>
         
         Imagem da Moeda: <br>
         <input type="file" name="imagem_moeda"> <br><br>
         
         Imagem de Fundo da Moeda: <br>
         <input type="file" name="imagem_fundo_moeda"> <br><br>
-        <input type="submit" value = "Cadastrar"> <br><br>
+        
 
-        <button class="btn btn-success">Cadastrar</button>
+        <button type='submit' class="btn btn-success">Cadastrar</button>
         </form>
-
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 </body>

@@ -139,7 +139,7 @@ if (isset($_SESSION['logado'])) {
                     <form action="insera_carrinho.php" method="post">
                       <input type="hidden" name="id_moeda" value="<?php echo $id_moeda; ?>">
                       <button type="submit" class="btn btn-success">Comprar</button>
-                      <input type="number" name="quantidade" value="1"style="width: 50px">
+                      <input type="number" name="quantidade" value="1"style="width: 50px" class="btn btn-outline-success">
                     </form>
 </div>
 </div>

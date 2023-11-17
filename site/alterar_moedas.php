@@ -119,7 +119,7 @@
             $imagem_moeda = $linha_moeda_editada['imagem_moeda'];
             $imagem_fundo_moeda = $linha_moeda_editada['imagem_moeda_fundo'];
             echo "<h2> Editando $nome_moeda:</h2>
-            <div class='p-2'>";
+            <div class='p-3'>";
         
 ?>          
             <form action="altera_moeda.php" enctype='multipart/form-data' method='post'>
@@ -159,15 +159,26 @@
                 
                 <input type="hidden" value="<?php echo $id_moeda?>" name="id_moeda">
                 <input type="hidden" value="editar" name="alteracao">
-                Nome da moeda: <br>
-                <input type="text" value="<?php echo $nome_moeda;?>" name="novo_nome"> <br><br>
-                Sigla Moeda: <br>
-                <input type="text" value="<?php echo $sigla_moeda;?>" name="nova_sigla"> <br><br>
-                Valor Atual da Moeda: <br>
-                <input type="text" value="<?php echo $valor_moeda_fixo;?>" name="novo_valor"> <br><br>
+               
+                <div class="form-floating">
+                    <input class="form-control" type="text" name="novo_nome" id="nome" value="<?php echo $nome_moeda;?>"> <br>  
+                    <label for="nome">Nome Moeda</label>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" type="text" name="nova_sigla" id="sigla" value="<?php echo $sigla_moeda;?>"> <br>
+                    <label for="sigla">Sigla Moeda</label>
+                </div>
+                
+                <div class="form-floating">
+                    <input class="form-control" type="text" name="novo_valor" id="valor" value="<?php echo $valor_moeda_fixo;?>"> <br>
+                    <label for="valor">Valor Atual da Moeda</label>
+                </div>
+                
                 <button type='submit' class="btn btn-outline-success icon-link-hover" style='--bs-icon-link-transform: translate3d(0, -.125rem, 0);' >
                 <i class="fa-solid fa-check fa-lg bi"></i> Salvar</button> <br><br>
+                
             </form> 
+        </div>
             <?php
         
             $edicao = 'desabilitada';
@@ -189,7 +200,7 @@
                 if ($edicao == 'desabilitada' and $id_moeda != $id_moeda_editada){
                     echo "
                     <div class='col-sm container-fluid'>
-                    <div class='card mb-3' style='width: 13rem;'>
+                    <div class='card mb-3' style='width: 15rem;'>
                     <img src='$imagem_moeda' class='card-img-top' alt=''>
                     <div class='card-body'>
                     <h5 class='card-title'>$nome_moeda</h5>
@@ -254,7 +265,7 @@ echo"</div>
                 if ($edicao == 'desabilitada' and $id_moeda != $id_moeda_editada){  
                     echo "
                     <div class='col-sm container-fluid'>
-                    <div class='card mb-3' style='width: 13rem;'>
+                    <div class='card mb-3' style='width: 15rem;'>
                     <img src='$imagem_moeda' class='card-img-top' alt=''>
                     <div class='card-body'>
                     <h5 class='card-title'>$nome_moeda</h5>

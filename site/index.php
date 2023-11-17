@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'conexao.php';
+require_once 'altera_valor_moeda.php';
 if (isset($_SESSION['logado'])) {
     $logado = "";
     $login = "hidden";

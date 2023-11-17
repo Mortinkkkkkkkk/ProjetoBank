@@ -121,8 +121,8 @@
                 echo   "</div>";
                 echo   "<ul class='list-group list-group-flush'>";
                 echo     "<li class='list-group-item'>$siglamoeda</li>";
-                echo     "<li class='list-group-item'> $quantidade</li>";
-                echo     "<li class='list-group-item'> $compratotal</li>";
+                echo     "<li class='list-group-item'> $quantidade Moedas</li>";
+                echo     "<li class='list-group-item'> Total: R$ $compratotal </li>";
                 echo     "<li class='list-group-item'>$excluir</li>";
                           echo   "</ul>";
                           echo "</div>";

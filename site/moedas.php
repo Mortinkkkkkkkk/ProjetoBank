@@ -202,8 +202,8 @@
                 
 
                 echo "<div class='col-sm'>";
-                echo "<div class='card mb-3' style='margin: 0; padding: 0; width: 250px; heigth: 900px;'>";
-                echo            " <img src='$imagem' style='width: 175px; heigth: 200px' class='card-img-top'>";
+                echo "<div class='card mb-3' style='width: 15rem;'>";
+                echo            " <img src='$imagem' style='width: max-175px; max-heigth: 200px' class='card-img-top'>";
                 echo           " <div class='card-body'>";
                 echo               "<h5 class='card-title'> $nome_moeda</h5>";
                 echo               "<p class='card-text' style = 'color : $cor'>R$ $valor_moeda_fixo  $sinal $continha_de_porcentagem  </p>" ;
