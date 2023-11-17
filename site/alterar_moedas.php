@@ -87,14 +87,7 @@
                   </div>
     </nav>
 
-        <br> <br>
-        <form action="moedas.php">
-            <button class='btn btn-outline-success' type='submit'>  
-                Voltar
-            </button>
-        </form>
-        <br>
-        
+    
     <?php
         $edicao = $_GET['edicao'];
         $id_moeda_editada = $_GET['id_moeda_edit'];
