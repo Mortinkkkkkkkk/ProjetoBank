@@ -30,6 +30,7 @@ if (isset($_SESSION['logado'])) {
     <!-- Script de icones -->
     <script src="https://kit.fontawesome.com/bc42253982.js" crossorigin="anonymous"></script>
     <link rel="icon" href="./img/firefly_logo_minimalista_para_um_banco_digital_de_criptomoedas_com_o_tema_verde_62636.jpg">
+    <link rel="stylesheet" href="css/index.css">
     <title>Pobre Bank</title>
 
 </head>
@@ -38,7 +39,7 @@ if (isset($_SESSION['logado'])) {
 
 
             
-        <nav class="navbar navbar-expand-lg" style="background-color:  #0b6e20; border-radius: 32px 64px; margin-right: 100px; margin-left: 100px">
+        <nav class="navbar navbar-expand-lg" style="background-color:  #0378A6;">
               
             <div class="container-fluid">
                     <a class="navbar-brand icon-link-hover" style='--bs-icon-link-transform: translate3d(0, -.125rem, 0); color: black; border: 0px;' href="index.php"><i class="fa-solid fa-building-columns fa-lg bi" style="color: #ffffff;"></i></a>
@@ -108,8 +109,8 @@ if (isset($_SESSION['logado'])) {
 
     <div class='mt-5 container'>
     <div class='row'>
-        <div class="col-sm" style="border-radius: 32px 64px;  background-color: #60f043; height: 50px; margin-left: 200px; margin-right: 200px">
-            <div style="background-color:#0b6e20; border-radius: 32px 64px;">
+        <div class="col-sm" style="border-radius: 32px 64px;  background-color: #0378A6; height: 50px; margin-left: 200px; margin-right: 200px">
+            <div style="background-color:#0378A6; border-radius: 32px 64px;">
                 <center>
                     <div>
                         <h1 class="text-white"> Bem-vindo ao Futuro Financeiro!</h1>
@@ -119,30 +120,21 @@ if (isset($_SESSION['logado'])) {
             </div>
         </div>
     </div>
+    <div class="textos">
+        <div class="box_texto">
+            <p class="texto">Em nosso banco digital de criptomoedas, embarque em uma jornada além das fronteiras convencionais da moeda. Aqui, a inovação é a nossa moeda corrente, e a liberdade financeira é o nosso destino.</p>
+        </div>
+        <div class="box_texto">
+            <p class="texto">Imagine um mundo onde o seu poder de transacionar está completamente nas suas mãos. Com um toque, você acessa um universo de possibilidades financeiras sem limites geográficos, sem intermediários, sem fronteiras.</p>
+        </div>
+        <div class="box_texto">
+            <p class="texto">Utilizamos tecnologia de ponta, garantindo a proteção dos seus ativos, proporcionando tranquilidade para explorar as infinitas oportunidades que as criptomoedas oferecem.Aqui, a revolução financeira é uma realidade, e você é parte dela.</p>
+        </div>
+    </div>
     <div class='mt-5 container'>
         <div class='row'>
-            <div class="col-sm"style="border-radius: 32px 64px;  background-color: #0b6e20; margin-left: 20px; margin-right: 20px">
-            <div style="border-radius: 32px 64px;  background-color: white; margin-left: 20px; margin-right: 20px; margin-top: 20px">
-                <div class="fw-light fs-4 text-center" style="margin-left: 20px; margin-right: 20px ; margin-bottom: 20px" >Em nosso banco digital de criptomoedas, embarque em uma jornada além das fronteiras convencionais da moeda. Aqui, a inovação é a nossa moeda corrente, e a liberdade financeira é o nosso destino.</div>
-            </div>
-            </div>
-            <div class="col-sm"style="border-radius: 32px 64px;  background-color:#0b6e20; margin-left: 20px; margin-right: 20px">
-            <div  style="border-radius: 32px 64px;  background-color: white; margin-left: 10px; margin-right: 10px; margin-top: 20px">
-                <div class="fw-light fs-4 text-center" style="margin-left: 20px; margin-right: 20px; margin-bottom: 20px ">Imagine um mundo onde o seu poder de transacionar está completamente nas suas mãos. Com um toque, você acessa um universo de possibilidades financeiras sem limites geográficos, sem intermediários, sem fronteiras.</div>
-            </div>
-            </div>
-            <div class="col-sm" style="border-radius: 32px 64px;  background-color:#0b6e20; margin-left: 20px; margin-right: 20px">
-            <div  style="border-radius: 32px 64px;  background-color: white; margin-left: 10px; margin-right: 10px; margin-top: 20px; margin-bottom: 0px ">
-                <div class="fw-light fs-4 text-center" style="margin-left: 20px; margin-right: 20px ; margin-bottom: 20px"> Utilizamos tecnologia de ponta, garantindo a proteção dos seus ativos, proporcionando tranquilidade para explorar as infinitas oportunidades que as criptomoedas oferecem.
-
-        Aqui, a revolução financeira é uma realidade, e você é parte dela. </div>
-            </div>
-                </div>
-
-    <div class='mt-5 container'>
-        <div class='row'>
-        <div class="col-sm" style="border-radius: 32px 64px;  background-color: #60f043; height: 50px; margin-left: 200px; margin-right: 200px">
-            <div style="background-color:#0b6e20; border-radius: 32px 64px;">
+        <div class="col-sm" style="border-radius: 32px 64px;  background-color: #04B2D9; height: 50px; margin-left: 200px; margin-right: 200px">
+            <div style="background-color:#0378A6; border-radius: 32px 64px;">
                 <center>
                     <div>
                         <h1 class="text-white">Moedas em Destaque</h1>
